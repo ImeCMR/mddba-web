@@ -7,167 +7,172 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: 'Segoe UI', sans-serif;
-  color: #1a1a2e;
-  background: #f9f9fb;
+font-family: 'Segoe UI', sans-serif;
+color: #1a1a2e;
+background: #f9f9fb;
 }
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.2rem 4rem;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(10px);
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1.2rem 4rem;
+background: rgba(0,0,0,0.7);
+backdrop-filter: blur(10px);
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 100;
 }
 .nav-logo { font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: 1px; }
 .nav-logo span { color: #1a8cff; }
 nav ul { list-style: none; display: flex; gap: 2rem; }
 nav ul li a {
-  text-decoration: none; color: rgba(255,255,255,0.85);
-  font-size: 0.95rem; font-weight: 500; transition: color 0.2s;
+text-decoration: none; color: rgba(255,255,255,0.85);
+font-size: 0.95rem; font-weight: 500; transition: color 0.2s;
 }
 nav ul li a:hover { color: #1a8cff; }
 .nav-cta {
-  background: #1a8cff; color: #fff !important;
-  padding: 0.5rem 1.2rem; border-radius: 6px;
+background: #1a8cff; color: #fff !important;
+padding: 0.5rem 1.2rem; border-radius: 6px;
 }
 .nav-cta:hover { background: #0a6cd4 !important; color: #fff !important; }
 
 /* HAMBURGER */
 .hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 4px;
+display: none;
+flex-direction: column;
+gap: 5px;
+cursor: pointer;
+padding: 4px;
 }
 .hamburger span {
-  display: block;
-  width: 24px; height: 2px;
-  background: #fff;
-  border-radius: 2px;
-  transition: all 0.3s;
+display: block;
+width: 24px; height: 2px;
+background: #fff;
+border-radius: 2px;
+transition: all 0.3s;
 }
 .mobile-menu {
-  display: none;
-  flex-direction: column;
-  background: rgba(0,0,0,0.95);
-  position: fixed;
-  top: 60px; left: 0; right: 0;
-  padding: 1.5rem 2rem;
-  z-index: 99;
-  gap: 1rem;
+display: none;
+flex-direction: column;
+background: rgba(0,0,0,0.95);
+position: fixed;
+top: 60px; left: 0; right: 0;
+padding: 1.5rem 2rem;
+z-index: 99;
+gap: 1rem;
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
-  color: rgba(255,255,255,0.85);
-  text-decoration: none;
-  font-size: 1rem; font-weight: 500;
-  padding: 0.4rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  transition: color 0.2s;
+color: rgba(255,255,255,0.85);
+text-decoration: none;
+font-size: 1rem; font-weight: 500;
+padding: 0.4rem 0;
+border-bottom: 1px solid rgba(255,255,255,0.08);
+transition: color 0.2s;
 }
 .mobile-menu a:hover { color: #1a8cff; }
 .mobile-menu .nav-cta {
-  background: #1a8cff; color: #fff;
-  padding: 0.6rem 1.2rem; border-radius: 6px;
-  text-align: center; border-bottom: none;
+background: #1a8cff; color: #fff;
+padding: 0.6rem 1.2rem; border-radius: 6px;
+text-align: center; border-bottom: none;
 }
 
 /* ── HERO ──────────────────────────────────────────────────────────────── */
 .hero {
-  position: relative;
-  width: 100%; height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #000;
+position: relative;
+width: 100%; height: 100vh;
+overflow: hidden;
+display: flex;
+align-items: center;
+justify-content: center;
+background: #000;
 }
 
 /* Background video */
 .hero-video {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;       /* fills the hero, crops edges on small screens */
-  object-position: center;
-  z-index: 0;
-  /* no pointer events so it never blocks clicks */
-  pointer-events: none;
+position: absolute;
+inset: 0;
+width: 100%; height: 100%;
+object-fit: cover;
+object-position: center;
+z-index: 0;
+pointer-events: none;
 }
 
 /* Dark overlay so text stays readable over any video */
 .hero-overlay-dim {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 10, 0.0);
-  z-index: 1;
-  pointer-events: none;
+position: absolute;
+inset: 0;
+background: rgba(0, 0, 10, 0.45);
+z-index: 1;
+pointer-events: none;
 }
 
 /* Text content sits above video + dim layer */
 .hero-overlay {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  color: #fff;
-  padding: 0 1.5rem;
+position: relative;
+z-index: 10;
+text-align: center;
+color: #fff;
+padding: 3rem 3.5rem;
+background: rgba(0, 0, 20, 0.35);
+backdrop-filter: blur(6px);
+-webkit-backdrop-filter: blur(6px);
+border-radius: 16px;
+max-width: 780px;
+margin: 0 1.5rem;
 }
 .hero-badge {
-  display: inline-block;
-  background: rgba(26,140,255,0.2);
-  border: 1px solid rgba(26,140,255,0.4);
-  border-radius: 20px; padding: 0.35rem 1.1rem;
-  font-size: 0.82rem; margin-bottom: 1.5rem;
-  letter-spacing: 0.5px; color: #a8d8ff;
+display: inline-block;
+background: rgba(26,140,255,0.2);
+border: 1px solid rgba(26,140,255,0.4);
+border-radius: 20px; padding: 0.35rem 1.1rem;
+font-size: 0.82rem; margin-bottom: 1.5rem;
+letter-spacing: 0.5px; color: #a8d8ff;
 }
 .hero h1 {
-  font-size: 5.2rem; font-weight: 800;
-  line-height: 1.2; margin-bottom: 1.2rem;
-  text-shadow: 0 2px 30px rgba(0,0,0,0.9);
+font-size: 5.2rem; font-weight: 800;
+line-height: 1.2; margin-bottom: 1.2rem;
+text-shadow: 0 2px 40px rgba(0,0,0,1), 0 0 80px rgba(0,0,0,0.8);
 }
 .hero h1 span { color: #ffffff; }
 .hero p {
-  font-size: 1.1rem; max-width: 580px;
-  margin: 0 auto 2.5rem; opacity: 0.9;
-  line-height: 1.7;
-  text-shadow: 0 1px 12px rgba(0,0,0,0.9);
+font-size: 1.15rem; max-width: 580px;
+margin: 0 auto 2.5rem; opacity: 1;
+line-height: 1.7;
+text-shadow: 0 1px 16px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9);
 }
 .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 .btn-primary {
-  background: #1a8cff; color: #fff;
-  padding: 0.85rem 2rem; border-radius: 8px;
-  font-weight: 700; text-decoration: none; font-size: 1rem;
-  transition: background 0.2s, transform 0.2s;
+background: #1a8cff; color: #fff;
+padding: 0.85rem 2rem; border-radius: 8px;
+font-weight: 700; text-decoration: none; font-size: 1rem;
+transition: background 0.2s, transform 0.2s;
 }
 .btn-primary:hover { background: #0a6cd4; transform: translateY(-2px); }
 .btn-outline {
-  background: transparent; color: #fff;
-  border: 2px solid rgba(255,255,255,0.5);
-  padding: 0.85rem 2rem; border-radius: 8px;
-  font-weight: 600; text-decoration: none; font-size: 1rem;
-  transition: background 0.2s, transform 0.2s;
+background: transparent; color: #fff;
+border: 2px solid rgba(255,255,255,0.5);
+padding: 0.85rem 2rem; border-radius: 8px;
+font-weight: 600; text-decoration: none; font-size: 1rem;
+transition: background 0.2s, transform 0.2s;
 }
 .btn-outline:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 
 .scroll-hint {
-  position: absolute; bottom: 2rem; left: 50%;
-  transform: translateX(-50%);
-  color: rgba(255,255,255,0.4); font-size: 0.75rem;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  z-index: 10; display: flex; flex-direction: column;
-  align-items: center; gap: 0.4rem;
+position: absolute; bottom: 2rem; left: 50%;
+transform: translateX(-50%);
+color: rgba(255,255,255,0.4); font-size: 0.75rem;
+letter-spacing: 1.5px; text-transform: uppercase;
+z-index: 10; display: flex; flex-direction: column;
+align-items: center; gap: 0.4rem;
 }
 .scroll-arrow {
-  width: 18px; height: 18px;
-  border-right: 2px solid rgba(255,255,255,0.35);
-  border-bottom: 2px solid rgba(255,255,255,0.35);
-  transform: rotate(45deg);
-  animation: bounce 1.6s infinite;
+width: 18px; height: 18px;
+border-right: 2px solid rgba(255,255,255,0.35);
+border-bottom: 2px solid rgba(255,255,255,0.35);
+transform: rotate(45deg);
+animation: bounce 1.6s infinite;
 }
 @keyframes bounce {
   0%,100% { transform: rotate(45deg) translateY(0); }
@@ -176,17 +181,17 @@ nav ul li a:hover { color: #1a8cff; }
 
 /* PARTNERS */
 .partners-section {
-  background: #fff; padding: 2rem 4rem;
-  text-align: center; border-bottom: 1px solid #eee;
+background: #fff; padding: 2rem 4rem;
+text-align: center; border-bottom: 1px solid #eee;
 }
 .partners-section p {
-  font-size: 0.85rem; color: #888; margin-bottom: 1rem;
-  text-transform: uppercase; letter-spacing: 1px;
+font-size: 0.85rem; color: #888; margin-bottom: 1rem;
+text-transform: uppercase; letter-spacing: 1px;
 }
 .partners-ticker { overflow: hidden; white-space: nowrap; }
 .partners-track {
-  display: inline-flex; gap: 3rem;
-  animation: ticker 20s linear infinite;
+display: inline-flex; gap: 3rem;
+animation: ticker 20s linear infinite;
 }
 .partners-track span { font-size: 0.95rem; font-weight: 600; color: #444; opacity: 0.7; }
 @keyframes ticker {
@@ -196,8 +201,8 @@ nav ul li a:hover { color: #1a8cff; }
 
 /* STATS */
 .stats {
-  display: flex; justify-content: center; gap: 4rem;
-  padding: 3rem 4rem; background: #0a3d6b; color: #fff; flex-wrap: wrap;
+display: flex; justify-content: center; gap: 4rem;
+padding: 3rem 4rem; background: #0a3d6b; color: #fff; flex-wrap: wrap;
 }
 .stat-item { text-align: center; }
 .stat-item .num { font-size: 2.5rem; font-weight: 800; color: #a8d8ff; }
@@ -206,25 +211,25 @@ nav ul li a:hover { color: #1a8cff; }
 /* SECTIONS */
 section { padding: 5rem 4rem; }
 .section-label {
-  font-size: 0.8rem; font-weight: 700; color: #1a8cff;
-  text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.6rem;
+font-size: 0.8rem; font-weight: 700; color: #1a8cff;
+text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.6rem;
 }
 .section-title {
-  font-size: 2rem; font-weight: 800; color: #0a3d6b;
-  margin-bottom: 1rem; line-height: 1.2;
+font-size: 2rem; font-weight: 800; color: #0a3d6b;
+margin-bottom: 1rem; line-height: 1.2;
 }
 .section-subtitle { font-size: 1rem; color: #555; max-width: 560px; line-height: 1.7; }
 
 /* ABOUT */
 .about { background: #f9f9fb; }
 .about-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto;
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto;
 }
 .about-text p { color: #555; line-height: 1.8; margin-bottom: 1rem; font-size: 1rem; }
 .about-visual {
-  background: linear-gradient(135deg, #0a3d6b, #1a8cff);
-  border-radius: 16px; padding: 3rem 2rem; color: #fff; text-align: center;
+background: linear-gradient(135deg, #0a3d6b, #1a8cff);
+border-radius: 16px; padding: 3rem 2rem; color: #fff; text-align: center;
 }
 .about-visual .icon { font-size: 4rem; margin-bottom: 1rem; }
 .about-visual h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
@@ -236,9 +241,9 @@ section { padding: 5rem 4rem; }
 .fair-header { text-align: center; margin-bottom: 3rem; }
 .fair-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
 .fair-card {
-  border-radius: 12px; padding: 2rem 1.5rem;
-  background: #f0f6ff; border-top: 4px solid #1a8cff;
-  transition: transform 0.2s, box-shadow 0.2s;
+border-radius: 12px; padding: 2rem 1.5rem;
+background: #f0f6ff; border-top: 4px solid #1a8cff;
+transition: transform 0.2s, box-shadow 0.2s;
 }
 .fair-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(26,140,255,0.12); }
 .fair-card .letter { font-size: 2.5rem; font-weight: 900; color: #1a8cff; line-height: 1; margin-bottom: 0.5rem; }
@@ -251,16 +256,16 @@ section { padding: 5rem 4rem; }
 .platform-header { text-align: center; margin-bottom: 3rem; }
 .platform-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
 .platform-card {
-  background: #fff; border-radius: 12px; padding: 2rem;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform 0.2s;
+background: #fff; border-radius: 12px; padding: 2rem;
+box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform 0.2s;
 }
 .platform-card:hover { transform: translateY(-4px); }
 .platform-card .icon { font-size: 2rem; margin-bottom: 1rem; }
 .platform-card h3 { font-size: 1.1rem; font-weight: 700; color: #0a3d6b; margin-bottom: 0.6rem; }
 .platform-card p { font-size: 0.9rem; color: #666; line-height: 1.6; }
 .platform-card a {
-  display: inline-block; margin-top: 1rem;
-  color: #1a8cff; font-weight: 600; font-size: 0.9rem; text-decoration: none;
+display: inline-block; margin-top: 1rem;
+color: #1a8cff; font-weight: 600; font-size: 0.9rem; text-decoration: none;
 }
 .platform-card a:hover { text-decoration: underline; }
 
@@ -271,19 +276,19 @@ section { padding: 5rem 4rem; }
 .news-header a { color: #1a8cff; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
 .news-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
 .news-card {
-  border-radius: 12px; overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  background: #f9f9fb; transition: transform 0.2s;
+border-radius: 12px; overflow: hidden;
+box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+background: #f9f9fb; transition: transform 0.2s;
 }
 .news-card:hover { transform: translateY(-4px); }
 .news-card-top {
-  padding: 1.5rem;
-  background: linear-gradient(135deg, #0a3d6b, #1a8cff); color: #fff;
+padding: 1.5rem;
+background: linear-gradient(135deg, #0a3d6b, #1a8cff); color: #fff;
 }
 .news-tag {
-  display: inline-block; background: rgba(255,255,255,0.2);
-  border-radius: 4px; padding: 0.2rem 0.6rem;
-  font-size: 0.75rem; font-weight: 600; margin-bottom: 0.6rem; text-transform: uppercase;
+display: inline-block; background: rgba(255,255,255,0.2);
+border-radius: 4px; padding: 0.2rem 0.6rem;
+font-size: 0.75rem; font-weight: 600; margin-bottom: 0.6rem; text-transform: uppercase;
 }
 .news-card-top h3 { font-size: 1rem; line-height: 1.4; }
 .news-card-body { padding: 1rem 1.5rem; }
@@ -291,8 +296,8 @@ section { padding: 5rem 4rem; }
 
 /* CTA BANNER */
 .cta-banner {
-  background: linear-gradient(135deg, #0a3d6b 0%, #1a8cff 100%);
-  color: #fff; text-align: center; padding: 5rem 2rem;
+background: linear-gradient(135deg, #0a3d6b 0%, #1a8cff 100%);
+color: #fff; text-align: center; padding: 5rem 2rem;
 }
 .cta-banner h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; }
 .cta-banner p { opacity: 0.9; font-size: 1.05rem; max-width: 520px; margin: 0 auto 2rem; line-height: 1.7; }
@@ -301,8 +306,8 @@ section { padding: 5rem 4rem; }
 /* FOOTER */
 footer { background: #0a1628; color: #ccc; padding: 3rem 4rem; }
 .footer-grid {
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 3rem; max-width: 1100px; margin: 0 auto 2rem;
+display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+gap: 3rem; max-width: 1100px; margin: 0 auto 2rem;
 }
 .footer-brand .logo { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; }
 .footer-brand .logo span { color: #1a8cff; }
@@ -313,22 +318,23 @@ footer ul li { margin-bottom: 0.5rem; }
 footer ul li a { color: #aaa; text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
 footer ul li a:hover { color: #1a8cff; }
 .footer-bottom {
-  border-top: 1px solid #1e2d42; padding-top: 1.5rem;
-  text-align: center; font-size: 0.82rem; color: #666;
-  max-width: 1100px; margin: 0 auto;
+border-top: 1px solid #1e2d42; padding-top: 1.5rem;
+text-align: center; font-size: 0.82rem; color: #666;
+max-width: 1100px; margin: 0 auto;
 }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-  .about-grid, .fair-grid, .platform-grid,
-  .news-grid, .footer-grid { grid-template-columns: 1fr; }
-  nav ul { display: none; }
-  .hamburger { display: flex; }
-  section { padding: 3rem 1.5rem; }
-  .hero h1 { font-size: 2rem; }
-  .stats { gap: 2rem; }
-  .partners-section { padding: 2rem 1.5rem; }
-  footer { padding: 3rem 1.5rem; }
+.about-grid, .fair-grid, .platform-grid,
+.news-grid, .footer-grid { grid-template-columns: 1fr; }
+nav ul { display: none; }
+.hamburger { display: flex; }
+section { padding: 3rem 1.5rem; }
+.hero h1 { font-size: 2rem; }
+.hero-overlay { padding: 2rem 1.5rem; margin: 0 1rem; }
+.stats { gap: 2rem; }
+.partners-section { padding: 2rem 1.5rem; }
+footer { padding: 3rem 1.5rem; }
 }
 </style>
 </head>
@@ -336,218 +342,218 @@ footer ul li a:hover { color: #1a8cff; }
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">MDDB<span>America</span></div>
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#goals">Goals</a></li>
-    <li><a href="#">Partners</a></li>
-    <li><a href="#news">News</a></li>
-    <li><a href="#">Events</a></li>
-    <li><a href="#">Publications</a></li>
-    <li><a href="#">Community</a></li>
-    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
-  </ul>
-  <div class="hamburger" id="hamburger" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </div>
+<div class="nav-logo">MDDB<span>America</span></div>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#goals">Goals</a></li>
+<li><a href="#">Partners</a></li>
+<li><a href="#news">News</a></li>
+<li><a href="#">Events</a></li>
+<li><a href="#">Publications</a></li>
+<li><a href="#">Community</a></li>
+<li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+</ul>
+<div class="hamburger" id="hamburger" aria-label="Open menu">
+<span></span><span></span><span></span>
+</div>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#">Home</a>
-  <a href="#about">About</a>
-  <a href="#goals">Goals</a>
-  <a href="#">Partners</a>
-  <a href="#news">News</a>
-  <a href="#">Events</a>
-  <a href="#">Publications</a>
-  <a href="#">Community</a>
-  <a href="#contact" class="nav-cta">Get in Touch</a>
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="#goals">Goals</a>
+<a href="#">Partners</a>
+<a href="#news">News</a>
+<a href="#">Events</a>
+<a href="#">Publications</a>
+<a href="#">Community</a>
+<a href="#contact" class="nav-cta">Get in Touch</a>
 </div>
 
 <!-- HERO -->
 <div class="hero">
 
-  <!-- ── Looping background video ── -->
-  <video
-    class="hero-video"
-    src="animations/new4.mp4"
-    autoplay
-    loop
-    muted
-    playsinline
-    preload="auto"
-  ></video>
+<!-- Looping background video -->
+<video
+class="hero-video"
+src="animations/new4.mp4"
+autoplay
+loop
+muted
+playsinline
+preload="auto"
+></video>
 
-  <!-- ── Dim overlay so text stays legible ── -->
-  <div class="hero-overlay-dim"></div>
+<!-- Dim overlay so text stays legible -->
+<div class="hero-overlay-dim"></div>
 
-  <!-- ── Hero text content ── -->
-  <div class="hero-overlay">
-    <div class="hero-badge">🧬 Introducing MDDB America — First Unified Biosimulation Repository</div>
-    <h1>The Future of<br/><span>Molecular Dynamics</span><br/>Data Science</h1>
-    <p>A unified, FAIR-compliant repository for biosimulation data — empowering researchers across biochemistry, pharmacology, and personalized medicine.</p>
-    <div class="hero-btns">
-      <a href="#about" class="btn-primary">Explore MDDB America →</a>
-      <a href="#contact" class="btn-outline">Support Initiative</a>
-    </div>
-  </div>
+<!-- Hero text content -->
+<div class="hero-overlay">
+<div class="hero-badge">🧬 Introducing MDDB America — First Unified Biosimulation Repository</div>
+<h1>The Future of<br/><span>Molecular Dynamics</span><br/>Data Science</h1>
+<p>A unified, FAIR-compliant repository for biosimulation data — empowering researchers across biochemistry, pharmacology, and personalized medicine.</p>
+<div class="hero-btns">
+<a href="#about" class="btn-primary">Explore MDDB America →</a>
+<a href="#contact" class="btn-outline">Support Initiative</a>
+</div>
+</div>
 
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-arrow"></div>
-  </div>
+<div class="scroll-hint">
+<span>Scroll</span>
+<div class="scroll-arrow"></div>
+</div>
 </div>
 
 <!-- PARTNERS -->
 <div class="partners-section">
-  <p>Partnering with America's leading research institutions</p>
-  <div class="partners-ticker">
-    <div class="partners-track">
-      <span>MIT</span><span>Stanford University</span><span>UC San Diego</span>
-      <span>Johns Hopkins</span><span>University of Chicago</span><span>NIH / NCBI</span>
-      <span>Harvard University</span><span>Univ. of Michigan</span>
-      <span>MIT</span><span>Stanford University</span><span>UC San Diego</span>
-      <span>Johns Hopkins</span><span>University of Chicago</span><span>NIH / NCBI</span>
-      <span>Harvard University</span><span>Univ. of Michigan</span>
-    </div>
-  </div>
+<p>Partnering with America's leading research institutions</p>
+<div class="partners-ticker">
+<div class="partners-track">
+<span>MIT</span><span>Stanford University</span><span>UC San Diego</span>
+<span>Johns Hopkins</span><span>University of Chicago</span><span>NIH / NCBI</span>
+<span>Harvard University</span><span>Univ. of Michigan</span>
+<span>MIT</span><span>Stanford University</span><span>UC San Diego</span>
+<span>Johns Hopkins</span><span>University of Chicago</span><span>NIH / NCBI</span>
+<span>Harvard University</span><span>Univ. of Michigan</span>
+</div>
+</div>
 </div>
 
 <!-- STATS -->
 <div class="stats">
-  <div class="stat-item"><div class="num">0+</div><div class="label">Partner Institutions</div></div>
-  <div class="stat-item"><div class="num">0</div><div class="label">Publications</div></div>
-  <div class="stat-item"><div class="num">0+</div><div class="label">Events & Webinars</div></div>
-  <div class="stat-item"><div class="num">0+</div><div class="label">Community Members</div></div>
+<div class="stat-item"><div class="num">0+</div><div class="label">Partner Institutions</div></div>
+<div class="stat-item"><div class="num">0</div><div class="label">Publications</div></div>
+<div class="stat-item"><div class="num">0+</div><div class="label">Events & Webinars</div></div>
+<div class="stat-item"><div class="num">0+</div><div class="label">Community Members</div></div>
 </div>
 
 <!-- ABOUT -->
 <section class="about" id="about">
-  <div class="about-grid">
-    <div class="about-text">
-      <div class="section-label">About MDDB America</div>
-      <h2 class="section-title">Building the First Unified American MD Database</h2>
-      <p>At MDDB America, we are harnessing decades of cutting-edge computational resources to build a unified database that compiles and organises all data generated by molecular dynamics simulations.</p>
-      <p>By making these data accessible to a wider scientific community, we hope to drive new research and discoveries in fields such as biochemistry, pharmacology, and personalized medicine.</p>
-      <p>Our project addresses this unmet need by creating the first unified database for MD simulations in America, providing a platform for scientists to share, access, and build upon each other's work.</p>
-      <a href="#" style="display:inline-block;margin-top:1.5rem;background:#0a3d6b;color:#fff;padding:0.7rem 1.6rem;border-radius:8px;text-decoration:none;font-weight:600;">About MDDB America</a>
-    </div>
-    <div class="about-visual">
-      <div class="icon">🔬</div>
-      <h3>FAIR-Compliant Platform</h3>
-      <p>Making molecular dynamics simulation data findable, accessible, interoperable, and reusable for the global scientific community.</p>
-    </div>
-  </div>
+<div class="about-grid">
+<div class="about-text">
+<div class="section-label">About MDDB America</div>
+<h2 class="section-title">Building the First Unified American MD Database</h2>
+<p>At MDDB America, we are harnessing decades of cutting-edge computational resources to build a unified database that compiles and organises all data generated by molecular dynamics simulations.</p>
+<p>By making these data accessible to a wider scientific community, we hope to drive new research and discoveries in fields such as biochemistry, pharmacology, and personalized medicine.</p>
+<p>Our project addresses this unmet need by creating the first unified database for MD simulations in America, providing a platform for scientists to share, access, and build upon each other's work.</p>
+<a href="#" style="display:inline-block;margin-top:1.5rem;background:#0a3d6b;color:#fff;padding:0.7rem 1.6rem;border-radius:8px;text-decoration:none;font-weight:600;">About MDDB America</a>
+</div>
+<div class="about-visual">
+<div class="icon">🔬</div>
+<h3>FAIR-Compliant Platform</h3>
+<p>Making molecular dynamics simulation data findable, accessible, interoperable, and reusable for the global scientific community.</p>
+</div>
+</div>
 </section>
 
 <!-- FAIR -->
 <section class="fair" id="goals">
-  <div class="fair-inner">
-    <div class="fair-header">
-      <div class="section-label">Our Vision</div>
-      <h2 class="section-title">A Single Database for<br/>Molecular Dynamics Simulations</h2>
-      <p class="section-subtitle" style="margin:0 auto;">Building on FAIR data principles for all MD simulation data.</p>
-    </div>
-    <div class="fair-grid">
-      <div class="fair-card"><div class="letter">F</div><h4>Findable</h4><p>Persistent identifiers and rich metadata enable full discoverability of all simulation datasets.</p></div>
-      <div class="fair-card"><div class="letter">A</div><h4>Accessible</h4><p>Data retrievable via standardized, open, universally implementable protocols and APIs.</p></div>
-      <div class="fair-card"><div class="letter">I</div><h4>Interoperable</h4><p>Formal shared vocabularies supporting integration with the broader life sciences data ecosystem.</p></div>
-      <div class="fair-card"><div class="letter">R</div><h4>Reusable</h4><p>Rich provenance and clear licensing enabling long-term reuse and reproducibility.</p></div>
-    </div>
-  </div>
+<div class="fair-inner">
+<div class="fair-header">
+<div class="section-label">Our Vision</div>
+<h2 class="section-title">A Single Database for<br/>Molecular Dynamics Simulations</h2>
+<p class="section-subtitle" style="margin:0 auto;">Building on FAIR data principles for all MD simulation data.</p>
+</div>
+<div class="fair-grid">
+<div class="fair-card"><div class="letter">F</div><h4>Findable</h4><p>Persistent identifiers and rich metadata enable full discoverability of all simulation datasets.</p></div>
+<div class="fair-card"><div class="letter">A</div><h4>Accessible</h4><p>Data retrievable via standardized, open, universally implementable protocols and APIs.</p></div>
+<div class="fair-card"><div class="letter">I</div><h4>Interoperable</h4><p>Formal shared vocabularies supporting integration with the broader life sciences data ecosystem.</p></div>
+<div class="fair-card"><div class="letter">R</div><h4>Reusable</h4><p>Rich provenance and clear licensing enabling long-term reuse and reproducibility.</p></div>
+</div>
+</div>
 </section>
 
 <!-- PLATFORM -->
 <section class="platform">
-  <div class="platform-inner">
-    <div class="platform-header">
-      <div class="section-label">Our Platform</div>
-      <h2 class="section-title">Your Gateway to Comprehensive MD Data</h2>
-    </div>
-    <div class="platform-grid">
-      <div class="platform-card"><div class="icon">📂</div><h3>About</h3><p>We compile and organise all data generated by molecular dynamics simulations, making them accessible to drive new research.</p><a href="#about">Learn More →</a></div>
-      <div class="platform-card"><div class="icon">🎯</div><h3>Goals</h3><p>Establish a platform adhering to Findable, Accessible, Interoperable, and Reusable principles for molecular simulation data.</p><a href="#goals">View Goals →</a></div>
-      <div class="platform-card"><div class="icon">🤝</div><h3>Community</h3><p>A collaborative effort to create, establish, and sustain a database that allows findability, accessibility, interoperability, and reusability.</p><a href="#">Get Involved →</a></div>
-    </div>
-  </div>
+<div class="platform-inner">
+<div class="platform-header">
+<div class="section-label">Our Platform</div>
+<h2 class="section-title">Your Gateway to Comprehensive MD Data</h2>
+</div>
+<div class="platform-grid">
+<div class="platform-card"><div class="icon">📂</div><h3>About</h3><p>We compile and organise all data generated by molecular dynamics simulations, making them accessible to drive new research.</p><a href="#about">Learn More →</a></div>
+<div class="platform-card"><div class="icon">🎯</div><h3>Goals</h3><p>Establish a platform adhering to Findable, Accessible, Interoperable, and Reusable principles for molecular simulation data.</p><a href="#goals">View Goals →</a></div>
+<div class="platform-card"><div class="icon">🤝</div><h3>Community</h3><p>A collaborative effort to create, establish, and sustain a database that allows findability, accessibility, interoperability, and reusability.</p><a href="#">Get Involved →</a></div>
+</div>
+</div>
 </section>
 
 <!-- NEWS -->
 <section class="news" id="news">
-  <div class="news-inner">
-    <div class="news-header">
-      <div><div class="section-label">Latest Updates</div><h2 class="section-title">Recent from MDDB America</h2></div>
-      <a href="#">See All News →</a>
-    </div>
-    <div class="news-grid">
-      <div class="news-card">
-        <div class="news-card-top"><div class="news-tag">Workshop</div><h3>Multi-scale Simulations of Protein Folding: The Importance of Data</h3></div>
-        <div class="news-card-body"><p style="font-size:0.88rem;color:#555;margin-bottom:0.5rem;">Organised by the MDDB America Consortium.</p><div class="news-date">March 10, 2026</div></div>
-      </div>
-      <div class="news-card">
-        <div class="news-card-top"><div class="news-tag">Conference</div><h3>MDDB America Inaugural Conference Highlights</h3></div>
-        <div class="news-card-body"><p style="font-size:0.88rem;color:#555;margin-bottom:0.5rem;">Our inaugural conference brought together leading researchers from across the Americas.</p><div class="news-date">February 20, 2026</div></div>
-      </div>
-      <div class="news-card">
-        <div class="news-card-top"><div class="news-tag">Publication</div><h3>FAIR Principles in Biomolecular Simulations — Nature Methods</h3></div>
-        <div class="news-card-body"><p style="font-size:0.88rem;color:#555;margin-bottom:0.5rem;">Our landmark article published in Nature Methods.</p><div class="news-date">January 15, 2026</div></div>
-      </div>
-    </div>
-  </div>
+<div class="news-inner">
+<div class="news-header">
+<div><div class="section-label">Latest Updates</div><h2 class="section-title">Recent from MDDB America</h2></div>
+<a href="#">See All News →</a>
+</div>
+<div class="news-grid">
+<div class="news-card">
+<div class="news-card-top"><div class="news-tag">Workshop</div><h3>Multi-scale Simulations of Protein Folding: The Importance of Data</h3></div>
+<div class="news-card-body"><p style="font-size:0.88rem;color:#555;margin-bottom:0.5rem;">Organised by the MDDB America Consortium.</p><div class="news-date">March 10, 2026</div></div>
+</div>
+<div class="news-card">
+<div class="news-card-top"><div class="news-tag">Conference</div><h3>MDDB America Inaugural Conference Highlights</h3></div>
+<div class="news-card-body"><p style="font-size:0.88rem;color:#555;margin-bottom:0.5rem;">Our inaugural conference brought together leading researchers from across the Americas.</p><div class="news-date">February 20, 2026</div></div>
+</div>
+<div class="news-card">
+<div class="news-card-top"><div class="news-tag">Publication</div><h3>FAIR Principles in Biomolecular Simulations — Nature Methods</h3></div>
+<div class="news-card-body"><p style="font-size:0.88rem;color:#555;margin-bottom:0.5rem;">Our landmark article published in Nature Methods.</p><div class="news-date">January 15, 2026</div></div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- CTA -->
 <div class="cta-banner" id="contact">
-  <h2>For the Community,<br/>By the Community</h2>
-  <p>We recognise the need for a collaborative effort to create, establish, and sustain a database that allows findability, accessibility, interoperability, and reusability of molecular dynamics simulation data.</p>
-  <div class="cta-btns">
-    <a href="#" class="btn-primary">Support Initiative</a>
-    <a href="mailto:info@mddbamerica.org" class="btn-outline">Get in Touch</a>
-  </div>
+<h2>For the Community,<br/>By the Community</h2>
+<p>We recognise the need for a collaborative effort to create, establish, and sustain a database that allows findability, accessibility, interoperability, and reusability of molecular dynamics simulation data.</p>
+<div class="cta-btns">
+<a href="#" class="btn-primary">Support Initiative</a>
+<a href="mailto:info@mddbamerica.org" class="btn-outline">Get in Touch</a>
+</div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="logo">MDDB<span>America</span></div>
-      <p>A unified, FAIR-compliant repository for molecular dynamics biosimulation data across the Americas.</p>
-    </div>
-    <div><h4>Explore</h4><ul><li><a href="#about">About</a></li><li><a href="#goals">Goals & Vision</a></li><li><a href="#">Partners</a></li><li><a href="#">Publications</a></li></ul></div>
-    <div><h4>Engage</h4><ul><li><a href="#news">News</a></li><li><a href="#">Events</a></li><li><a href="#">Community</a></li><li><a href="#contact">Contact</a></li></ul></div>
-    <div><h4>Contact</h4><ul><li><a href="mailto:info@mddbamerica.org">info@mddbamerica.org</a></li><li><a href="#">mddbamerica.org</a></li><li><a href="#">United States</a></li></ul></div>
-  </div>
-  <div class="footer-bottom">© 2026 MDDB America | Inspired by the European MDDB Project</div>
+<div class="footer-grid">
+<div class="footer-brand">
+<div class="logo">MDDB<span>America</span></div>
+<p>A unified, FAIR-compliant repository for molecular dynamics biosimulation data across the Americas.</p>
+</div>
+<div><h4>Explore</h4><ul><li><a href="#about">About</a></li><li><a href="#goals">Goals & Vision</a></li><li><a href="#">Partners</a></li><li><a href="#">Publications</a></li></ul></div>
+<div><h4>Engage</h4><ul><li><a href="#news">News</a></li><li><a href="#">Events</a></li><li><a href="#">Community</a></li><li><a href="#contact">Contact</a></li></ul></div>
+<div><h4>Contact</h4><ul><li><a href="mailto:info@mddbamerica.org">info@mddbamerica.org</a></li><li><a href="#">mddbamerica.org</a></li><li><a href="#">United States</a></li></ul></div>
+</div>
+<div class="footer-bottom">© 2026 MDDB America | Inspired by the European MDDB Project</div>
 </footer>
 
 <script>
-// ── Hamburger ─────────────────────────────────────────────────────────────────
+// Hamburger
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
 mobileMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+link.addEventListener('click', () => mobileMenu.classList.remove('open'));
 });
 
-// ── Smooth scroll ─────────────────────────────────────────────────────────────
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+anchor.addEventListener('click', function(e) {
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+e.preventDefault();
+target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 });
 
-// ── Autoplay fallback: try to play on first user interaction if browser blocked it ──
+// Autoplay fallback
 const heroVideo = document.querySelector('.hero-video');
 if (heroVideo) {
-  heroVideo.play().catch(() => {
-    document.addEventListener('click', () => heroVideo.play(), { once: true });
-    document.addEventListener('touchstart', () => heroVideo.play(), { once: true });
+heroVideo.play().catch(() => {
+document.addEventListener('click', () => heroVideo.play(), { once: true });
+document.addEventListener('touchstart', () => heroVideo.play(), { once: true });
   });
 }
 </script>
