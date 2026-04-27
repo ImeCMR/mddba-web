@@ -415,7 +415,7 @@ const track = document.getElementById('partners-track');
 const originalItems = Array.from(track.querySelectorAll('.partner-item'));
 const partnerCount = originalItems.length;
 
-if (partnerCount > 3) {
+if (partnerCount >= 1) {
   // Duplicate all items for seamless infinite loop
   originalItems.forEach(item => {
     const clone = item.cloneNode(true);
