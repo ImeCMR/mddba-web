@@ -58,10 +58,24 @@ padding: 1.5rem 2rem; z-index: 99; gap: 1rem;
 .partners-section { background: #fff; padding: 2rem 4rem; text-align: center; border-bottom: 1px solid #eee; }
 .partners-section > p { font-size: 0.85rem; color: #888; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
 .partners-ticker { overflow: hidden; white-space: nowrap; }
-.partners-track { display: inline-flex; gap: 4rem; animation: ticker 20s linear infinite; align-items: center; }
+.partners-track {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  justify-content: center;
+  animation: none;
+  width: 100%;
+}
+.partners-track.scrolling {
+  display: inline-flex;
+  justify-content: flex-start;
+  width: auto;
+  animation: ticker 20s linear infinite;
+}
 .partner-item {
   display: inline-flex; align-items: center; gap: 0.55rem;
   opacity: 0.5; transition: opacity 0.2s;
+  white-space: nowrap;
 }
 .partner-item:hover { opacity: 0.85; }
 .partner-item img {
@@ -259,16 +273,12 @@ footer ul li a:hover { color: #1a8cff; }
 </div>
 
 <!-- PARTNERS -->
+<!-- To add more partners: add a new .partner-item inside .partners-track -->
+<!-- When you have 4+ partners the JS will automatically enable the scrolling ticker -->
 <div class="partners-section">
 <p>Partnering with America's leading research institutions</p>
 <div class="partners-ticker">
-<div class="partners-track">
-  <!-- Original set — add one .partner-item per institution -->
-  <div class="partner-item">
-    <img src="images/ufl-logo.png" alt="University of Florida" />
-    <span>University of Florida</span>
-  </div>
-  <!-- Duplicate set for seamless infinite loop -->
+<div class="partners-track" id="partners-track">
   <div class="partner-item">
     <img src="images/ufl-logo.png" alt="University of Florida" />
     <span>University of Florida</span>
@@ -397,12 +407,25 @@ if (heroVideo) {
     document.addEventListener('touchstart', () => heroVideo.play(), { once: true });
   });
 }
+
+// ── Partners ticker logic ─────────────────────────────────────────────────────
+// Counts unique partners. If more than 3, enables the scrolling ticker
+// by duplicating items and adding the .scrolling class automatically.
+const track = document.getElementById('partners-track');
+const originalItems = Array.from(track.querySelectorAll('.partner-item'));
+const partnerCount = originalItems.length;
+
+if (partnerCount > 3) {
+  // Duplicate all items for seamless infinite loop
+  originalItems.forEach(item => {
+    const clone = item.cloneNode(true);
+    track.appendChild(clone);
+  });
+  track.classList.add('scrolling');
+}
+
+// ── Stats count-up ────────────────────────────────────────────────────────────
 const statsConfig = { publications: 0, events: 0, community: 0 };
-
-// Count unique partners (divide by 2 because items are duplicated for the loop)
-const partnerItems = document.querySelectorAll('.partners-track .partner-item');
-const partnerCount = partnerItems.length / 2;
-
 const statNums = document.querySelectorAll('.stat-item .num');
 const targets = [
   { el: statNums[0], value: partnerCount,             suffix: '+' },
