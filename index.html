@@ -85,53 +85,31 @@ section { padding: 5rem 4rem; }
 .section-title { font-size: 2rem; font-weight: 800; color: #0a3d6b; margin-bottom: 1rem; line-height: 1.2; }
 .section-subtitle { font-size: 1rem; color: #555; max-width: 560px; line-height: 1.7; }
 
-/* ── ABOUT — glassmorphism redesign ──────────────────────────────────────── */
+/* ── ABOUT — futuristic redesign ─────────────────────────────────────────── */
 .about {
-  /* Light blue-grey base matching the reference image */
-  background: #dce8f5;
+  background: linear-gradient(160deg, #eef4ff 0%, #f5f8ff 50%, #e8f0ff 100%);
   position: relative;
   overflow: hidden;
 }
 
-/* Large blurred sphere — top centre, bleeds into card (like reference image) */
+/* Decorative background circles */
 .about::before {
   content: '';
   position: absolute;
-  width: 320px; height: 320px;
+  width: 340px; height: 340px;
   border-radius: 50%;
-  background: radial-gradient(circle at 40% 40%, rgba(180,220,255,0.9), rgba(160,210,240,0.5));
-  top: -80px;
-  right: 18%;
-  filter: blur(2px);
+  background: rgba(26,140,255,0.07);
+  bottom: -80px; left: -80px;
   pointer-events: none;
-  z-index: 0;
 }
-
-/* Large blurred sphere — bottom right, partially behind card */
 .about::after {
   content: '';
   position: absolute;
-  width: 260px; height: 260px;
+  width: 200px; height: 200px;
   border-radius: 50%;
-  background: radial-gradient(circle at 60% 60%, rgba(200,235,255,0.85), rgba(170,215,245,0.4));
-  bottom: -60px;
-  right: -40px;
-  filter: blur(2px);
+  background: rgba(26,140,255,0.06);
+  top: 40px; right: 20%;
   pointer-events: none;
-  z-index: 0;
-}
-
-/* Extra sphere — bottom left */
-.about-sphere-left {
-  position: absolute;
-  width: 180px; height: 180px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 40% 40%, rgba(200,235,255,0.8), rgba(170,215,240,0.35));
-  bottom: -30px;
-  left: -40px;
-  filter: blur(2px);
-  pointer-events: none;
-  z-index: 0;
 }
 
 .about-grid {
@@ -175,54 +153,57 @@ section { padding: 5rem 4rem; }
 }
 .about-btn:hover { background: #0a6cd4; transform: translateY(-2px); }
 
-/* Glassmorphism card — frosted, near-white, strong blur like reference */
+/* Right visual card */
 .about-visual-card {
-  background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.9);
   border-radius: 24px;
   padding: 2.5rem 2rem 2rem;
   text-align: center;
-  box-shadow:
-    0 8px 32px rgba(100, 160, 220, 0.15),
-    inset 0 1px 0 rgba(255,255,255,0.7);
+  box-shadow: 0 8px 40px rgba(26,100,255,0.1), 0 2px 12px rgba(0,0,0,0.04);
   position: relative;
-  overflow: visible; /* allow spheres to bleed through */
+  overflow: hidden;
 }
 
-/* Dot grid decoration top-right inside card */
+/* Dot grid decoration top-right */
 .about-visual-card::before {
   content: '';
   position: absolute;
   top: 1rem; right: 1rem;
   width: 80px; height: 60px;
-  background-image: radial-gradient(circle, rgba(26,140,255,0.2) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(circle, rgba(26,140,255,0.3) 1.5px, transparent 1.5px);
   background-size: 10px 10px;
   pointer-events: none;
-  border-radius: 0;
 }
 
 .about-visual-img {
-  width: 200px; height: 200px;
-  object-fit: contain; display: block;
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  display: block;
   margin: 0 auto 1.5rem;
+  /* fallback glow if image has transparency */
   filter: drop-shadow(0 8px 24px rgba(26,100,255,0.25));
 }
 
+/* Fallback if no image — show animated 3D-ish cube via CSS */
 .about-visual-placeholder {
   width: 160px; height: 160px;
   margin: 0 auto 1.5rem;
-  background: linear-gradient(135deg, rgba(26,140,255,0.12), rgba(100,180,255,0.2));
+  background: linear-gradient(135deg, rgba(26,140,255,0.15), rgba(100,180,255,0.25));
   border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.5);
+  border: 1px solid rgba(26,140,255,0.2);
   display: flex; align-items: center; justify-content: center;
   font-size: 5rem;
-  box-shadow: 0 4px 20px rgba(26,140,255,0.12);
+  box-shadow: 0 8px 32px rgba(26,140,255,0.15);
   animation: float 3s ease-in-out infinite;
-  backdrop-filter: blur(8px);
 }
-@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
 
 .about-visual-card h3 {
   font-size: 1.3rem;
@@ -231,10 +212,12 @@ section { padding: 5rem 4rem; }
   margin-bottom: 0.8rem;
 }
 
+/* Divider line with dot */
 .about-visual-divider {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0;
   margin: 0 auto 1rem;
   width: 80px;
 }
@@ -320,7 +303,8 @@ footer ul li a:hover { color: #1a8cff; }
 .footer-social a {
   display: inline-flex; align-items: center; justify-content: center;
   width: 36px; height: 36px; background: rgba(255,255,255,0.08);
-  border-radius: 8px; color: #aaa; transition: background 0.2s, color 0.2s; text-decoration: none;
+  border-radius: 8px; color: #aaa; transition: background 0.2s, color 0.2s;
+  text-decoration: none;
 }
 .footer-social a:hover { background: #1a8cff; color: #fff; }
 .footer-bottom { border-top: 1px solid #1e2d42; padding-top: 1.5rem; text-align: center; font-size: 0.82rem; color: #666; max-width: 1100px; margin: 0 auto; }
@@ -444,30 +428,36 @@ footer ul li a:hover { color: #1a8cff; }
 <div class="stat-item"><div class="num">0+</div><div class="label">Community Members</div></div>
 </div>
 
-<!-- ABOUT — glassmorphism redesign -->
+<!-- ABOUT — futuristic redesign -->
 <section class="about" id="about">
-  <!-- Extra decorative sphere bottom-left -->
-  <div class="about-sphere-left"></div>
-
-  <div class="about-grid">
-    <!-- Left: text -->
-    <div class="about-text">
-      <div class="section-label">About MDDB America</div>
-      <h2 class="section-title">Building the First Unified American MD Database</h2>
-      <p>At MDDB America, we are harnessing decades of cutting-edge computational resources to build a unified database that compiles and organises all data generated by molecular dynamics simulations.</p>
-      <p>By making these data accessible to a wider scientific community, we hope to drive new research and discoveries in fields such as biochemistry, pharmacology, and personalized medicine.</p>
-      <p>Our project addresses this unmet need by creating the first unified database for MD simulations in America, providing a platform for scientists to share, access, and build upon each other's work.</p>
-      <a href="#" class="about-btn">About MDDB America →</a>
-    </div>
-
-    <!-- Right: glassmorphism card -->
-    <div class="about-visual-card">
-      <div class="about-visual-placeholder">🗄️</div>
-      <h3>FAIR-Compliant Platform</h3>
-      <div class="about-visual-divider"><span class="dot"></span></div>
-      <p>Making molecular dynamics simulation data findable, accessible, interoperable, and reusable for the global scientific community.</p>
-    </div>
+<div class="about-grid">
+  <!-- Left: text -->
+  <div class="about-text">
+    <div class="section-label">About MDDB America</div>
+    <h2 class="section-title">Building the First Unified American MD Database</h2>
+    <p>At MDDB America, we are harnessing decades of cutting-edge computational resources to build a unified database that compiles and organises all data generated by molecular dynamics simulations.</p>
+    <p>By making these data accessible to a wider scientific community, we hope to drive new research and discoveries in fields such as biochemistry, pharmacology, and personalized medicine.</p>
+    <p>Our project addresses this unmet need by creating the first unified database for MD simulations in America, providing a platform for scientists to share, access, and build upon each other's work.</p>
+    <a href="#" class="about-btn">About MDDB America →</a>
   </div>
+
+  <!-- Right: glassmorphism card -->
+  <div class="about-visual-card">
+    <!--
+      Replace the placeholder below with an actual 3D image if you have one:
+      <img src="images/cube-3d.png" alt="3D Data Cube" class="about-visual-img" />
+      Otherwise the animated placeholder will show.
+    -->
+    <div class="about-visual-placeholder">🗄️</div>
+
+    <h3>FAIR-Compliant Platform</h3>
+
+    <!-- Decorative divider with centre dot -->
+    <div class="about-visual-divider"><span class="dot"></span></div>
+
+    <p>Making molecular dynamics simulation data findable, accessible, interoperable, and reusable for the global scientific community.</p>
+  </div>
+</div>
 </section>
 
 <section class="fair" id="goals">
