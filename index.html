@@ -58,12 +58,23 @@ padding: 1.5rem 2rem; z-index: 99; gap: 1rem;
 .partners-section { background: #fff; padding: 2rem 4rem; text-align: center; border-bottom: 1px solid #eee; }
 .partners-section > p { font-size: 0.85rem; color: #888; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
 .partners-ticker { overflow: hidden; white-space: nowrap; }
-.partners-track { display: flex; gap: 4rem; align-items: center; justify-content: center; animation: none; width: 100%; }
-.partners-track.scrolling { display: inline-flex; justify-content: flex-start; width: auto; animation: ticker 20s linear infinite; }
-.partner-item { display: inline-flex; align-items: center; gap: 0.55rem; opacity: 0.5; transition: opacity 0.2s; white-space: nowrap; }
+.partners-track {
+  display: flex; gap: 6rem; align-items: center;
+  justify-content: center; animation: none; width: 100%;
+}
+.partners-track.scrolling {
+  display: inline-flex; justify-content: flex-start;
+  width: auto; animation: ticker 40s linear infinite;
+}
+.partner-item {
+  display: inline-flex; align-items: center;
+  gap: 0; opacity: 0.5; transition: opacity 0.2s; white-space: nowrap;
+}
 .partner-item:hover { opacity: 0.85; }
-.partner-item img { height: 40px; width: auto; filter: grayscale(100%); object-fit: contain; display: block; }
-.partner-item span { font-size: 0.95rem; font-weight: 600; color: #444; }
+.partner-item img {
+  height: 24px; width: auto;
+  filter: grayscale(100%); object-fit: contain; display: block;
+}
 @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 /* STATS */
@@ -252,14 +263,14 @@ footer ul li a:hover { color: #1a8cff; }
 <div class="scroll-hint"><span>Scroll</span><div class="scroll-arrow"></div></div>
 </div>
 
+<!-- PARTNERS: logo only, no text, smaller size, longer scroll -->
 <div class="partners-section">
 <p>Partnering with America's leading research institutions</p>
 <div class="partners-ticker">
 <div class="partners-track" id="partners-track">
-<div class="partner-item">
-<img src="images/ufl-logo.png" alt="University of Florida" />
-<span>University of Florida</span>
-</div>
+  <div class="partner-item">
+    <img src="images/ufl-logo.png" alt="University of Florida" />
+  </div>
 </div>
 </div>
 </div>
@@ -376,7 +387,7 @@ footer ul li a:hover { color: #1a8cff; }
 </div>
 </div>
 </div>
-<div class="footer-bottom">© 2026 MDDB America</div>
+<div class="footer-bottom">© 2026 MDDB America | All Rights Reserved</div>
 </footer>
 
 <script>
