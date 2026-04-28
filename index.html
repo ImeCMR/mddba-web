@@ -6,7 +6,7 @@
 <title>MDDB America | Molecular Dynamics Data Bank</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', sans-serif; color: #1a1a2e; background: #f9f9fb; }
+body { font-family: 'Segoe UI', sans-serif; color: #1a1a2e; background: #eef4ff; }
 
 /* NAV */
 nav {
@@ -54,7 +54,7 @@ padding: 1.5rem 2rem; z-index: 99; gap: 1rem;
 @keyframes bounce { 0%,100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(5px); } }
 
 /* PARTNERS */
-.partners-section { background: #fff; padding: 2rem 4rem; text-align: center; border-bottom: 1px solid #eee; }
+.partners-section { background: #fff; padding: 2rem 4rem; text-align: center; border-bottom: 1px solid #dde8ff; }
 .partners-section > p { font-size: 0.85rem; color: #888; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
 .partners-ticker { overflow: hidden; white-space: nowrap; }
 .partners-track {
@@ -79,20 +79,18 @@ padding: 1.5rem 2rem; z-index: 99; gap: 1rem;
 .stat-item .num { font-size: 2.5rem; font-weight: 800; color: #a8d8ff; }
 .stat-item .label { font-size: 0.9rem; opacity: 0.8; margin-top: 0.3rem; }
 
-/* SECTIONS */
-section { padding: 5rem 4rem; }
+/* SHARED SECTION BACKGROUND */
+section {
+  padding: 5rem 4rem;
+  background: linear-gradient(160deg, #eef4ff 0%, #f5f8ff 50%, #e8f0ff 100%);
+}
 .section-label { font-size: 0.8rem; font-weight: 700; color: #1a8cff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.6rem; }
 .section-title { font-size: 2rem; font-weight: 800; color: #0a3d6b; margin-bottom: 1rem; line-height: 1.2; }
 .section-subtitle { font-size: 1rem; color: #555; max-width: 560px; line-height: 1.7; }
 
-/* ── ABOUT — futuristic redesign ─────────────────────────────────────────── */
-.about {
-  background: linear-gradient(160deg, #eef4ff 0%, #f5f8ff 50%, #e8f0ff 100%);
-  position: relative;
-  overflow: hidden;
-}
+/* ── ABOUT ───────────────────────────────────────────────────────────────── */
+.about { position: relative; overflow: hidden; }
 
-/* Decorative background circles */
 .about::before {
   content: '';
   position: absolute;
@@ -122,38 +120,16 @@ section { padding: 5rem 4rem; }
   position: relative;
   z-index: 1;
 }
-
-/* Left text column */
-.about-text .section-title {
-  font-size: 2.8rem;
-  font-weight: 900;
-  color: #0a1f4e;
-  line-height: 1.15;
-  margin-bottom: 1.5rem;
-}
-.about-text p {
-  color: #4a5568;
-  line-height: 1.8;
-  margin-bottom: 1.1rem;
-  font-size: 1rem;
-}
+.about-text .section-title { font-size: 2.8rem; font-weight: 900; color: #0a1f4e; line-height: 1.15; margin-bottom: 1.5rem; }
+.about-text p { color: #4a5568; line-height: 1.8; margin-bottom: 1.1rem; font-size: 1rem; }
 .about-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1.8rem;
-  background: #1a8cff;
-  color: #fff;
-  padding: 0.85rem 1.8rem;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1rem;
-  transition: background 0.2s, transform 0.2s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin-top: 1.8rem; background: #1a8cff; color: #fff;
+  padding: 0.85rem 1.8rem; border-radius: 10px; text-decoration: none;
+  font-weight: 700; font-size: 1rem; transition: background 0.2s, transform 0.2s;
 }
 .about-btn:hover { background: #0a6cd4; transform: translateY(-2px); }
 
-/* Right visual card */
 .about-visual-card {
   background: rgba(255,255,255,0.75);
   backdrop-filter: blur(16px);
@@ -163,118 +139,84 @@ section { padding: 5rem 4rem; }
   padding: 2.5rem 2rem 2rem;
   text-align: center;
   box-shadow: 0 8px 40px rgba(26,100,255,0.1), 0 2px 12px rgba(0,0,0,0.04);
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
 }
-
-/* Dot grid decoration top-right */
 .about-visual-card::before {
   content: '';
-  position: absolute;
-  top: 1rem; right: 1rem;
+  position: absolute; top: 1rem; right: 1rem;
   width: 80px; height: 60px;
   background-image: radial-gradient(circle, rgba(26,140,255,0.3) 1.5px, transparent 1.5px);
   background-size: 10px 10px;
   pointer-events: none;
 }
-
-.about-visual-img {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto 1.5rem;
-  /* fallback glow if image has transparency */
-  filter: drop-shadow(0 8px 24px rgba(26,100,255,0.25));
-}
-
-/* Fallback if no image — show animated 3D-ish cube via CSS */
+.about-visual-img { width: 200px; height: 200px; object-fit: contain; display: block; margin: 0 auto 1.5rem; filter: drop-shadow(0 8px 24px rgba(26,100,255,0.25)); }
 .about-visual-placeholder {
-  width: 160px; height: 160px;
-  margin: 0 auto 1.5rem;
+  width: 160px; height: 160px; margin: 0 auto 1.5rem;
   background: linear-gradient(135deg, rgba(26,140,255,0.15), rgba(100,180,255,0.25));
-  border-radius: 24px;
-  border: 1px solid rgba(26,140,255,0.2);
+  border-radius: 24px; border: 1px solid rgba(26,140,255,0.2);
   display: flex; align-items: center; justify-content: center;
   font-size: 5rem;
   box-shadow: 0 8px 32px rgba(26,140,255,0.15);
   animation: float 3s ease-in-out infinite;
 }
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.about-visual-card h3 {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #0a1f4e;
-  margin-bottom: 0.8rem;
-}
-
-/* Divider line with dot */
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.about-visual-card h3 { font-size: 1.3rem; font-weight: 800; color: #0a1f4e; margin-bottom: 0.8rem; }
 .about-visual-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  margin: 0 auto 1rem;
-  width: 80px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1rem; width: 80px;
 }
-.about-visual-divider::before,
-.about-visual-divider::after {
-  content: '';
-  flex: 1;
-  height: 2px;
-  background: #1a8cff;
-  border-radius: 2px;
+.about-visual-divider::before, .about-visual-divider::after {
+  content: ''; flex: 1; height: 2px; background: #1a8cff; border-radius: 2px;
 }
-.about-visual-divider .dot {
-  width: 8px; height: 8px;
-  background: #1a8cff;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.about-visual-card p {
-  font-size: 0.95rem;
-  color: #4a5568;
-  line-height: 1.7;
-  max-width: 300px;
-  margin: 0 auto;
-}
+.about-visual-divider .dot { width: 8px; height: 8px; background: #1a8cff; border-radius: 50%; flex-shrink: 0; }
+.about-visual-card p { font-size: 0.95rem; color: #4a5568; line-height: 1.7; max-width: 300px; margin: 0 auto; }
 
 /* FAIR */
-.fair { background: #fff; }
 .fair-inner { max-width: 1100px; margin: 0 auto; }
 .fair-header { text-align: center; margin-bottom: 3rem; }
 .fair-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
-.fair-card { border-radius: 12px; padding: 2rem 1.5rem; background: #f0f6ff; border-top: 4px solid #1a8cff; transition: transform 0.2s, box-shadow 0.2s; }
-.fair-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(26,140,255,0.12); }
+.fair-card {
+  border-radius: 12px; padding: 2rem 1.5rem;
+  background: rgba(255,255,255,0.8);
+  border-top: 4px solid #1a8cff;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(26,100,255,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.fair-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(26,140,255,0.15); }
 .fair-card .letter { font-size: 2.5rem; font-weight: 900; color: #1a8cff; line-height: 1; margin-bottom: 0.5rem; }
 .fair-card h4 { font-size: 1rem; font-weight: 700; color: #0a3d6b; margin-bottom: 0.6rem; }
 .fair-card p { font-size: 0.88rem; color: #555; line-height: 1.6; }
 
 /* PLATFORM */
-.platform { background: #f9f9fb; }
 .platform-inner { max-width: 1100px; margin: 0 auto; }
 .platform-header { text-align: center; margin-bottom: 3rem; }
 .platform-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-.platform-card { background: #fff; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform 0.2s; }
+.platform-card {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 12px; padding: 2rem;
+  box-shadow: 0 2px 12px rgba(26,100,255,0.08);
+  transition: transform 0.2s;
+}
 .platform-card:hover { transform: translateY(-4px); }
 .platform-card .icon { font-size: 2rem; margin-bottom: 1rem; }
 .platform-card h3 { font-size: 1.1rem; font-weight: 700; color: #0a3d6b; margin-bottom: 0.6rem; }
-.platform-card p { font-size: 0.9rem; color: #666; line-height: 1.6; }
+.platform-card p { font-size: 0.9rem; color: #555; line-height: 1.6; }
 .platform-card a { display: inline-block; margin-top: 1rem; color: #1a8cff; font-weight: 600; font-size: 0.9rem; text-decoration: none; }
 .platform-card a:hover { text-decoration: underline; }
 
 /* NEWS */
-.news { background: #fff; }
 .news-inner { max-width: 1100px; margin: 0 auto; }
 .news-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; }
 .news-header a { color: #1a8cff; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
 .news-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-.news-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.07); background: #f9f9fb; transition: transform 0.2s; }
+.news-card {
+  border-radius: 12px; overflow: hidden;
+  box-shadow: 0 2px 12px rgba(26,100,255,0.1);
+  background: rgba(255,255,255,0.85);
+  transition: transform 0.2s;
+}
 .news-card:hover { transform: translateY(-4px); }
 .news-card-top { padding: 1.5rem; background: linear-gradient(135deg, #0a3d6b, #1a8cff); color: #fff; }
 .news-tag { display: inline-block; background: rgba(255,255,255,0.2); border-radius: 4px; padding: 0.2rem 0.6rem; font-size: 0.75rem; font-weight: 600; margin-bottom: 0.6rem; text-transform: uppercase; }
@@ -303,8 +245,7 @@ footer ul li a:hover { color: #1a8cff; }
 .footer-social a {
   display: inline-flex; align-items: center; justify-content: center;
   width: 36px; height: 36px; background: rgba(255,255,255,0.08);
-  border-radius: 8px; color: #aaa; transition: background 0.2s, color 0.2s;
-  text-decoration: none;
+  border-radius: 8px; color: #aaa; transition: background 0.2s, color 0.2s; text-decoration: none;
 }
 .footer-social a:hover { background: #1a8cff; color: #fff; }
 .footer-bottom { border-top: 1px solid #1e2d42; padding-top: 1.5rem; text-align: center; font-size: 0.82rem; color: #666; max-width: 1100px; margin: 0 auto; }
@@ -428,10 +369,9 @@ footer ul li a:hover { color: #1a8cff; }
 <div class="stat-item"><div class="num">0+</div><div class="label">Community Members</div></div>
 </div>
 
-<!-- ABOUT — futuristic redesign -->
+<!-- ABOUT -->
 <section class="about" id="about">
 <div class="about-grid">
-  <!-- Left: text -->
   <div class="about-text">
     <div class="section-label">About MDDB America</div>
     <h2 class="section-title">Building the First Unified American MD Database</h2>
@@ -440,26 +380,16 @@ footer ul li a:hover { color: #1a8cff; }
     <p>Our project addresses this unmet need by creating the first unified database for MD simulations in America, providing a platform for scientists to share, access, and build upon each other's work.</p>
     <a href="#" class="about-btn">About MDDB America →</a>
   </div>
-
-  <!-- Right: glassmorphism card -->
   <div class="about-visual-card">
-    <!--
-      Replace the placeholder below with an actual 3D image if you have one:
-      <img src="images/cube-3d.png" alt="3D Data Cube" class="about-visual-img" />
-      Otherwise the animated placeholder will show.
-    -->
     <div class="about-visual-placeholder">🗄️</div>
-
     <h3>FAIR-Compliant Platform</h3>
-
-    <!-- Decorative divider with centre dot -->
     <div class="about-visual-divider"><span class="dot"></span></div>
-
     <p>Making molecular dynamics simulation data findable, accessible, interoperable, and reusable for the global scientific community.</p>
   </div>
 </div>
 </section>
 
+<!-- FAIR / GOALS -->
 <section class="fair" id="goals">
 <div class="fair-inner">
 <div class="fair-header">
@@ -476,6 +406,7 @@ footer ul li a:hover { color: #1a8cff; }
 </div>
 </section>
 
+<!-- PLATFORM -->
 <section class="platform">
 <div class="platform-inner">
 <div class="platform-header">
@@ -490,6 +421,7 @@ footer ul li a:hover { color: #1a8cff; }
 </div>
 </section>
 
+<!-- NEWS -->
 <section class="news" id="news">
 <div class="news-inner">
 <div class="news-header">
