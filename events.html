@@ -21,7 +21,7 @@ nav ul li a:hover, nav ul li a.active { color: #1a8cff; }
 .nav-cta { background: #1a8cff; color: #fff !important; padding: 0.5rem 1.2rem; border-radius: 6px; }
 .nav-cta:hover { background: #0a6cd4 !important; }
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-.hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
 .mobile-menu { display: none; flex-direction: column; background: rgba(0,0,0,0.95); position: fixed; top: 60px; left: 0; right: 0; padding: 1.5rem 2rem; z-index: 99; gap: 1rem; }
 .mobile-menu.open { display: flex; }
 .mobile-menu a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); transition: color 0.2s; }
@@ -44,6 +44,7 @@ nav ul li a:hover, nav ul li a.active { color: #1a8cff; }
 .event-tag { display: inline-block; background: #e8f2ff; color: #1a8cff; font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.7rem; border-radius: 20px; margin-bottom: 0.5rem; }
 .event-action a { background: #1a8cff; color: #fff; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.88rem; white-space: nowrap; transition: background 0.2s; }
 .event-action a:hover { background: #0a6cd4; }
+.past-events-section { margin-top: 4rem; }
 footer { background: #0a1628; color: #ccc; padding: 3rem 4rem; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1100px; margin: 0 auto 2rem; }
 a.footer-logo { display: inline-block; margin-bottom: 0.8rem; text-decoration: none; }
@@ -55,14 +56,19 @@ footer ul li { margin-bottom: 0.5rem; }
 footer ul li a { color: #aaa; text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
 footer ul li a:hover { color: #1a8cff; }
 .footer-bottom { border-top: 1px solid #1e2d42; padding-top: 1.5rem; text-align: center; font-size: 0.82rem; color: #666; max-width: 1100px; margin: 0 auto; }
-@media (max-width: 1024px) { .page-content { padding: 4rem 2rem; } .footer-grid { grid-template-columns: 1fr 1fr; } footer { padding: 3rem 2rem; } }
+@media (max-width: 1024px) {
+  nav { padding: 1.2rem 2rem; } nav ul { gap: 1.2rem; }
+  .page-content { padding: 4rem 2rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } footer { padding: 3rem 2rem; }
+}
 @media (max-width: 768px) {
   nav { padding: 1rem 1.5rem; } nav ul { display: none; } .hamburger { display: flex; }
   a.nav-logo img { height: 32px; }
   .page-hero { padding: 7rem 1.5rem 3rem; } .page-hero h1 { font-size: 2rem; }
-  .event-card { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } footer { padding: 2.5rem 1.5rem; }
+  .event-card { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; } footer { padding: 2.5rem 1.5rem; }
 }
-@media (max-width: 480px) { a.nav-logo img { height: 28px; } }
+@media (max-width: 480px) { nav { padding: 1rem; } a.nav-logo img { height: 28px; } }
 </style>
 </head>
 <body>
@@ -115,7 +121,7 @@ footer ul li a:hover { color: #1a8cff; }
 </div>
 </div>
 
-<div style="margin-top: 4rem;">
+<div class="past-events-section">
 <div class="section-label">Past Events</div>
 <h2 class="section-title">Past Events</h2>
 <div class="events-list">
