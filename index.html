@@ -59,33 +59,23 @@ padding: 1.5rem 2rem; z-index: 99; gap: 1rem;
 .partners-section > p { font-size: 0.85rem; color: #888; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
 .partners-ticker { overflow: hidden; white-space: nowrap; }
 .partners-track {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  gap: 0;
+  display: flex; gap: 6rem; align-items: center;
+  justify-content: center; animation: none; width: 100%;
 }
 .partners-track.scrolling {
-  display: inline-flex;
-  justify-content: flex-start;
-  width: auto;
-  /* animation applied via JS using CSS variable */
+  display: inline-flex; justify-content: flex-start;
+  width: auto; animation: ticker 60s linear infinite;
 }
 .partner-item {
-  display: inline-flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  opacity: 0.5; transition: opacity 0.2s;
-  padding: 0 3rem; /* spacing between logos */
+  display: inline-flex; align-items: center;
+  gap: 0; opacity: 0.5; transition: opacity 0.2s; white-space: nowrap;
 }
 .partner-item:hover { opacity: 0.85; }
 .partner-item img {
   height: 24px; width: auto;
   filter: grayscale(100%); object-fit: contain; display: block;
 }
-@keyframes ticker-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(var(--ticker-offset)); }
-}
+@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 /* STATS */
 .stats { display: flex; justify-content: center; gap: 4rem; padding: 3rem 4rem; background: #0a3d6b; color: #fff; flex-wrap: wrap; }
@@ -273,6 +263,7 @@ footer ul li a:hover { color: #1a8cff; }
 <div class="scroll-hint"><span>Scroll</span><div class="scroll-arrow"></div></div>
 </div>
 
+<!-- PARTNERS: logo only, no text, smaller size, longer scroll -->
 <div class="partners-section">
 <p>Partnering with America's leading research institutions</p>
 <div class="partners-ticker">
@@ -419,39 +410,13 @@ if (heroVideo) {
     document.addEventListener('touchstart', () => heroVideo.play(), { once: true });
   });
 }
-
-// ── Partners ticker ───────────────────────────────────────────────────────────
 const track = document.getElementById('partners-track');
 const originalItems = Array.from(track.querySelectorAll('.partner-item'));
 const partnerCount = originalItems.length;
-
 if (partnerCount >= 1) {
-  // Add enough copies to fill screen and create seamless loop
-  // We add (copies) sets so the track is much wider than the viewport
-  const copies = 10;
-  for (let i = 0; i < copies; i++) {
-    originalItems.forEach(item => {
-      track.appendChild(item.cloneNode(true));
-    });
-  }
-
-  // Measure a single item's width (including padding)
-  const itemWidth = originalItems[0].offsetWidth;
-
-  // The offset for one full loop = width of one original set
-  const loopWidth = itemWidth * partnerCount;
-
-  // Set CSS variable and apply animation
-  track.style.setProperty('--ticker-offset', `-${loopWidth}px`);
+  originalItems.forEach(item => { const clone = item.cloneNode(true); track.appendChild(clone); });
   track.classList.add('scrolling');
-
-  // Speed: pixels per second — increase for faster, decrease for slower
-  const speed = 40; // px per second
-  const duration = loopWidth / speed;
-  track.style.animation = `ticker-scroll ${duration}s linear infinite`;
 }
-
-// ── Stats count-up ────────────────────────────────────────────────────────────
 const statsConfig = { publications: 0, events: 0, community: 0 };
 const statNums = document.querySelectorAll('.stat-item .num');
 const targets = [
