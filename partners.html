@@ -31,7 +31,13 @@ nav ul li a:hover, nav ul li a.active { color: #1a8cff; }
 .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .partner-card { background: #fff; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform 0.2s; text-align: center; border-top: 4px solid #1a8cff; }
 .partner-card:hover { transform: translateY(-4px); }
-.partner-card .partner-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.partner-logo {
+  width: 120px;
+  height: 60px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 1.2rem;
+}
 .partner-card h3 { font-size: 1.1rem; font-weight: 700; color: #0a3d6b; margin-bottom: 0.5rem; }
 .partner-card p { font-size: 0.88rem; color: #666; line-height: 1.6; }
 .partner-card .partner-type { display: inline-block; background: #e8f2ff; color: #1a8cff; font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.7rem; border-radius: 20px; margin-bottom: 0.8rem; }
@@ -94,12 +100,13 @@ footer ul li a:hover { color: #1a8cff; }
 <div class="section-label">Current Partners</div>
 <h2 class="section-title">Institutions Supporting MDDB America</h2>
 <div class="partners-grid">
-<div class="partner-card">
-<div class="partner-icon">🎓</div>
-<div class="partner-type">University</div>
-<h3>University of Florida</h3>
-<p>A founding partner contributing computational resources and expertise in molecular dynamics simulations.</p>
-</div>
+  <div class="partner-card">
+    <!-- Replace ufl-logo.png with your actual filename in images/partners/ -->
+    <img src="images/partners/ufl-logo.png" alt="University of Florida" class="partner-logo" />
+    <div class="partner-type">University</div>
+    <h3>University of Florida</h3>
+    <p>A founding partner contributing computational resources and expertise in molecular dynamics simulations.</p>
+  </div>
 </div>
 <div class="join-banner">
 <h2>Become a Partner</h2>
@@ -132,7 +139,7 @@ footer ul li a:hover { color: #1a8cff; }
 </div>
 </div>
 </div>
-<div class="footer-bottom">© 2026 MDDB America | All Rights Reserved </div>
+<div class="footer-bottom">© 2026 MDDB America | All Rights Reserved</div>
 </footer>
 <script>
 const hamburger = document.getElementById('hamburger');
