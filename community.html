@@ -13,8 +13,8 @@ padding: 1.2rem 4rem; background: rgba(0,0,0,0.7);
 backdrop-filter: blur(10px); position: fixed;
 top: 0; left: 0; right: 0; z-index: 100;
 }
-.nav-logo { font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: 1px; }
-.nav-logo span { color: #1a8cff; }
+a.nav-logo { display: inline-flex; align-items: center; text-decoration: none; cursor: pointer; }
+a.nav-logo img { height: 40px; width: auto; object-fit: contain; display: block; }
 nav ul { list-style: none; display: flex; gap: 2rem; }
 nav ul li a { text-decoration: none; color: rgba(255,255,255,0.85); font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
 nav ul li a:hover, nav ul li a.active { color: #1a8cff; }
@@ -47,30 +47,29 @@ nav ul li a:hover, nav ul li a.active { color: #1a8cff; }
 .btn-primary:hover { background: #e8f2ff; transform: translateY(-2px); }
 footer { background: #0a1628; color: #ccc; padding: 3rem 4rem; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1100px; margin: 0 auto 2rem; }
-.footer-brand .logo { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; }
-.footer-brand .logo span { color: #1a8cff; }
-.footer-brand p { font-size: 0.88rem; line-height: 1.6; color: #aaa; }
+a.footer-logo { display: inline-block; margin-bottom: 0.8rem; text-decoration: none; }
+a.footer-logo img { height: 36px; width: auto; object-fit: contain; }
+.footer-brand p { font-size: 0.88rem; line-height: 1.6; color: #aaa; margin-top: 0.5rem; }
 footer h4 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; }
 footer ul { list-style: none; }
 footer ul li { margin-bottom: 0.5rem; }
 footer ul li a { color: #aaa; text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
 footer ul li a:hover { color: #1a8cff; }
 .footer-bottom { border-top: 1px solid #1e2d42; padding-top: 1.5rem; text-align: center; font-size: 0.82rem; color: #666; max-width: 1100px; margin: 0 auto; }
-@media (max-width: 900px) {
-  .ways-grid, .footer-grid { grid-template-columns: 1fr; }
-  nav ul { display: none; }
-  .hamburger { display: flex; }
-  .page-hero { padding: 7rem 1.5rem 3rem; }
-  .page-hero h1 { font-size: 2rem; }
-  .page-content { padding: 3rem 1.5rem; }
-  footer { padding: 3rem 1.5rem; }
+@media (max-width: 1024px) { .page-content { padding: 4rem 2rem; } .footer-grid { grid-template-columns: 1fr 1fr; } footer { padding: 3rem 2rem; } }
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; } nav ul { display: none; } .hamburger { display: flex; }
+  a.nav-logo img { height: 32px; }
+  .page-hero { padding: 7rem 1.5rem 3rem; } .page-hero h1 { font-size: 2rem; }
+  .ways-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } footer { padding: 2.5rem 1.5rem; }
 }
+@media (max-width: 480px) { a.nav-logo img { height: 28px; } }
 </style>
 </head>
 <body>
 
 <nav>
-<div class="nav-logo">MDDB<span>America</span></div>
+<a href="index.html" class="nav-logo"><img src="images/site-logo.png" alt="MDDB America" /></a>
 <ul>
 <li><a href="index.html">Home</a></li>
 <li><a href="index.html#about">About</a></li>
@@ -107,36 +106,12 @@ footer ul li a:hover { color: #1a8cff; }
 <h2 class="section-title">Ways to Contribute</h2>
 <p class="section-subtitle">Whether you are a researcher, developer, or institution, there are many ways to contribute to and benefit from the MDDB America initiative.</p>
 <div class="ways-grid">
-<div class="way-card">
-<div class="icon">🔬</div>
-<h3>Share Your Data</h3>
-<p>Contribute your molecular dynamics simulation datasets to the repository and make your research more impactful and reproducible.</p>
-</div>
-<div class="way-card">
-<div class="icon">💻</div>
-<h3>Develop Tools</h3>
-<p>Help build and improve the tools, APIs, and infrastructure that power the MDDB America platform.</p>
-</div>
-<div class="way-card">
-<div class="icon">📣</div>
-<h3>Spread the Word</h3>
-<p>Help grow our community by sharing MDDB America with colleagues, at conferences, and in your publications.</p>
-</div>
-<div class="way-card">
-<div class="icon">🤝</div>
-<h3>Become a Partner</h3>
-<p>Institutional partnerships help sustain and grow the platform. Reach out to explore partnership opportunities.</p>
-</div>
-<div class="way-card">
-<div class="icon">📚</div>
-<h3>Cite Our Work</h3>
-<p>If you use MDDB America data in your research, please cite us to help demonstrate the value of open data in science.</p>
-</div>
-<div class="way-card">
-<div class="icon">✉️</div>
-<h3>Join the Mailing List</h3>
-<p>Stay informed about new datasets, platform updates, events, and opportunities to get involved.</p>
-</div>
+<div class="way-card"><div class="icon">🔬</div><h3>Share Your Data</h3><p>Contribute your molecular dynamics simulation datasets to the repository and make your research more impactful and reproducible.</p></div>
+<div class="way-card"><div class="icon">💻</div><h3>Develop Tools</h3><p>Help build and improve the tools, APIs, and infrastructure that power the MDDB America platform.</p></div>
+<div class="way-card"><div class="icon">📣</div><h3>Spread the Word</h3><p>Help grow our community by sharing MDDB America with colleagues, at conferences, and in your publications.</p></div>
+<div class="way-card"><div class="icon">🤝</div><h3>Become a Partner</h3><p>Institutional partnerships help sustain and grow the platform. Reach out to explore partnership opportunities.</p></div>
+<div class="way-card"><div class="icon">📚</div><h3>Cite Our Work</h3><p>If you use MDDB America data in your research, please cite us to help demonstrate the value of open data in science.</p></div>
+<div class="way-card"><div class="icon">✉️</div><h3>Join the Mailing List</h3><p>Stay informed about new datasets, platform updates, events, and opportunities to get involved.</p></div>
 </div>
 
 <div class="contact-banner">
@@ -149,7 +124,7 @@ footer ul li a:hover { color: #1a8cff; }
 <footer>
 <div class="footer-grid">
 <div class="footer-brand">
-<div class="logo">MDDB<span>America</span></div>
+<a href="index.html" class="footer-logo"><img src="images/site-logo.png" alt="MDDB America" /></a>
 <p>A unified, FAIR-compliant repository for molecular dynamics biosimulation data across the Americas.</p>
 </div>
 <div><h4>Explore</h4><ul><li><a href="index.html#about">About</a></li><li><a href="index.html#goals">Goals & Vision</a></li><li><a href="partners.html">Partners</a></li><li><a href="publications.html">Publications</a></li></ul></div>
