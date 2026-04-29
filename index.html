@@ -431,8 +431,7 @@ if (partnerCount >= 1) {
   track.classList.add('scrolling');
 }
 
-// ── Stats — all counts driven from data.js ────────────────────────────────
-// To update counts: edit data.js only — never touch this file
+// ── Stats — driven from data.js, animates only when scrolled into view ────
 const statNums = document.querySelectorAll('.stat-item .num');
 const targets = [
   { el: statNums[0], value: siteData.partners.length     },
@@ -452,15 +451,21 @@ function animateCount(el, target, duration = 1500) {
   requestAnimationFrame(step);
 }
 
-const statsSection = document.querySelector('.stats');
-let animated = false;
-const observer = new IntersectionObserver(entries => {
-  if (entries[0].isIntersecting && !animated) {
-    animated = true;
-    targets.forEach(({ el, value }) => animateCount(el, value));
-  }
-}, { threshold: 0.3 });
-observer.observe(statsSection);
+// Wrap in load + setTimeout to prevent firing before page settles at top
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+  setTimeout(() => {
+    const statsSection = document.querySelector('.stats');
+    let animated = false;
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !animated) {
+        animated = true;
+        targets.forEach(({ el, value }) => animateCount(el, value));
+      }
+    }, { threshold: 0.3 });
+    observer.observe(statsSection);
+  }, 300);
+});
 </script>
 </body>
 </html>
