@@ -4,8 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>MDDB America | Molecular Dynamics Data Bank</title>
-<!-- Load data.js before the page script so siteData is available -->
-<script src="data.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Segoe UI', sans-serif; color: #1a1a2e; background: #f9f9fb; }
@@ -288,12 +286,15 @@ footer ul li a:hover { color: #1a8cff; }
 </div>
 </div>
 
+<!-- Stats HTML values are placeholders — JS count-up overrides them on scroll -->
 <div class="stats">
 <div class="stat-item"><div class="num">0</div><div class="label">Partner Institutions</div></div>
 <div class="stat-item"><div class="num">0</div><div class="label">Publications</div></div>
 <div class="stat-item"><div class="num">0</div><div class="label">Events & Webinars</div></div>
+<div class="stat-item"><div class="num">0</div><div class="label">Community Members</div></div>
 </div>
 
+<!-- ABOUT — futuristic redesign -->
 <section class="about" id="about">
 <div class="about-grid">
 <div class="about-text">
@@ -431,41 +432,39 @@ if (partnerCount >= 1) {
   track.classList.add('scrolling');
 }
 
-// ── Stats — driven from data.js, animates only when scrolled into view ────
+// ── Stats config — counts sourced from relevant HTML files ────────────────
+// publications: 1 (publications.html — FAIR Principles in Biomolecular Simulations)
+// events: 2 (events.html — 1 upcoming workshop + 1 past conference)
+// community: 0 (no countable data available)
+const statsConfig = { publications: 1, events: 2, community: 0 };
+
 const statNums = document.querySelectorAll('.stat-item .num');
 const targets = [
-  { el: statNums[0], value: siteData.partners.length     },
-  { el: statNums[1], value: siteData.publications.length },
-  { el: statNums[2], value: siteData.events.length       }
+  { el: statNums[0], value: partnerCount,             suffix: '+' },
+  { el: statNums[1], value: statsConfig.publications, suffix: ''  },
+  { el: statNums[2], value: statsConfig.events,        suffix: '+' },
+  { el: statNums[3], value: statsConfig.community,     suffix: '+' }
 ];
-
-function animateCount(el, target, duration = 1500) {
-  if (target === 0) { el.textContent = '0'; return; }
+function animateCount(el, target, suffix, duration = 1500) {
+  if (target === 0) { el.textContent = '0' + suffix; return; }
   const start = performance.now();
   function step(now) {
     const progress = Math.min((now - start) / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(eased * target);
+    el.textContent = Math.floor(eased * target) + suffix;
     if (progress < 1) requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
 }
-
-// Wrap in load + setTimeout to prevent firing before page settles at top
-window.addEventListener('load', () => {
-  window.scrollTo(0, 0);
-  setTimeout(() => {
-    const statsSection = document.querySelector('.stats');
-    let animated = false;
-    const observer = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && !animated) {
-        animated = true;
-        targets.forEach(({ el, value }) => animateCount(el, value));
-      }
-    }, { threshold: 0.3 });
-    observer.observe(statsSection);
-  }, 300);
-});
+const statsSection = document.querySelector('.stats');
+let animated = false;
+const observer = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting && !animated) {
+    animated = true;
+    targets.forEach(({ el, value, suffix }) => animateCount(el, value, suffix));
+  }
+}, { threshold: 0.3 });
+observer.observe(statsSection);
 </script>
 </body>
 </html>
