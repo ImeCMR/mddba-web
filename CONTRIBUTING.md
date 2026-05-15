@@ -6,7 +6,7 @@ Thank you for contributing to the MDDB America website. This project follows a s
 
 1. Fork the repository.
 2. Create a new branch for your work:
-   ```bash
+```bash
 git checkout -b feature/your-feature-name
 ```
 3. Make your changes.
