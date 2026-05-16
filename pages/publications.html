@@ -11,7 +11,6 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Segoe UI', sans-serif; color: #1a1a2e; background: #f9f9fb; overflow-y: scroll; min-height: 100vh; display: flex; flex-direction: column; }
-/* SCROLL ANIMATIONS */
 .scroll-reveal {
 opacity: 0;
 transform: translateY(30px);
@@ -79,8 +78,8 @@ footer ul li a:hover { opacity: 1; }
 <a href="../index.html" class="nav-logo"><img src="../assets/images/logos/site-logo.png" alt="MDDB America" /></a>
 <ul>
 <li><a href="../index.html">Home</a></li>
-<li><a href="index.html#about">About</a></li>
-<li><a href="index.html#goals">Goals</a></li>
+<li><a href="../index.html#about">About</a></li>
+<li><a href="../index.html#goals">Goals</a></li>
 <li><a href="partners.html">Partners</a></li>
 <li><a href="news.html">News</a></li>
 <li><a href="events.html">Events</a></li>
@@ -92,8 +91,8 @@ footer ul li a:hover { opacity: 1; }
 </nav>
 <div class="mobile-menu" id="mobile-menu">
 <a href="../index.html">Home</a>
-<a href="index.html#about">About</a>
-<a href="index.html#goals">Goals</a>
+<a href="../index.html#about">About</a>
+<a href="../index.html#goals">Goals</a>
 <a href="partners.html">Partners</a>
 <a href="news.html">News</a>
 <a href="events.html">Events</a>
@@ -126,13 +125,14 @@ footer ul li a:hover { opacity: 1; }
 <a href="../index.html" class="footer-logo"><img src="../assets/images/logos/site-logo.png" alt="MDDB America" /></a>
 <p>A unified, FAIR-compliant repository for molecular dynamics biosimulation data across the Americas.</p>
 </div>
-<div><h4>Explore</h4><ul><li><a href="index.html#about">About</a></li><li><a href="index.html#goals">Goals & Vision</a></li><li><a href="partners.html">Partners</a></li><li><a href="publications.html">Publications</a></li></ul></div>
-<div><h4>Engage</h4><ul><li><a href="news.html">News</a></li><li><a href="events.html">Events</a></li><li><a href="community.html">Community</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
+<div><h4>Explore</h4><ul><li><a href="../index.html#about">About</a></li><li><a href="../index.html#goals">Goals & Vision</a></li><li><a href="partners.html">Partners</a></li><li><a href="publications.html">Publications</a></li></ul></div>
+<div><h4>Engage</h4><ul><li><a href="news.html">News</a></li><li><a href="events.html">Events</a></li><li><a href="community.html">Community</a></li><li><a href="../index.html#contact">Contact</a></li></ul></div>
 <div>
 <h4>Contact</h4>
 <ul>
-<li><a href="mailto:info@mddbamerica.org">info@mddbamerica.org</a></li>
-<li><a href="#">mddbamerica.org</a></li>
+<!-- Email assembled by JS below — not visible in raw HTML -->
+<li><a href="#" id="footer-email">Email Us</a></li>
+<li><a href="#">mddba.com</a></li>
 </ul>
 <div class="footer-social">
 <a href="https://x.com/mddbamerica" target="_blank" rel="noopener" aria-label="X (Twitter)">
@@ -147,5 +147,13 @@ footer ul li a:hover { opacity: 1; }
 <div class="footer-bottom">© 2026 MDDB America | All Rights Reserved</div>
 </footer>
 <script src="../assets/js/common.js"></script>
+<script>
+  const u = 'info';
+  const d = 'mddba' + '.com';
+  const email = u + '@' + d;
+
+  const footerEmail = document.getElementById('footer-email');
+  if (footerEmail) footerEmail.href = 'mailto:' + email;
+</script>
 </body>
 </html>

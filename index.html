@@ -64,10 +64,8 @@
 <div class="stat-item scroll-reveal stagger-2"><div class="num">0</div><div class="label">Publications</div></div>
 <div class="stat-item scroll-reveal stagger-3"><div class="num">0</div><div class="label">Events & Webinars</div></div>
 </div>
-<!-- ABOUT SECTION — text left, image right -->
 <section class="about" id="about">
 <div class="about-inner">
-<!-- Left: text -->
 <div class="about-text scroll-reveal-left">
 <div class="section-label">About MDDB America</div>
 <h2 class="section-title">Building the First Unified American MD Database</h2>
@@ -76,7 +74,6 @@
 <p>Our project addresses this unmet need by creating the first unified database for MD simulations in America, providing a platform for scientists to share, access, and build upon each other's work.</p>
 <a href="#" class="about-btn">About MDDB America →</a>
 </div>
-<!-- Right: illustration -->
 <div class="about-visual scroll-reveal-right">
 <img src="assets/images/icons/fair_compliant.png" alt="FAIR Principles Visualization" />
 </div>
@@ -137,7 +134,8 @@
 <p>We recognise the need for a collaborative effort to create, establish, and sustain a database that allows findability, accessibility, interoperability, and reusability of molecular dynamics simulation data.</p>
 <div class="cta-btns">
 <a href="#" class="btn-primary">Support Initiative</a>
-<a href="mailto:info@mddbamerica.org" class="btn-outline">Get in Touch</a>
+<!-- Email assembled by JS below — not visible in raw HTML -->
+<a href="#" class="btn-outline" id="cta-email">Get in Touch</a>
 </div>
 </div>
 <footer>
@@ -151,8 +149,9 @@
 <div>
 <h4>Contact</h4>
 <ul>
-<li><a href="mailto:info@mddbamerica.org">info@mddbamerica.org</a></li>
-<li><a href="#">mddbamerica.org</a></li>
+<!-- Email assembled by JS below — not visible in raw HTML -->
+<li><a href="#" id="footer-email">Email Us</a></li>
+<li><a href="#">mddba.com</a></li>
 </ul>
 <div class="footer-social">
 <a href="https://x.com/mddbamerica" target="_blank" rel="noopener" aria-label="X (Twitter)">
@@ -166,8 +165,19 @@
 </div>
 <div class="footer-bottom">© 2026 MDDB America | All Rights Reserved</div>
 </footer>
-<script src="assets/js/data.js?v=2"></script>
-<script src="assets/js/common.js?v=2"></script>
-<script src="assets/js/main.js?v=2"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/common.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  const u = 'info';
+  const d = 'mddba' + '.com';
+  const email = u + '@' + d;
+
+  const ctaEmail = document.getElementById('cta-email');
+  if (ctaEmail) ctaEmail.href = 'mailto:' + email;
+
+  const footerEmail = document.getElementById('footer-email');
+  if (footerEmail) footerEmail.href = 'mailto:' + email;
+</script>
 </body>
 </html>

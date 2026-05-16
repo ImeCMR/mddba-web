@@ -24,7 +24,7 @@
 .past-events-section { margin-top: 4rem; }
 
 @media (max-width: 768px) {
-  .event-card { grid-template-columns: 1fr; }
+.event-card { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -104,8 +104,9 @@
 <div>
 <h4>Contact</h4>
 <ul>
-<li><a href="mailto:info@mddbamerica.org">info@mddbamerica.org</a></li>
-<li><a href="#">mddbamerica.org</a></li>
+<!-- Email assembled by JS below — not visible in raw HTML -->
+<li><a href="#" id="footer-email">Email Us</a></li>
+<li><a href="#">mddba.com</a></li>
 </ul>
 <div class="footer-social">
 <a href="https://x.com/mddbamerica" target="_blank" rel="noopener" aria-label="X (Twitter)">
@@ -120,5 +121,13 @@
 <div class="footer-bottom">© 2026 MDDB America | All Rights Reserved</div>
 </footer>
 <script src="../assets/js/common.js"></script>
+<script>
+  const u = 'info';
+  const d = 'mddba' + '.com';
+  const email = u + '@' + d;
+
+  const footerEmail = document.getElementById('footer-email');
+  if (footerEmail) footerEmail.href = 'mailto:' + email;
+</script>
 </body>
 </html>

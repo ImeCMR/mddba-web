@@ -28,11 +28,11 @@ margin: 0 auto 1.2rem;
 .join-banner p { opacity: 0.9; max-width: 480px; margin: 0 auto 1.5rem; line-height: 1.7; }
 
 @media (max-width: 1024px) {
-  .partners-grid { grid-template-columns: repeat(2, 1fr); }
+.partners-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-  .partners-grid { grid-template-columns: 1fr; }
+.partners-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -83,7 +83,8 @@ margin: 0 auto 1.2rem;
 <div class="join-banner scroll-reveal">
 <h2>Become a Partner</h2>
 <p>Is your institution interested in joining the MDDB America initiative? We welcome collaborations from universities, research institutes, and government agencies.</p>
-<a href="mailto:info@mddbamerica.org" class="btn-white">Get in Touch →</a>
+<!-- Email assembled by JS below — not visible in raw HTML -->
+<a href="#" class="btn-white" id="join-email">Get in Touch →</a>
 </div>
 </div>
 <footer>
@@ -97,8 +98,9 @@ margin: 0 auto 1.2rem;
 <div>
 <h4>Contact</h4>
 <ul>
-<li><a href="mailto:info@mddbamerica.org">info@mddbamerica.org</a></li>
-<li><a href="#">mddbamerica.org</a></li>
+<!-- Email assembled by JS below — not visible in raw HTML -->
+<li><a href="#" id="footer-email">Email Us</a></li>
+<li><a href="#">mddba.com</a></li>
 </ul>
 <div class="footer-social">
 <a href="https://x.com/mddbamerica" target="_blank" rel="noopener" aria-label="X (Twitter)">
@@ -113,5 +115,16 @@ margin: 0 auto 1.2rem;
 <div class="footer-bottom">© 2026 MDDB America | All Rights Reserved</div>
 </footer>
 <script src="../assets/js/common.js"></script>
+<script>
+  const u = 'info';
+  const d = 'mddba' + '.com';
+  const email = u + '@' + d;
+
+  const joinEmail = document.getElementById('join-email');
+  if (joinEmail) joinEmail.href = 'mailto:' + email;
+
+  const footerEmail = document.getElementById('footer-email');
+  if (footerEmail) footerEmail.href = 'mailto:' + email;
+</script>
 </body>
 </html>

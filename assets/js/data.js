@@ -11,7 +11,7 @@ const siteData = {
       title: 'Multi-scale Simulations of Protein Folding: The Importance of Data',
       description: 'Organised by the MDDB America Consortium. Open to all researchers in the field.',
       tag: 'Workshop',
-      date: '2026-03-10',
+      date: '2026-12-10',
       actionText: 'Register →',
       actionUrl: '#'
     },
