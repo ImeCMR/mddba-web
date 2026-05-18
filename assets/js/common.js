@@ -8,11 +8,17 @@ if (hamburger) {
   });
 }
 
-// Smooth scroll for anchor links
+// Smooth scroll for anchor links — only intercept if target exists on THIS page
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    const href = this.getAttribute('href');
+    if (href === '#') return; // ignore pure placeholder links
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // if target not found, let the browser handle it naturally
   });
 });
 
@@ -31,4 +37,3 @@ const scrollRevealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right').forEach(el => {
   scrollRevealObserver.observe(el);
 });
-
