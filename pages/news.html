@@ -10,18 +10,93 @@
 <link rel="stylesheet" href="../assets/css/responsive.css" />
 <style>
 /* News page specific styles */
-.news-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-.news-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.07); background: #fff; transition: transform 0.2s; }
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.news-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  background: #fff;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
 .news-card:hover { transform: translateY(-4px); }
-.news-card-top { padding: 1.5rem; background: linear-gradient(135deg, #0a3d6b, #1a8cff); color: #fff; }
-.news-tag { display: inline-block; background: rgba(255,255,255,0.2); border-radius: 4px; padding: 0.2rem 0.6rem; font-size: 0.75rem; font-weight: 600; margin-bottom: 0.6rem; text-transform: uppercase; }
-.news-card-top h3 { font-size: 1rem; line-height: 1.4; }
-.news-card-body { padding: 1rem 1.5rem; }
-.news-date { font-size: 0.8rem; color: #888; }
-.news-card-body p { font-size: 0.88rem; color: #555; margin-bottom: 0.5rem; line-height: 1.6; }
+
+/* Image container — enforces 16:9 */
+.news-card-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.news-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.news-card:hover .news-card-img img {
+  transform: scale(1.04);
+}
+
+/* Card body */
+.news-card-body {
+  padding: 1.2rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Tag row */
+.news-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+.news-tag {
+  display: inline-block;
+  background: #e8f2ff;
+  color: #0a3d6b;
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Title */
+.news-card-body h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0a3d6b;
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
+}
+
+.news-card-body p {
+  font-size: 0.88rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.news-date {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: auto;
+}
 
 @media (max-width: 768px) {
-.news-grid { grid-template-columns: 1fr; }
+  .news-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -41,6 +116,7 @@
 </ul>
 <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
+
 <div class="mobile-menu" id="mobile-menu">
 <a href="../index.html">Home</a>
 <a href="../index.html#about">About</a>
@@ -52,42 +128,66 @@
 <a href="community.html">Community</a>
 <a href="../index.html#contact" class="nav-cta">Get in Touch</a>
 </div>
+
 <div class="page-hero">
 <h1>News & Updates</h1>
 <p>Stay up to date with the latest developments, announcements, and highlights from MDDB America.</p>
 </div>
+
 <div class="page-content">
 <div class="scroll-reveal">
-<div class="section-label">Latest</div>
-<h2 class="section-title">All News</h2>
+  <div class="section-label">Latest</div>
+  <h2 class="section-title">All News</h2>
 </div>
+
 <div class="news-grid">
 
-<div class="news-card scroll-reveal stagger-1">
-<div class="news-card-top"><div class="news-tag">Milestone </div> <div class="news-tag">Conference</div><h3>MDDBa at ACS Spring 2026</h3></div>
-<div class="news-card-body">
-<p>Prof. Alberto Perez presented the vision behind MDDB America at ACS Spring 2026. The Florida Node is the first MDDB node in the America and approaching 1,000 projects.</p>
-<div class="news-date">May 18, 2026</div>
+  <div class="news-card scroll-reveal stagger-1">
+    <div class="news-card-img">
+      <img src="../assets/images/news/acs_spring_2026.jpg" alt="MDDBa at ACS Spring 2026" />
+    </div>
+    <div class="news-card-body">
+      <div class="news-tags">
+        <span class="news-tag">Milestone</span>
+        <span class="news-tag">Conference</span>
+      </div>
+      <h3>MDDBa at ACS Spring 2026</h3>
+      <p>Prof. Alberto Perez presented the vision behind MDDB America at ACS Spring 2026. The Florida Node is the first MDDB node in the America and approaching 1,000 projects.</p>
+      <div class="news-date">March 23, 2026</div>
+    </div>
+  </div>
+
+  <div class="news-card scroll-reveal stagger-3">
+    <div class="news-card-img">
+      <img src="../assets/images/news/uf_ai_days_2025.jpg" alt="MDDB America at UF AI Days" />
+    </div>
+    <div class="news-card-body">
+      <div class="news-tags">
+        <span class="news-tag">Conference</span>
+      </div>
+      <h3>MDDB America at UF AI Days</h3>
+      <p>Our inaugural conference brought together leading researchers from across the Americas.</p>
+      <div class="news-date">February 20, 2026</div>
+    </div>
+  </div>
+
+  <div class="news-card scroll-reveal stagger-4">
+    <div class="news-card-img">
+      <img src="../assets/images/news/fair_principles_paper_2025.jpg" alt="FAIR Principles in Biomolecular Simulations" />
+    </div>
+    <div class="news-card-body">
+      <div class="news-tags">
+        <span class="news-tag">Publication</span>
+      </div>
+      <h3>FAIR Principles in Biomolecular Simulations — Nature Methods</h3>
+      <p>Our landmark article published in Nature Methods.</p>
+      <div class="news-date">January 15, 2026</div>
+    </div>
+  </div>
+
 </div>
 </div>
 
-<div class="news-card scroll-reveal stagger-2">
-<div class="news-card-top"><div class="news-tag">Workshop</div><h3>Multi-scale Simulations of Protein Folding: The Importance of Data</h3></div>
-<div class="news-card-body"><p>Organised by the MDDB America Consortium. Open to all researchers in the field.</p><div class="news-date">March 10, 2026</div></div>
-</div>
-
-<div class="news-card scroll-reveal stagger-3">
-<div class="news-card-top"><div class="news-tag">Conference</div><h3>MDDB America Inaugural Conference Highlights</h3></div>
-<div class="news-card-body"><p>Our inaugural conference brought together leading researchers from across the Americas.</p><div class="news-date">February 20, 2026</div></div>
-</div>
-
-<div class="news-card scroll-reveal stagger-4">
-<div class="news-card-top"><div class="news-tag">Publication</div><h3>FAIR Principles in Biomolecular Simulations — Nature Methods</h3></div>
-<div class="news-card-body"><p>Our landmark article published in Nature Methods.</p><div class="news-date">January 15, 2026</div></div>
-</div>
-
-</div>
-</div>
 <footer>
 <div class="footer-grid">
 <div class="footer-brand">
@@ -99,7 +199,6 @@
 <div>
 <h4>Contact</h4>
 <ul>
-<!-- Email assembled by JS below — not visible in raw HTML -->
 <li><a href="#" id="footer-email">Email Us</a></li>
 <li><a href="#">mddba.com</a></li>
 </ul>
@@ -115,14 +214,14 @@
 </div>
 <div class="footer-bottom">© 2026 MDDB America | All Rights Reserved</div>
 </footer>
+
 <script src="../assets/js/common.js"></script>
 <script>
-  const u = 'info';
-  const d = 'mddba' + '.com';
-  const email = u + '@' + d;
-
-  const footerEmail = document.getElementById('footer-email');
-  if (footerEmail) footerEmail.href = 'mailto:' + email;
+const u = 'info';
+const d = 'mddba' + '.com';
+const email = u + '@' + d;
+const footerEmail = document.getElementById('footer-email');
+if (footerEmail) footerEmail.href = 'mailto:' + email;
 </script>
 </body>
 </html>

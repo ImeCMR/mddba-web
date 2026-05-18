@@ -10,6 +10,76 @@
 <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<style>
+/* ── News cards on home page — same format as news.html ── */
+.news-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.news-card-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.news-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.news-card:hover .news-card-img img {
+  transform: scale(1.04);
+}
+
+.news-card-body {
+  padding: 1.2rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.news-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+.news-tag {
+  display: inline-block;
+  background: #e8f2ff;
+  color: #0a3d6b;
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.news-card-body h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0a3d6b;
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
+}
+.news-card-body p {
+  font-size: 0.88rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  flex: 1;
+}
+.news-date {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: auto;
+}
+</style>
 </head>
 <body>
 <nav>
@@ -29,6 +99,7 @@
 <span></span><span></span><span></span>
 </div>
 </nav>
+
 <div class="mobile-menu" id="mobile-menu">
 <a href="index.html">Home</a>
 <a href="#about">About</a>
@@ -40,6 +111,7 @@
 <a href="pages/community.html">Community</a>
 <a href="#contact" class="nav-cta">Get in Touch</a>
 </div>
+
 <div class="hero">
 <video class="hero-video" src="assets/videos/home_page_animation.mp4" autoplay loop muted playsinline preload="auto"></video>
 <div class="hero-overlay-dim"></div>
@@ -53,6 +125,7 @@
 </div>
 <div class="scroll-hint"><span>Scroll</span><div class="scroll-arrow"></div></div>
 </div>
+
 <div class="partners-section scroll-reveal">
 <p>Partnering with America's leading research institutions</p>
 <div class="partners-ticker">
@@ -63,11 +136,13 @@
 </div>
 </div>
 </div>
+
 <div class="stats">
 <div class="stat-item scroll-reveal stagger-1"><div class="num">0</div><div class="label">Partner Institutions</div></div>
 <div class="stat-item scroll-reveal stagger-2"><div class="num">0</div><div class="label">Publications</div></div>
 <div class="stat-item scroll-reveal stagger-3"><div class="num">0</div><div class="label">Events & Webinars</div></div>
 </div>
+
 <section class="about" id="about">
 <div class="about-inner">
 <div class="about-text scroll-reveal-left">
@@ -78,12 +153,12 @@
 <p>Our project addresses this unmet need by creating the first unified database for MD simulations in America, providing a platform for scientists to share, access, and build upon each other's work.</p>
 <a href="https://devmddb.rc.ufl.edu" target="_blank" rel="noopener noreferrer" class="about-btn">Explore MDDB Florida Node →</a>
 </div>
-<!-- scroll-reveal-right REMOVED so amCharts has a visible container -->
 <div class="about-visual">
 <div id="chartdiv"></div>
 </div>
 </div>
 </section>
+
 <section class="fair" id="goals">
 <div class="fair-inner">
 <div class="fair-header scroll-reveal">
@@ -99,6 +174,7 @@
 </div>
 </div>
 </section>
+
 <section class="platform">
 <div class="platform-inner">
 <div class="platform-header scroll-reveal">
@@ -112,28 +188,66 @@
 </div>
 </div>
 </section>
+
 <section class="news" id="news">
 <div class="news-inner">
 <div class="news-header scroll-reveal">
 <div><div class="section-label">Latest Updates</div><h2 class="section-title">Recent from MDDB America</h2></div>
 <a href="pages/news.html">See All News →</a>
 </div>
+
 <div class="news-grid">
-<div class="news-card scroll-reveal stagger-1">
-<div class="news-card-top"><div class="news-tag">Workshop</div><h3>Multi-scale Simulations of Protein Folding: The Importance of Data</h3></div>
-<div class="news-card-body"><p style="font-size:0.88rem;color:#555;margin-bottom:0.5rem;">Organised by the MDDB America Consortium.</p><div class="news-date">March 10, 2026</div></div>
-</div>
-<div class="news-card scroll-reveal stagger-2">
-<div class="news-card-top"><div class="news-tag">Conference</div><h3>MDDB America Inaugural Conference Highlights</h3></div>
-<div class="news-card-body"><p style="font-size:0.88rem;color:#555;margin-bottom:0.5rem;">Our inaugural conference brought together leading researchers from across the Americas.</p><div class="news-date">February 20, 2026</div></div>
-</div>
-<div class="news-card scroll-reveal stagger-3">
-<div class="news-card-top"><div class="news-tag">Publication</div><h3>FAIR Principles in Biomolecular Simulations — Nature Methods</h3></div>
-<div class="news-card-body"><p style="font-size:0.88rem;color:#555;margin-bottom:0.5rem;">Our landmark article published in Nature Methods.</p><div class="news-date">January 15, 2026</div></div>
-</div>
+
+  <!-- Card 1 -->
+  <div class="news-card scroll-reveal stagger-1">
+    <div class="news-card-img">
+      <img src="assets/images/news/acs_spring_2026.jpg" alt="MDDBa at ACS Spring 2026" />
+    </div>
+    <div class="news-card-body">
+      <div class="news-tags">
+        <span class="news-tag">Milestone</span>
+        <span class="news-tag">Conference</span>
+      </div>
+      <h3>MDDBa at ACS Spring 2026</h3>
+      <p>Prof. Alberto Perez presented the vision behind MDDB America at ACS Spring 2026. The Florida Node is the first MDDB node in the America and approaching 1,000 projects.</p>
+      <div class="news-date">March 23, 2026</div>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="news-card scroll-reveal stagger-2">
+    <div class="news-card-img">
+      <img src="assets/images/news/uf_ai_days_2025.jpg" alt="MDDB America at UF AI Days" />
+    </div>
+    <div class="news-card-body">
+      <div class="news-tags">
+        <span class="news-tag">Conference</span>
+      </div>
+      <h3>MDDB America at UF AI Days</h3>
+      <p>Our inaugural conference brought together leading researchers from across the Americas.</p>
+      <div class="news-date">February 20, 2026</div>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="news-card scroll-reveal stagger-3">
+    <div class="news-card-img">
+      <img src="assets/images/news/fair_principles_paper_2025.jpg" alt="FAIR Principles in Biomolecular Simulations" />
+    </div>
+    <div class="news-card-body">
+      <div class="news-tags">
+        <span class="news-tag">Publication</span>
+      </div>
+      <h3>FAIR Principles in Biomolecular Simulations — Nature Methods</h3>
+      <p>Our landmark article published in Nature Methods.</p>
+      <div class="news-date">January 15, 2026</div>
+    </div>
+  </div>
+
 </div>
 </div>
 </section>
+
 <div class="cta-banner scroll-reveal" id="contact">
 <h2>For the Community,<br/>By the Community</h2>
 <p>We recognise the need for a collaborative effort to create, establish, and sustain a database that allows findability, accessibility, interoperability, and reusability of molecular dynamics simulation data.</p>
@@ -142,6 +256,7 @@
 <a href="#" class="btn-outline" id="cta-email">Get in Touch</a>
 </div>
 </div>
+
 <footer>
 <div class="footer-grid">
 <div class="footer-brand">
@@ -168,6 +283,7 @@
 </div>
 <div class="footer-bottom">© 2026 MDDB America | All Rights Reserved</div>
 </footer>
+
 <script src="assets/js/data.js"></script>
 <script src="assets/js/common.js"></script>
 <script src="assets/js/main.js"></script>
@@ -180,78 +296,76 @@ if (ctaEmail) ctaEmail.href = 'mailto:' + email;
 const footerEmail = document.getElementById('footer-email');
 if (footerEmail) footerEmail.href = 'mailto:' + email;
 </script>
+
 <script>
 var chartInitialized = false;
 var chartDiv = document.getElementById('chartdiv');
 
 var mapObserver = new IntersectionObserver(function(entries) {
-  if (entries[0].isIntersecting && !chartInitialized) {
-    chartInitialized = true;
-    mapObserver.disconnect();
-    initMap();
+if (entries[0].isIntersecting && !chartInitialized) {
+chartInitialized = true;
+mapObserver.disconnect();
+initMap();
   }
 }, { threshold: 0.1 });
 
 mapObserver.observe(chartDiv);
 
 function initMap() {
-  var root = am5.Root.new("chartdiv");
-  root.setThemes([am5themes_Animated.new(root)]);
+var root = am5.Root.new("chartdiv");
+root.setThemes([am5themes_Animated.new(root)]);
 
-  var chart = root.container.children.push(
-    am5map.MapChart.new(root, {
-      panX: "rotateX",
-      panY: "translateY",
-      projection: am5map.geoMercator()
+var chart = root.container.children.push(
+am5map.MapChart.new(root, {
+panX: "rotateX",
+panY: "translateY",
+projection: am5map.geoMercator()
     })
   );
 
-  var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
-  zoomControl.homeButton.set("visible", true);
+var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+zoomControl.homeButton.set("visible", true);
 
-  var polygonSeries = chart.series.push(
-    am5map.MapPolygonSeries.new(root, {
-      geoJSON: am5geodata_worldLow,
-      exclude: ["AQ"]
+var polygonSeries = chart.series.push(
+am5map.MapPolygonSeries.new(root, {
+geoJSON: am5geodata_worldLow,
+exclude: ["AQ"]
     })
   );
-  polygonSeries.mapPolygons.template.setAll({
-    fill: am5.color(0xdadada)
+polygonSeries.mapPolygons.template.setAll({
+fill: am5.color(0xdadada)
   });
 
-  var pointSeries = chart.series.push(am5map.ClusteredPointSeries.new(root, {}));
+var pointSeries = chart.series.push(am5map.ClusteredPointSeries.new(root, {}));
 
-  pointSeries.set("clusteredBullet", function(root) {
-    var container = am5.Container.new(root, { cursorOverStyle: "pointer" });
-    container.children.push(am5.Circle.new(root, { radius: 8, tooltipY: 0, fill: am5.color(0x1a8cff) }));
-    container.children.push(am5.Circle.new(root, { radius: 12, fillOpacity: 0.3, tooltipY: 0, fill: am5.color(0x1a8cff) }));
-    container.children.push(am5.Circle.new(root, { radius: 16, fillOpacity: 0.3, tooltipY: 0, fill: am5.color(0x1a8cff) }));
-    container.children.push(am5.Label.new(root, {
-      centerX: am5.p50, centerY: am5.p50,
-      fill: am5.color(0xffffff), populateText: true, fontSize: "8", text: "{value}"
+pointSeries.set("clusteredBullet", function(root) {
+var container = am5.Container.new(root, { cursorOverStyle: "pointer" });
+container.children.push(am5.Circle.new(root, { radius: 8, tooltipY: 0, fill: am5.color(0x1a8cff) }));
+container.children.push(am5.Circle.new(root, { radius: 12, fillOpacity: 0.3, tooltipY: 0, fill: am5.color(0x1a8cff) }));
+container.children.push(am5.Circle.new(root, { radius: 16, fillOpacity: 0.3, tooltipY: 0, fill: am5.color(0x1a8cff) }));
+container.children.push(am5.Label.new(root, {
+centerX: am5.p50, centerY: am5.p50,
+fill: am5.color(0xffffff), populateText: true, fontSize: "8", text: "{value}"
     }));
-    container.events.on("click", function(e) {
-      pointSeries.zoomToCluster(e.target.dataItem);
+container.events.on("click", function(e) {
+pointSeries.zoomToCluster(e.target.dataItem);
     });
-    return am5.Bullet.new(root, { sprite: container });
+return am5.Bullet.new(root, { sprite: container });
   });
 
-  // Bullet color is now driven by the "color" field in each data item
-  pointSeries.bullets.push(function(root, series, dataItem) {
-    var color = dataItem.dataContext.color || 0x1a8cff;
-    var circle = am5.Circle.new(root, {
-      radius: 6,
-      tooltipY: 0,
-      fill: am5.color(color),
-      tooltipText: "{title}"
+pointSeries.bullets.push(function(root, series, dataItem) {
+var color = dataItem.dataContext.color || 0x1a8cff;
+var circle = am5.Circle.new(root, {
+radius: 6,
+tooltipY: 0,
+fill: am5.color(color),
+tooltipText: "{title}"
     });
-    return am5.Bullet.new(root, { sprite: circle });
+return am5.Bullet.new(root, { sprite: circle });
   });
 
-  var cities = [
-    // Red for University of Florida (our home institution)
+var cities = [
     { title: "University of Florida", latitude: 29.6516, longitude: -82.3248, color: 0xff0000 },
-    // Blue for all others
     { title: "Oxford University", latitude: 51.7548, longitude: -1.2544 },
     { title: "IRB Barcelona, MMB", latitude: 41.3851, longitude: 2.1734 },
     { title: "Cineca", latitude: 44.4949, longitude: 11.3426 },
@@ -261,15 +375,15 @@ function initMap() {
     { title: "Barcelona Supercomputing Center", latitude: 41.3893, longitude: 2.1135 }
   ];
 
-  cities.forEach(function(city) {
-    pointSeries.data.push({
-      geometry: { type: "Point", coordinates: [city.longitude, city.latitude] },
-      title: city.title,
-      color: city.color || 0x1a8cff
+cities.forEach(function(city) {
+pointSeries.data.push({
+geometry: { type: "Point", coordinates: [city.longitude, city.latitude] },
+title: city.title,
+color: city.color || 0x1a8cff
     });
   });
 
-  chart.appear(1000, 100);
+chart.appear(1000, 100);
 }
 </script>
 </body>
