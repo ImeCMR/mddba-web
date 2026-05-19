@@ -17,3 +17,4 @@ dist/
 build/
 **/build/
 RESTRUCTURE_PLAN.md
+vercel_maintenance.json
