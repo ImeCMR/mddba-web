@@ -60,6 +60,7 @@ padding: 1.2rem 1.5rem 1.5rem;
 display: flex;
 flex-direction: column;
 flex: 1;
+min-height: 200px;
 }
   
 /* Tag row - matching events.html style */
@@ -87,6 +88,10 @@ font-weight: 700;
 color: #0a3d6b;
 line-height: 1.4;
 margin-bottom: 0.6rem;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
 }
   
 .news-card-body p {
@@ -95,6 +100,10 @@ color: #555;
 margin-bottom: 0.5rem;
 line-height: 1.6;
 flex: 1;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
 }
   
 .news-date {
@@ -150,48 +159,54 @@ margin-top: auto;
   
 <div class="news-grid">
   
-<div class="news-card scroll-reveal stagger-1">
-<div class="news-card-img">
-<img src="../assets/images/news/acs_spring_2026.jpg" alt="MDDBa at ACS Spring 2026" />
-</div>
-<div class="news-card-body">
-<div class="news-tags">
-<span class="news-tag">Milestone</span>
-<span class="news-tag">Conference</span>
-</div>
-<h3>MDDBa at ACS Spring 2026</h3>
-<p>Prof. Alberto Perez presented the vision behind MDDB America at ACS Spring 2026. The Florida Node is the first MDDB node in the America and approaching 1,000 projects.</p>
-<div class="news-date">March 23, 2026</div>
-</div>
-</div>
+<a href="news-acs-spring-2026.html" style="text-decoration: none; color: inherit;">
+  <div class="news-card scroll-reveal stagger-1">
+    <div class="news-card-img">
+      <img src="../assets/images/news/acs_spring_2026.jpg" alt="MDDBa at ACS Spring 2026" />
+    </div>
+    <div class="news-card-body">
+      <div class="news-tags">
+        <span class="news-tag">Milestone</span>
+        <span class="news-tag">Conference</span>
+      </div>
+      <h3>MDDBa at ACS Spring 2026</h3>
+      <p>Prof. Alberto Perez presented the vision behind MDDB America at ACS Spring 2026. The Florida Node is the first MDDB node in the America and approaching 1,000 projects.</p>
+      <div class="news-date">March 23, 2026</div>
+    </div>
+  </div>
+</a>
   
-<div class="news-card scroll-reveal stagger-3">
-<div class="news-card-img">
-<img src="../assets/images/news/uf_ai_days_2025.jpg" alt="MDDB America at UF AI Days" />
-</div>
-<div class="news-card-body">
-<div class="news-tags">
-<span class="news-tag">Conference</span>
-</div>
-<h3>MDDB America at UF AI Days</h3>
-<p>Our inaugural conference brought together leading researchers from across the Americas.</p>
-<div class="news-date">February 20, 2026</div>
-</div>
-</div>
+<a href="news-uf-ai-days-2026.html" style="text-decoration: none; color: inherit;">
+  <div class="news-card scroll-reveal stagger-3">
+    <div class="news-card-img">
+      <img src="../assets/images/news/uf_ai_days_2025.jpg" alt="MDDB America at UF AI Days" />
+    </div>
+    <div class="news-card-body">
+      <div class="news-tags">
+        <span class="news-tag">Conference</span>
+      </div>
+      <h3>MDDB America at UF AI Days</h3>
+      <p>Our inaugural conference brought together leading researchers from across the Americas.</p>
+      <div class="news-date">February 20, 2026</div>
+    </div>
+  </div>
+</a>
   
-<div class="news-card scroll-reveal stagger-4">
-<div class="news-card-img">
-<img src="../assets/images/news/fair_principles_paper_2025.jpg" alt="FAIR Principles in Biomolecular Simulations" />
-</div>
-<div class="news-card-body">
-<div class="news-tags">
-<span class="news-tag">Publication</span>
-</div>
-<h3>FAIR Principles in Biomolecular Simulations — Nature Methods</h3>
-<p>Our landmark article published in Nature Methods.</p>
-<div class="news-date">January 15, 2026</div>
-</div>
-</div>
+<a href="news-fair-principles-nature-methods.html" style="text-decoration: none; color: inherit;">
+  <div class="news-card scroll-reveal stagger-4">
+    <div class="news-card-img">
+      <img src="../assets/images/news/fair_principles_paper_2025.jpg" alt="FAIR Principles in Biomolecular Simulations" />
+    </div>
+    <div class="news-card-body">
+      <div class="news-tags">
+        <span class="news-tag">Publication</span>
+      </div>
+      <h3>FAIR Principles in Biomolecular Simulations — Nature Methods</h3>
+      <p>Our landmark article published in Nature Methods.</p>
+      <div class="news-date">January 15, 2026</div>
+    </div>
+  </div>
+</a>
   
 </div>
 </div>
