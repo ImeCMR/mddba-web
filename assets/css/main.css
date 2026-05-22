@@ -67,7 +67,7 @@ padding: 1.5rem 2rem; z-index: 99; gap: 1rem;
 .hero h1 span { color: #ffffff; }
 .hero p { font-size: 1.1rem; font-weight: 800; max-width: 580px; margin: 0 auto 2.5rem; opacity: 0.9; line-height: 1.7; text-shadow: 0 1px 12px rgba(0,0,0,0.9); }
 .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.btn-primary { background: #1a8cff; color: #fff; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 1rem; transition: background 0.2s, transform 0.2s; }
+.btn-primary { background: #1a8cff; color: #fff; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 1rem; transition: background 0.2s, transform 0.2s; white-space: nowrap; }
 .btn-primary:hover { background: #0a6cd4; transform: translateY(-2px); }
 .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1rem; transition: background 0.2s, transform 0.2s; }
 .btn-outline:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
@@ -95,7 +95,7 @@ gap: 0; opacity: 0.5; transition: opacity 0.2s; white-space: nowrap;
 @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 /* STATS */
 .stats { display: flex; justify-content: center; gap: 4rem; padding: 3rem 4rem; background: linear-gradient(135deg, #0a3d6b 0%, #1a8cff 100%); color: #fff; flex-wrap: wrap; }
-.stat-item { text-align: center; }
+.stat-item { text-align: center; flex: 0 0 auto; min-width: 120px; }
 .stat-item .num { font-size: 2.5rem; font-weight: 800; color: #fff; }
 .stat-item .label { font-size: 0.9rem; opacity: 0.9; margin-top: 0.3rem; }
 /* SECTIONS */
@@ -229,7 +229,7 @@ background: #eef4ff;
   z-index: 1;
 }
 
-.news-tag { display: inline-block; background: rgba(255,255,255,0.2); border-radius: 4px; padding: 0.2rem 0.6rem; font-size: 0.75rem; font-weight: 600; margin-bottom: 0.6rem; text-transform: uppercase; }
+.news-tag { display: inline-block; background: rgba(255,255,255,0.2); border-radius: 4px; padding: 0.2rem 0.6rem; font-size: 0.75rem; font-weight: 600; margin-bottom: 0.6rem; }
 .news-card-top h3 { font-size: 1rem; line-height: 1.4; color: #fff; }
 .news-card-body { padding: 1rem 1.5rem; }
 .news-date { font-size: 0.8rem; color: #888; }
@@ -276,9 +276,9 @@ a.nav-logo img { height: 32px; }
 .hero h1 { font-size: 2.2rem; }
 .hero p { font-size: 0.95rem; font-weight: 800; max-width: 100%; }
 .hero-btns { flex-direction: column; align-items: center; }
-.btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; }
+.btn-primary, .btn-outline { text-align: center; white-space: nowrap; }
 .partners-section { padding: 1.5rem 1rem; }
-.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding: 2rem 1.5rem; }
+.stats { display: flex; flex-wrap: wrap; gap: 1rem; padding: 2rem 1rem; justify-content: center; align-items: center; }
 .stat-item .num { font-size: 2rem; }
 section { padding: 3rem 1.5rem; }
 .section-title { font-size: 1.6rem; }
@@ -303,7 +303,7 @@ footer { padding: 2.5rem 1.5rem; }
 @media (max-width: 480px) {
 nav { padding: 1rem; } a.nav-logo img { height: 28px; }
 .hero h1 { font-size: 1.8rem; } .hero p { font-size: 0.9rem; font-weight: 800; }
-.stats { grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1.5rem 1rem; }
+.stats { flex-wrap: wrap; gap: 0.8rem; padding: 1.5rem 0.8rem; justify-content: center; align-items: center; }
 .stat-item .num { font-size: 1.7rem; } .stat-item .label { font-size: 0.78rem; }
 .section-title { font-size: 1.4rem; }
 .about-text .section-title { font-size: 1.7rem; }

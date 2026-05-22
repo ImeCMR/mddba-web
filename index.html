@@ -25,6 +25,13 @@
 <meta name="twitter:description" content="A unified, FAIR-compliant repository for molecular dynamics biosimulation data across the Americas." />
 <meta name="twitter:image" content="https://mddba.com/assets/images/logos/site-logo.png" />
 
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
 <link rel="stylesheet" href="assets/css/variables.css" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -33,10 +40,32 @@
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 <style>
 /* ── News cards on home page — same format as news.html ── */
+a[href*="news-"] {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a[href*="news-"]:hover {
+  transform: translateY(-4px);
+}
+
+a[href*="news-"]:hover .news-card {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
 .news-card {
   display: flex;
   flex-direction: column;
   background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  transition: box-shadow 0.2s ease;
 }
 
 .news-card-img {
@@ -62,6 +91,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  min-height: 200px;
 }
 
 .news-tags {
@@ -73,12 +103,12 @@
 .news-tag {
   display: inline-block;
   background: #e8f2ff;
-  color: #0a3d6b;
-  border-radius: 4px;
-  padding: 0.2rem 0.6rem;
+  color: #1a8cff;
+  border-radius: 20px;
+  padding: 0.2rem 0.7rem;
   font-size: 0.75rem;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .news-card-body h3 {
@@ -87,6 +117,10 @@
   color: #0a3d6b;
   line-height: 1.4;
   margin-bottom: 0.6rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .news-card-body p {
   font-size: 0.88rem;
@@ -94,6 +128,10 @@
   margin-bottom: 0.5rem;
   line-height: 1.6;
   flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .news-date {
   font-size: 0.8rem;
@@ -114,7 +152,6 @@
 <li><a href="pages/events.html">Events</a></li>
 <li><a href="pages/publications.html">Publications</a></li>
 <li><a href="pages/community.html">Community</a></li>
-<li><a href="#contact" class="nav-cta">Get in Touch</a></li>
 </ul>
 <div class="hamburger" id="hamburger" aria-label="Open menu">
 <span></span><span></span><span></span>
@@ -130,7 +167,6 @@
 <a href="pages/events.html">Events</a>
 <a href="pages/publications.html">Publications</a>
 <a href="pages/community.html">Community</a>
-<a href="#contact" class="nav-cta">Get in Touch</a>
 </div>
 
 <div class="hero">
@@ -223,50 +259,56 @@
 <div class="news-grid">
 
   <!-- Card 1 -->
-  <div class="news-card scroll-reveal stagger-1">
-    <div class="news-card-img">
-      <img src="assets/images/news/acs_spring_2026.jpg" alt="MDDBa at ACS Spring 2026" />
-    </div>
-    <div class="news-card-body">
-      <div class="news-tags">
-        <span class="news-tag">Milestone</span>
-        <span class="news-tag">Conference</span>
+  <a href="pages/news-acs-spring-2026.html" style="text-decoration: none; color: inherit;">
+    <div class="news-card scroll-reveal stagger-1">
+      <div class="news-card-img">
+        <img src="assets/images/news/acs_spring_2026.jpg" alt="MDDBa at ACS Spring 2026" />
       </div>
-      <h3>MDDBa at ACS Spring 2026</h3>
-      <p>Prof. Alberto Perez presented the vision behind MDDB America at ACS Spring 2026. The Florida Node is the first MDDB node in the America and approaching 1,000 projects.</p>
-      <div class="news-date">March 23, 2026</div>
+      <div class="news-card-body">
+        <div class="news-tags">
+          <span class="news-tag">Milestone</span>
+          <span class="news-tag">Conference</span>
+        </div>
+        <h3>MDDBa at ACS Spring 2026</h3>
+        <p>Prof. Alberto Perez presented the vision behind MDDB America at ACS Spring 2026. The Florida Node is the first MDDB node in the America and approaching 1,000 projects.</p>
+        <div class="news-date">March 23, 2026</div>
+      </div>
     </div>
-  </div>
+  </a>
 
   <!-- Card 2 -->
-  <div class="news-card scroll-reveal stagger-2">
-    <div class="news-card-img">
-      <img src="assets/images/news/uf_ai_days_2025.jpg" alt="MDDB America at UF AI Days" />
-    </div>
-    <div class="news-card-body">
-      <div class="news-tags">
-        <span class="news-tag">Conference</span>
+  <a href="pages/news-uf-ai-days-2026.html" style="text-decoration: none; color: inherit;">
+    <div class="news-card scroll-reveal stagger-2">
+      <div class="news-card-img">
+        <img src="assets/images/news/uf_ai_days_2025.jpg" alt="MDDB America at UF AI Days" />
       </div>
-      <h3>MDDB America at UF AI Days</h3>
-      <p>Our inaugural conference brought together leading researchers from across the Americas.</p>
-      <div class="news-date">February 20, 2026</div>
+      <div class="news-card-body">
+        <div class="news-tags">
+          <span class="news-tag">Conference</span>
+        </div>
+        <h3>MDDB America at UF AI Days</h3>
+        <p>Our inaugural conference brought together leading researchers from across the Americas.</p>
+        <div class="news-date">February 20, 2026</div>
+      </div>
     </div>
-  </div>
+  </a>
 
   <!-- Card 3 -->
-  <div class="news-card scroll-reveal stagger-3">
-    <div class="news-card-img">
-      <img src="assets/images/news/fair_principles_paper_2025.jpg" alt="FAIR Principles in Biomolecular Simulations" />
-    </div>
-    <div class="news-card-body">
-      <div class="news-tags">
-        <span class="news-tag">Publication</span>
+  <a href="pages/news-fair-principles-nature-methods.html" style="text-decoration: none; color: inherit;">
+    <div class="news-card scroll-reveal stagger-3">
+      <div class="news-card-img">
+        <img src="assets/images/news/fair_principles_paper_2025.jpg" alt="FAIR Principles in Biomolecular Simulations" />
       </div>
-      <h3>FAIR Principles in Biomolecular Simulations — Nature Methods</h3>
-      <p>Our landmark article published in Nature Methods.</p>
-      <div class="news-date">January 15, 2026</div>
+      <div class="news-card-body">
+        <div class="news-tags">
+          <span class="news-tag">Publication</span>
+        </div>
+        <h3>FAIR Principles in Biomolecular Simulations — Nature Methods</h3>
+        <p>A landmark article published in Nature Methods.</p>
+        <div class="news-date">January 15, 2026</div>
+      </div>
     </div>
-  </div>
+  </a>
 
 </div>
 </div>

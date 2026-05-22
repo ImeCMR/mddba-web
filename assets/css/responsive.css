@@ -1,31 +1,55 @@
 /* Common responsive styles for all pages */
 
-/* RESPONSIVE: TABLET */
-@media (max-width: 1024px) {
-  nav { padding: 1.2rem 2rem; }
-  nav ul { gap: 1.2rem; }
-  nav ul li a { font-size: 0.85rem; }
-  a.nav-logo img { height: 40px; }
-  .page-content { padding: 4rem 2rem; }
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-  footer { padding: 3rem 2rem; }
-}
-
-/* RESPONSIVE: MOBILE */
-@media (max-width: 768px) {
-  nav { padding: 1rem 1.5rem; }
+/* RESPONSIVE: HAMBURGER MENU ACTIVATION AT 1/2 WIDTH (650px) */
+@media (max-width: 650px) {
+  nav { padding: 1rem 2rem; }
   nav ul { display: none; }
   .hamburger { display: flex; }
+  a.nav-logo img { height: 36px; }
+  .about-inner { grid-template-columns: 1fr; }
+  .about-visual { padding: 2rem 2rem; }
+  #chartdiv { height: 350px; }
+  .fair-grid { grid-template-columns: repeat(2, 1fr); }
+  .platform-grid { grid-template-columns: repeat(2, 1fr); }
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+  section { padding: 3.5rem 2rem; }
+  .page-content { padding: 3.5rem 2rem; }
+}
+
+/* RESPONSIVE: LARGE SCREEN - REDUCE SPACING BEFORE HAMBURGER */
+@media (max-width: 1200px) {
+  nav { padding: 1rem 2.5rem; }
+  nav ul { gap: 1.5rem; }
+  nav ul li a { font-size: 0.9rem; }
+  section { padding: 4rem 2.5rem; }
+  .partners-section { padding: 1.5rem 2.5rem; }
+  .stats { padding: 2.5rem 2.5rem; gap: 3rem; }
+}
+
+/* RESPONSIVE: TABLET */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
   a.nav-logo img { height: 32px; }
+  .mobile-menu { top: 52px; }
   .page-hero { padding: 7rem 1.5rem 3rem; }
   .page-hero h1 { font-size: 2rem; }
   .page-content { padding: 3rem 1.5rem; }
+  .about-inner { grid-template-columns: 1fr; }
+  .fair-grid { grid-template-columns: 1fr; }
+  .platform-grid { grid-template-columns: 1fr; }
+  .news-grid { grid-template-columns: 1fr; }
+  .stats { display: flex; flex-wrap: wrap; padding: 2rem 1.5rem; gap: 2rem; justify-content: center; align-items: center; }
   .footer-grid { grid-template-columns: 1fr; }
   footer { padding: 2.5rem 1.5rem; }
+  section { padding: 2.5rem 1.5rem; }
 }
 
 /* RESPONSIVE: SMALL MOBILE */
 @media (max-width: 480px) {
-  nav { padding: 1rem; }
+  nav { padding: 0.8rem 1rem; }
   a.nav-logo img { height: 28px; }
+  .mobile-menu { top: 48px; padding: 1rem; }
+  .hero h1 { font-size: 2.5rem; }
+  section { padding: 2rem 1rem; }
+  .partners-section { padding: 1rem; }
 }

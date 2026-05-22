@@ -2,9 +2,20 @@
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 if (hamburger) {
-  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mobileMenu.classList.toggle('open');
+  });
+  
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+  
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav')) {
+      mobileMenu.classList.remove('open');
+    }
   });
 }
 

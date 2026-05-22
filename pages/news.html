@@ -4,6 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>News | MDDB America</title>
+  
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+  
 <link rel="stylesheet" href="../assets/css/variables.css" />
 <link rel="stylesheet" href="../assets/css/main.css" />
 <link rel="stylesheet" href="../assets/css/pages.css" />
@@ -11,92 +19,101 @@
 <style>
 /* News page specific styles */
 .news-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1.5rem;
 }
-
+  
 .news-card {
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  background: #fff;
-  transition: transform 0.2s;
-  display: flex;
-  flex-direction: column;
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+background: #fff;
+transition: transform 0.2s;
+display: flex;
+flex-direction: column;
 }
 .news-card:hover { transform: translateY(-4px); }
-
+  
 /* Image container — enforces 16:9 */
 .news-card-img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  flex-shrink: 0;
+width: 100%;
+aspect-ratio: 16 / 9;
+overflow: hidden;
+flex-shrink: 0;
 }
 .news-card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transition: transform 0.3s ease;
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: center;
+display: block;
+transition: transform 0.3s ease;
 }
 .news-card:hover .news-card-img img {
-  transform: scale(1.04);
+transform: scale(1.04);
 }
-
+  
 /* Card body */
 .news-card-body {
-  padding: 1.2rem 1.5rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+padding: 1.2rem 1.5rem 1.5rem;
+display: flex;
+flex-direction: column;
+flex: 1;
+min-height: 200px;
 }
-
-/* Tag row */
+  
+/* Tag row - matching events.html style */
 .news-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 0.6rem;
+display: flex;
+flex-wrap: wrap;
+gap: 0.4rem;
+margin-bottom: 0.6rem;
 }
 .news-tag {
-  display: inline-block;
-  background: #e8f2ff;
-  color: #0a3d6b;
-  border-radius: 4px;
-  padding: 0.2rem 0.6rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
+display: inline-block;
+background: #e8f2ff;
+color: #1a8cff;
+font-size: 0.75rem;
+font-weight: 600;
+padding: 0.2rem 0.7rem;
+border-radius: 20px;
+text-transform: none;
 }
-
+  
 /* Title */
 .news-card-body h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #0a3d6b;
-  line-height: 1.4;
-  margin-bottom: 0.6rem;
+font-size: 1rem;
+font-weight: 700;
+color: #0a3d6b;
+line-height: 1.4;
+margin-bottom: 0.6rem;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
 }
-
+  
 .news-card-body p {
-  font-size: 0.88rem;
-  color: #555;
-  margin-bottom: 0.5rem;
-  line-height: 1.6;
-  flex: 1;
+font-size: 0.88rem;
+color: #555;
+margin-bottom: 0.5rem;
+line-height: 1.6;
+flex: 1;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
 }
-
+  
 .news-date {
-  font-size: 0.8rem;
-  color: #888;
-  margin-top: auto;
+font-size: 0.8rem;
+color: #888;
+margin-top: auto;
 }
-
+  
 @media (max-width: 768px) {
-  .news-grid { grid-template-columns: 1fr; }
+.news-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -112,11 +129,10 @@
 <li><a href="events.html">Events</a></li>
 <li><a href="publications.html">Publications</a></li>
 <li><a href="community.html">Community</a></li>
-<li><a href="../index.html#contact" class="nav-cta">Get in Touch</a></li>
 </ul>
 <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
-
+  
 <div class="mobile-menu" id="mobile-menu">
 <a href="../index.html">Home</a>
 <a href="../index.html#about">About</a>
@@ -126,22 +142,22 @@
 <a href="events.html">Events</a>
 <a href="publications.html">Publications</a>
 <a href="community.html">Community</a>
-<a href="../index.html#contact" class="nav-cta">Get in Touch</a>
 </div>
-
+  
 <div class="page-hero">
 <h1>News & Updates</h1>
 <p>Stay up to date with the latest developments, announcements, and highlights from MDDB America.</p>
 </div>
-
+  
 <div class="page-content">
 <div class="scroll-reveal">
-  <div class="section-label">Latest</div>
-  <h2 class="section-title">All News</h2>
+<div class="section-label">Latest</div>
+<h2 class="section-title">All News</h2>
 </div>
-
+  
 <div class="news-grid">
-
+  
+<a href="news-acs-spring-2026.html" style="text-decoration: none; color: inherit;">
   <div class="news-card scroll-reveal stagger-1">
     <div class="news-card-img">
       <img src="../assets/images/news/acs_spring_2026.jpg" alt="MDDBa at ACS Spring 2026" />
@@ -156,7 +172,9 @@
       <div class="news-date">March 23, 2026</div>
     </div>
   </div>
-
+</a>
+  
+<a href="news-uf-ai-days-2026.html" style="text-decoration: none; color: inherit;">
   <div class="news-card scroll-reveal stagger-3">
     <div class="news-card-img">
       <img src="../assets/images/news/uf_ai_days_2025.jpg" alt="MDDB America at UF AI Days" />
@@ -170,7 +188,9 @@
       <div class="news-date">February 20, 2026</div>
     </div>
   </div>
-
+</a>
+  
+<a href="news-fair-principles-nature-methods.html" style="text-decoration: none; color: inherit;">
   <div class="news-card scroll-reveal stagger-4">
     <div class="news-card-img">
       <img src="../assets/images/news/fair_principles_paper_2025.jpg" alt="FAIR Principles in Biomolecular Simulations" />
@@ -184,10 +204,11 @@
       <div class="news-date">January 15, 2026</div>
     </div>
   </div>
-
+</a>
+  
 </div>
 </div>
-
+  
 <footer>
 <div class="footer-grid">
 <div class="footer-brand">
@@ -214,7 +235,7 @@
 </div>
 <div class="footer-bottom">© 2026 MDDB America | All Rights Reserved</div>
 </footer>
-
+  
 <script src="../assets/js/common.js"></script>
 <script>
 const u = 'info';
