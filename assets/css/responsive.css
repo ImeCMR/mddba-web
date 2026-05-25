@@ -9,6 +9,7 @@
   .about-inner { grid-template-columns: 1fr; }
   .about-visual { padding: 2rem 2rem; }
   #chartdiv { height: 350px; }
+  .nodes-grid { grid-template-columns: repeat(2, 1fr); }
   .fair-grid { grid-template-columns: repeat(2, 1fr); }
   .platform-grid { grid-template-columns: repeat(2, 1fr); }
   .news-grid { grid-template-columns: repeat(2, 1fr); }
@@ -38,6 +39,7 @@
   .fair-grid { grid-template-columns: 1fr; }
   .platform-grid { grid-template-columns: 1fr; }
   .news-grid { grid-template-columns: 1fr; }
+  .nodes-grid { grid-template-columns: 1fr; }
   .stats { display: flex; flex-wrap: wrap; padding: 2rem 1.5rem; gap: 2rem; justify-content: center; align-items: center; }
   .footer-grid { grid-template-columns: 1fr; }
   footer { padding: 2.5rem 1.5rem; }
