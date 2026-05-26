@@ -46,6 +46,8 @@
   .fair-grid { grid-template-columns: repeat(2, 1fr); }
   .news-grid { grid-template-columns: repeat(2, 1fr); }
   .nodes-grid { grid-template-columns: repeat(2, 1fr); }
+  .funder-section { flex-direction: row; justify-content: center; gap: 1.5rem; }
+  .funder-section p { text-align: left; }
   footer { padding: 2.5rem 2rem; }
 }
 
@@ -79,6 +81,9 @@
   .cta-banner h2 { font-size: 1.6rem; }
   .cta-btns { flex-direction: column; align-items: center; }
   .cta-btns a { width: 100%; max-width: 280px; text-align: center; }
+  .funder-section { flex-direction: column; align-items: center; gap: 1.5rem; padding-top: 1.5rem; margin-top: 1.5rem; justify-content: center; }
+  .funder-logo { height: 70px; }
+  .funder-section p { text-align: center; max-width: 90%; }
   .footer-grid { grid-template-columns: 1fr; }
   footer { padding: 2.5rem 1.5rem; }
   section { padding: 2.5rem 1.5rem; }
@@ -106,6 +111,9 @@
   .fair-grid { grid-template-columns: 1fr; }
   .cta-banner h2 { font-size: 1.4rem; }
   .cta-banner p { font-size: 0.92rem; }
+  .funder-section { margin-top: 1rem; padding-top: 1rem; }
+  .funder-logo { height: 60px; }
+  .funder-section p { font-size: 0.8rem; }
   section { padding: 2rem 1rem; }
   footer { padding: 2rem 1rem; }
   .partners-section { padding: 1rem; }
