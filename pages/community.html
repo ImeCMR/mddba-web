@@ -43,27 +43,11 @@ transform: translateY(0);
 .stagger-4 { transition-delay: 0.4s; }
 .stagger-5 { transition-delay: 0.5s; }
 .stagger-6 { transition-delay: 0.6s; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', sans-serif; color: #1a1a2e; background: #f9f9fb; overflow-y: scroll; min-height: 100vh; display: flex; flex-direction: column; }
-nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; background: #000; position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
-a.nav-logo { display: inline-flex; align-items: center; text-decoration: none; cursor: pointer; }
-a.nav-logo img { height: 40px; width: auto; object-fit: contain; display: block; }
-nav ul { list-style: none; display: flex; gap: 2rem; }
-nav ul li a { text-decoration: none; color: rgba(255,255,255,0.85); font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
-nav ul li a:hover, nav ul li a.active { color: #1a8cff; }
-.nav-cta { background: #1a8cff; color: #fff !important; padding: 0.5rem 1.2rem; border-radius: 6px; }
-.nav-cta:hover { background: #0a6cd4 !important; }
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-.hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
-.mobile-menu { display: none; flex-direction: column; background: #000; position: fixed; top: 60px; left: 0; right: 0; padding: 1.5rem 2rem; z-index: 99; gap: 1rem; }
-.mobile-menu.open { display: flex; }
-.mobile-menu a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); transition: color 0.2s; }
-.mobile-menu a:hover { color: #1a8cff; }
-.mobile-menu .nav-cta { background: #1a8cff; color: #fff; padding: 0.6rem 1.2rem; border-radius: 6px; text-align: center; border-bottom: none; }
 .page-hero { background: linear-gradient(135deg, #0a3d6b 0%, #1a8cff 100%); color: #fff; padding: 8rem 4rem 4rem; text-align: center; }
 .page-hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
 .page-hero p { font-size: 1.1rem; opacity: 0.9; max-width: 560px; margin: 0 auto; line-height: 1.7; }
-.page-content { max-width: 1100px; margin: 0 auto; padding: 5rem 4rem; flex: 1; width: 100%; }
+.page-content-wrapper { padding: 5rem 4rem; flex: 1; width: 100%; }
+.page-content { max-width: 1100px; margin: 0 auto; width: 100%; }
 .section-label { font-size: 0.8rem; font-weight: 700; color: #1a8cff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.6rem; }
 .section-title { font-size: 2rem; font-weight: 800; color: #0a3d6b; margin-bottom: 1rem; line-height: 1.2; }
 .section-subtitle { font-size: 1rem; color: #555; line-height: 1.7; margin-bottom: 3rem; max-width: 660px; }
@@ -93,9 +77,6 @@ footer ul li a:hover { opacity: 1; }
 .footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255,255,255,0.08); border-radius: 8px; color: #fff; transition: background 0.2s, color 0.2s; text-decoration: none; }
 .footer-social a:hover { background: #1a8cff; color: #fff; }
 .footer-bottom { border-top: 1px solid #1e2d42; padding-top: 1.5rem; text-align: center; font-size: 0.82rem; color: #fff; opacity: 0.85; max-width: 1100px; margin: 0 auto; }
-@media (max-width: 1024px) { nav { padding: 1.2rem 2rem; } nav ul { gap: 1.2rem; } .page-content { padding: 4rem 2rem; } .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } footer { padding: 3rem 2rem; } }
-@media (max-width: 768px) { nav { padding: 1rem 1.5rem; } nav ul { display: none; } .hamburger { display: flex; } a.nav-logo img { height: 32px; } .page-hero { padding: 7rem 1.5rem 3rem; } .page-hero h1 { font-size: 2rem; } .ways-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } footer { padding: 2.5rem 1.5rem; } }
-@media (max-width: 480px) { nav { padding: 1rem; } a.nav-logo img { height: 28px; } }
 </style>
 </head>
 <body>
@@ -127,6 +108,7 @@ footer ul li a:hover { opacity: 1; }
 <h1>Community</h1>
 <p>MDDB America is built by the community, for the community. Join us in advancing open molecular dynamics data science.</p>
 </div>
+<div class="page-content-wrapper">
 <div class="page-content">
 <div class="scroll-reveal">
 <div class="section-label">Get Involved</div>
@@ -182,6 +164,7 @@ footer ul li a:hover { opacity: 1; }
 <p>Reach out to the MDDB America team and we'll find the best way for you or your institution to contribute.</p>
 <!-- Email assembled by JS below — not visible in raw HTML -->
 <a href="#" class="btn-white" id="contact-banner-email">Contact Us →</a>
+</div>
 </div>
 </div>
 <footer>
