@@ -1,302 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FAIR Principles in Biomolecular Simulations — Nature Methods | News | MDDB America</title>
+<meta name="description" content="Our landmark article on FAIR Principles in Biomolecular Simulations published in Nature Methods, advancing open science and data sharing practices.">
+<link rel="canonical" href="https://mddba.com/pages/news-fair-principles-nature-methods">
+<meta name="theme-color" content="#0a1628">
+<script>document.documentElement.classList.add('js');</script>
 
-<!-- SEO Meta Tags -->
-<meta name="description" content="Our landmark article on FAIR Principles in Biomolecular Simulations published in Nature Methods, advancing open science and data sharing practices." />
-<meta name="keywords" content="MDDB America, FAIR Principles, Nature Methods, Publication" />
+<!-- Open Graph / X -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="MDDB America">
+<meta property="og:url" content="https://mddba.com/pages/news-fair-principles-nature-methods">
+<meta property="og:title" content="FAIR Principles in Biomolecular Simulations — Nature Methods | News | MDDB America">
+<meta property="og:description" content="Our landmark article on FAIR Principles in Biomolecular Simulations published in Nature Methods, advancing open science and data sharing practices.">
+<meta property="og:image" content="https://mddba.com/assets/images/news/fair_principles_paper_2025.jpg">
+<meta property="article:published_time" content="2026-01-15">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@mddbamerica">
+<meta name="twitter:title" content="FAIR Principles in Biomolecular Simulations — Nature Methods | News | MDDB America">
+<meta name="twitter:description" content="Our landmark article on FAIR Principles in Biomolecular Simulations published in Nature Methods, advancing open science and data sharing practices.">
+<meta name="twitter:image" content="https://mddba.com/assets/images/news/fair_principles_paper_2025.jpg">
 
-<!-- Open Graph -->
-<meta property="og:type" content="article" />
-<meta property="og:title" content="FAIR Principles in Biomolecular Simulations — Nature Methods | MDDB America" />
-<meta property="og:description" content="Our landmark article published in Nature Methods discussing FAIR principles in molecular dynamics research." />
-<meta property="og:image" content="https://mddba.com/assets/images/news/fair_principles_paper_2025.jpg" />
-<meta property="article:published_time" content="2026-01-15" />
+<!-- Icons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 
-<!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
-
-<link rel="stylesheet" href="../assets/css/variables.css" />
-<link rel="stylesheet" href="../assets/css/main.css" />
-<link rel="stylesheet" href="../assets/css/pages.css" />
-<link rel="stylesheet" href="../assets/css/responsive.css" />
-<style>
-/* NEWS ARTICLE PAGE STYLES */
-.article-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 8rem 2rem 4rem 2rem;
-  flex: 1;
-}
-
-.article-header {
-  margin-bottom: 2rem;
-}
-
-.article-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.article-tag {
-  display: inline-block;
-  background: #e8f2ff;
-  color: #1a8cff;
-  border-radius: 20px;
-  padding: 0.3rem 0.8rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: none;
-}
-
-.article-title {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: #0a3d6b;
-  line-height: 1.3;
-  margin-bottom: 0.8rem;
-}
-
-.article-meta {
-  display: flex;
-  gap: 1.5rem;
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 1.5rem;
-}
-
-.article-featured-image {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  border-radius: 12px;
-  margin-bottom: 2.5rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-.article-featured-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-.article-content {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #333;
-  margin-bottom: 3rem;
-}
-
-.article-content p {
-  margin-bottom: 1.2rem;
-}
-
-.article-content strong {
-  color: #0a3d6b;
-  font-weight: 600;
-}
-
-.article-sharing {
-  border-top: 1px solid #eee;
-  padding-top: 2rem;
-  margin-top: 3rem;
-}
-
-.sharing-label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #0a3d6b;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.sharing-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.share-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: all 0.2s;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  color: #0a3d6b;
-}
-.share-btn:hover {
-  color: #1a8cff;
-  transform: scale(1.1);
-}
-
-.back-to-news {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #1a8cff;
-  text-decoration: none;
-  font-weight: 600;
-  margin-bottom: 2rem;
-  transition: color 0.2s;
-}
-
-.back-to-news:hover {
-  color: #0a6cd4;
-}
-
-@media (max-width: 768px) {
-  .article-container {
-    padding: 3rem 1.5rem;
-  }
-  
-  .article-title {
-    font-size: 1.6rem;
-  }
-  
-  .article-meta {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-}
-</style>
+<!-- Styles -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/pages.css">
 </head>
+
 <body>
-<nav>
-<a href="../index.html" class="nav-logo"><img src="../assets/images/logos/site-logo.png" alt="MDDB America" /></a>
-<ul>
-<li><a href="../index.html">Home</a></li>
-<li><a href="../index.html#about">About</a></li>
-<li><a href="../index.html#goals">Goals</a></li>
-<li><a href="partners.html">Partners</a></li>
-<li><a href="news.html" class="active">News</a></li>
-<li><a href="events.html">Events</a></li>
-<li><a href="publications.html">Publications</a></li>
-<li><a href="community.html">Community</a></li>
-</ul>
-<div class="hamburger" id="hamburger" aria-label="Open menu">
-<span></span><span></span><span></span>
-</div>
-</nav>
 
-<div class="mobile-menu" id="mobile-menu">
-<a href="../index.html">Home</a>
-<a href="../index.html#about">About</a>
-<a href="../index.html#goals">Goals</a>
-<a href="partners.html">Partners</a>
-<a href="news.html">News</a>
-<a href="events.html">Events</a>
-<a href="publications.html">Publications</a>
-<a href="community.html">Community</a>
-</div>
+<a class="skip-link" href="#main">Skip to content</a>
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13.5 6.5 19 12l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-arrow-ne" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M5 9h14M5 15h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/></g></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+  <symbol id="i-telegram" viewBox="0 0 24 24"><path fill="currentColor" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></symbol>
+</svg>
 
-<div class="article-container">
-  <a href="news.html" class="back-to-news">← Back to News</a>
-  
-  <article class="article-header">
-    <div class="article-tags">
-      <span class="article-tag">Publication</span>
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="../index.html" aria-label="MDDB America — home"><span class="logo__mark" aria-hidden="true"></span></a>
+    <button class="menu-btn" type="button" data-menu-open aria-haspopup="dialog" aria-expanded="false" aria-controls="menu">
+      <span>Menu</span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-menu"/></svg></span>
+    </button>
+  </div>
+</header>
+
+<dialog class="menu" id="menu" data-theme="dark" aria-label="Site menu">
+  <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:-14%;--y:-45%;--s:75vw;--o:.6"></span><span class="orb orb--deep" style="--x:55%;--y:35%;--s:70vw;--o:.9"></span><span class="orb orb--sky" style="--x:80%;--y:-25%;--s:32vw;--o:.4"></span></div>
+  <div class="wrap menu__top">
+    <a class="logo" href="../index.html" aria-label="MDDB America — home"><span class="logo__mark" aria-hidden="true"></span></a>
+    <button class="menu-btn" type="button" data-menu-close>
+      <span>Close</span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-close"/></svg></span>
+    </button>
+  </div>
+  <div class="wrap menu__body">
+    <form class="search" role="search" data-search>
+      <label class="label" for="menu-search">Search the site</label>
+      <div class="search__field">
+        <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-search"/></svg>
+        <input class="search__input" id="menu-search" type="search" name="q" placeholder="Nodes, FAIR data, events…" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-keyshortcuts="/" aria-controls="menu-search-results" aria-describedby="menu-search-status">
+        <kbd class="search__kbd" aria-hidden="true">/</kbd>
+        <button class="search__clear" type="button" aria-label="Clear search" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-close"/></svg></button>
+      </div>
+      <div class="search__hints"><span class="label-s">Try</span><button type="button" data-q="Florida Node">Florida Node</button><button type="button" data-q="FAIR principles">FAIR principles</button><button type="button" data-q="Nature Methods">Nature Methods</button><button type="button" data-q="Events">Events</button></div>
+      <p class="search__status label-s" id="menu-search-status" role="status"></p>
+      <ol class="search__results" id="menu-search-results" aria-label="Search results"></ol>
+    </form>
+    <nav class="menu__nav" aria-label="Main">
+      <ol class="menu__list">
+        <li style="--i:0"><a class="menu__link" href="../index.html"><span class="menu__index">01</span><span class="menu__text">Home</span></a></li>
+        <li style="--i:1"><a class="menu__link" href="../index.html#about"><span class="menu__index">02</span><span class="menu__text">About</span></a></li>
+        <li style="--i:2"><a class="menu__link" href="../index.html#nodes"><span class="menu__index">03</span><span class="menu__text">Nodes</span></a></li>
+        <li style="--i:3"><a class="menu__link" href="partners.html"><span class="menu__index">04</span><span class="menu__text">Partners</span></a></li>
+        <li style="--i:4"><a class="menu__link" href="news.html" aria-current="page"><span class="menu__index">05</span><span class="menu__text">News</span></a></li>
+        <li style="--i:5"><a class="menu__link" href="events.html"><span class="menu__index">06</span><span class="menu__text">Events</span></a></li>
+        <li style="--i:6"><a class="menu__link" href="publications.html"><span class="menu__index">07</span><span class="menu__text">Publications</span></a></li>
+        <li style="--i:7"><a class="menu__link" href="community.html"><span class="menu__index">08</span><span class="menu__text">Community</span></a></li>
+      </ol>
+    </nav>
+    <div class="menu__aside">
+      <p class="label">Interested in contributing?</p>
+      <a class="text-btn text-btn--xl" href="#" data-email><span>Get in <strong>touch!</strong></span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
     </div>
-    
-    <h1 class="article-title">FAIR Principles in Biomolecular Simulations — Nature Methods</h1>
-    
-    <div class="article-meta">
-      <span>January 15, 2026</span>
+  </div>
+  <div class="wrap menu__meta">
+    <p class="label-s">&copy; <span data-year>2026</span> MDDB America. All rights reserved.</p>
+    <div class="social"><a href="https://x.com/mddbamerica" target="_blank" rel="noopener" aria-label="MDDB America on X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-x"/></svg></a><a href="https://www.linkedin.com/company/mddba/" target="_blank" rel="noopener" aria-label="MDDB America on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-linkedin"/></svg></a></div>
+  </div>
+</dialog>
 
+<main id="main">
+  <article>
+    <header class="article-hero" data-theme="dark">
+      <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:-12%;--y:-55%;--s:60vw;--o:.5"></span><span class="orb orb--deep" style="--x:55%;--y:-5%;--s:55vw;--o:.9"></span></div>
+      <div class="wrap wrap--narrow">
+        <a class="text-btn text-btn--sm text-btn--back" href="news.html"><span>Back to <strong>News</strong></span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
+        <div class="chips"><span class="chip">Publication</span></div>
+        <h1 class="heading-l">FAIR Principles in Biomolecular Simulations — Nature Methods</h1>
+        <p class="article-meta label-s"><time datetime="2026-01-15">January 15, 2026</time></p>
+      </div>
+    </header>
+    <div data-theme="light">
+      <div class="wrap wrap--narrow">
+        <figure class="article-figure">
+          <img src="../assets/images/news/fair_principles_paper_2025.jpg" alt="FAIR Principles in Biomolecular Simulations" width="762" height="429" fetchpriority="high" decoding="async">
+        </figure>
+        <div class="prose">
+        <p class="lede">A landmark article on FAIR Principles in Biomolecular Simulations was published in Nature Methods, marking a significant advancement in promoting open science and data sharing practices in the computational chemistry community.</p>
+        <p>This publication outlines the comprehensive framework for implementing FAIR (Findable, Accessible, Interoperable, and Reusable) data principles in molecular dynamics research, directly informing the design and development of MDDB America.</p>
+        <p><strong>The article covers:</strong></p>
+        <ul>
+          <li>Best practices for data management in molecular dynamics simulations</li>
+          <li>Standards and metadata requirements for enhanced data discoverability</li>
+          <li>Implementation strategies for making simulation data accessible across institutions</li>
+          <li>Long-term sustainability and reproducibility considerations</li>
+        </ul>
+        <p>This publication reinforces the scientific community's commitment to open science and establishes MDDB as a leading platform for FAIR-compliant molecular dynamics data management.</p>
+        <p>The research demonstrates how proper data stewardship and standardization can accelerate scientific discovery and enable new collaborative opportunities across the global research community.</p>
+        <p>For access to our publications and research outputs, visit our <a href="publications.html">publications page</a>.</p>
+        </div>
+        <div class="btn-row" style="margin-top:40px"><a class="text-btn  text-btn--ext" href="https://doi.org/10.1038/s41592-025-02635-0" target="_blank" rel="noopener noreferrer"><span>Read the <strong>Paper</strong></span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow-ne"/></svg></span></a></div>
+        <div class="share">
+          <p class="label">Share this story</p>
+          <div class="social"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmddba.com%2Fpages%2Fnews-fair-principles-nature-methods" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-facebook"/></svg></a><a href="https://x.com/intent/post?url=https%3A%2F%2Fmddba.com%2Fpages%2Fnews-fair-principles-nature-methods&amp;text=FAIR%20Principles%20in%20Biomolecular%20Simulations%20%E2%80%94%20Nature%20Methods" target="_blank" rel="noopener" aria-label="Share on X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-x"/></svg></a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmddba.com%2Fpages%2Fnews-fair-principles-nature-methods" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-linkedin"/></svg></a><a href="https://wa.me/?text=FAIR%20Principles%20in%20Biomolecular%20Simulations%20%E2%80%94%20Nature%20Methods%20https%3A%2F%2Fmddba.com%2Fpages%2Fnews-fair-principles-nature-methods" target="_blank" rel="noopener" aria-label="Share on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"/></svg></a><a href="https://t.me/share/url?url=https%3A%2F%2Fmddba.com%2Fpages%2Fnews-fair-principles-nature-methods&amp;text=FAIR%20Principles%20in%20Biomolecular%20Simulations%20%E2%80%94%20Nature%20Methods" target="_blank" rel="noopener" aria-label="Share on Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-telegram"/></svg></a><a href="mailto:?subject=FAIR%20Principles%20in%20Biomolecular%20Simulations%20%E2%80%94%20Nature%20Methods&amp;body=https%3A%2F%2Fmddba.com%2Fpages%2Fnews-fair-principles-nature-methods" aria-label="Share by email"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mail"/></svg></a></div>
+        </div>
+      </div>
     </div>
   </article>
 
-  <div class="article-featured-image">
-    <img src="../assets/images/news/fair_principles_paper_2025.jpg" alt="FAIR Principles in Biomolecular Simulations" />
-  </div>
+  <section class="section" data-theme="light" aria-labelledby="more-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="label">Keep Reading</p>
+          <h2 class="heading-m" id="more-title">More News</h2>
+        </div>
+        <a class="text-btn" href="news.html"><span>See all <strong>News</strong></span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
+      </div>
+      <div class="card-grid card-grid--2">
+      <article class="news-card reveal" data-tags="milestone conference">
+        <a class="news-card__link" href="news-acs-spring-2026.html">
+          <div class="news-card__media"><img src="../assets/images/news/acs_spring_2026.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async"></div>
+          <div class="news-card__body">
+            <div class="news-card__meta"><time class="label-s" datetime="2026-03-23">March 23, 2026</time><span class="chip">Milestone</span><span class="chip">Conference</span></div>
+            <h3 class="heading-xxs news-card__title">MDDBa at ACS Spring 2026</h3>
+            <p class="news-card__excerpt">Prof. Alberto Perez presented the vision behind MDDB America at ACS Spring 2026. The Florida Node is the first MDDB node in America and approaching 1,000 projects.</p>
+            <span class="read-more">Read more <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          </div>
+        </a>
+      </article>
+      <article class="news-card reveal" data-tags="conference" style="--d:.08s">
+        <a class="news-card__link" href="news-uf-ai-days-2026.html">
+          <div class="news-card__media"><img src="../assets/images/news/uf_ai_days_2025.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async"></div>
+          <div class="news-card__body">
+            <div class="news-card__meta"><time class="label-s" datetime="2026-02-20">February 20, 2026</time><span class="chip">Conference</span></div>
+            <h3 class="heading-xxs news-card__title">MDDB America at UF AI Days</h3>
+            <p class="news-card__excerpt">Our inaugural conference brought together leading researchers from across the Americas.</p>
+            <span class="read-more">Read more <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          </div>
+        </a>
+      </article>
+      </div>
+    </div>
+  </section>
+</main>
 
-  <div class="article-content">
-    <p>A landmark article on FAIR Principles in Biomolecular Simulations was published in Nature Methods, marking a significant advancement in promoting open science and data sharing practices in the computational chemistry community.</p>
-    
-    <p>This publication outlines the comprehensive framework for implementing FAIR (Findable, Accessible, Interoperable, and Reusable) data principles in molecular dynamics research, directly informing the design and development of MDDB America.</p>
-    
-    <p><strong>The article covers:</strong></p>
-    <ul style="margin-bottom: 1.2rem; margin-left: 2rem;">
-      <li style="margin-bottom: 0.6rem;">Best practices for data management in molecular dynamics simulations</li>
-      <li style="margin-bottom: 0.6rem;">Standards and metadata requirements for enhanced data discoverability</li>
-      <li style="margin-bottom: 0.6rem;">Implementation strategies for making simulation data accessible across institutions</li>
-      <li style="margin-bottom: 0.6rem;">Long-term sustainability and reproducibility considerations</li>
-    </ul>
-    
-    <p>This publication reinforces the scientific community's commitment to open science and establishes MDDB as a leading platform for FAIR-compliant molecular dynamics data management.</p>
-    
-    <p>The research demonstrates how proper data stewardship and standardization can accelerate scientific discovery and enable new collaborative opportunities across the global research community.</p>
-    
-    <p>For access to our publications and research outputs, visit our <a href="publications.html" style="color: #1a8cff; text-decoration: none; font-weight: 600;">publications page</a>.</p>
-  </div>
-
-  <div class="article-sharing">
-    <div class="sharing-label">Share This Story, Choose Your Platform!</div>
-    <div class="sharing-buttons">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://mddba.com/pages/news-uf-ai-days-2026.html" target="_blank" rel="noopener" aria-label="Share on Facebook" class="share-btn facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-        <a href="https://twitter.com/intent/tweet?url=https://mddba.com/pages/news-uf-ai-days-2026.html&text=MDDB America at UF AI Days" target="_blank" rel="noopener" aria-label="Share on X (Twitter)" class="share-btn twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mddba.com/pages/news-uf-ai-days-2026.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn" class="share-btn linkedin"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-        <a href="https://wa.me/?text=Check out: MDDB America at UF AI Days https://mddba.com/pages/news-uf-ai-days-2026.html" target="_blank" rel="noopener" aria-label="Share on WhatsApp" class="share-btn whatsapp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-        <a href="https://t.me/share/url?url=https://mddba.com/pages/news-uf-ai-days-2026.html&text=MDDB America at UF AI Days" target="_blank" rel="noopener" aria-label="Share on Telegram" class="share-btn telegram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
-        <a href="mailto:?subject=MDDB America at UF AI Days&body=Check this out: https://mddba.com/pages/news-uf-ai-days-2026.html" aria-label="Share via Email" class="share-btn email"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+<footer class="footer" data-theme="dark">
+  <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:-20%;--y:25%;--s:60vw;--o:.4"></span><span class="orb orb--deep" style="--x:62%;--y:-35%;--s:50vw;--o:.8"></span></div>
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="logo" href="../index.html" aria-label="MDDB America — home"><span class="logo__mark" aria-hidden="true"></span></a>
+        <p class="footer__tagline text-l">A unified, FAIR-compliant repository for molecular dynamics biosimulation data across the Americas.</p>
+      </div>
+      <nav class="footer__col" aria-label="Explore">
+        <h2 class="footer__heading">Explore</h2>
+        <ul class="footer__links">
+          <li><a class="u-link" href="../index.html#about">About</a></li>
+          <li><a class="u-link" href="../index.html#goals">Goals &amp; Vision</a></li>
+          <li><a class="u-link" href="../index.html#nodes">MDDB Nodes</a></li>
+          <li><a class="u-link" href="partners.html">Partners</a></li>
+          <li><a class="u-link" href="publications.html">Publications</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-label="Engage">
+        <h2 class="footer__heading">Engage</h2>
+        <ul class="footer__links">
+          <li><a class="u-link" href="news.html">News</a></li>
+          <li><a class="u-link" href="events.html">Events</a></li>
+          <li><a class="u-link" href="community.html">Community</a></li>
+          <li><a class="u-link" href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__col">
+        <h2 class="footer__heading">Contact</h2>
+        <ul class="footer__links">
+          <li><a class="u-link" href="#" data-email>Email us</a></li>
+          <li><a class="u-link" href="https://mddba.com">mddba.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="social"><a href="https://x.com/mddbamerica" target="_blank" rel="noopener" aria-label="MDDB America on X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-x"/></svg></a><a href="https://www.linkedin.com/company/mddba/" target="_blank" rel="noopener" aria-label="MDDB America on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-linkedin"/></svg></a></div>
+      <!-- Funder: add the logo to assets/images/funder/, fill in the text and uncomment.
+      <div class="funder">
+        <img src="../assets/images/funder/eu-logo.png" alt="" height="48">
+        <p>Funded by: …</p>
+      </div> -->
+      <p class="label-s">&copy; <span data-year>2026</span> MDDB America | All Rights Reserved</p>
     </div>
   </div>
-</div>
-
-<footer>
-<div class="footer-grid">
-<div class="footer-brand">
-<a href="../index.html" class="footer-logo"><img src="../assets/images/logos/site-logo.png" alt="MDDB America" /></a>
-<p>A unified, FAIR-compliant repository for molecular dynamics biosimulation data across the Americas.</p>
-</div>
-<div><h4>Explore</h4><ul><li><a href="../index.html#about">About</a></li><li><a href="../index.html#goals">Goals & Vision</a></li><li><a href="partners.html">Partners</a></li><li><a href="publications.html">Publications</a></li></ul></div>
-<div><h4>Engage</h4><ul><li><a href="news.html">News</a></li><li><a href="events.html">Events</a></li><li><a href="community.html">Community</a></li><li><a href="../index.html#contact">Contact</a></li></ul></div>
-<div>
-<h4>Contact</h4>
-<ul>
-<li><a href="#" id="footer-email">Email Us</a></li>
-<li><a href="#">mddba.com</a></li>
-</ul>
-<div class="footer-social">
-<a href="https://x.com/mddbamerica" target="_blank" rel="noopener" aria-label="X (Twitter)">
-<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-</a>
-<a href="https://www.linkedin.com/company/mddba/" target="_blank" rel="noopener" aria-label="LinkedIn">
-<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-</a>
-</div>
-</div>
-</div>
-<div class="footer-bottom">© 2026 MDDB America | All Rights Reserved</div>
 </footer>
 
-<script>
-const u = 'info';
-const d = 'mddba' + '.com';
-const email = u + '@' + d;
-const footerEmail = document.getElementById('footer-email');
-if (footerEmail) footerEmail.href = 'mailto:' + email;
-</script>
-<script src="../assets/js/common.js"></script>
+<script src="../assets/js/site.js" defer></script>
+
 </body>
 </html>

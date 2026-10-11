@@ -10,7 +10,7 @@ Thank you for contributing to the MDDB America website. This project follows a s
 git checkout -b feature/your-feature-name
 ```
 3. Make your changes.
-4. Test locally by opening `index.html` or running a local HTTP server.
+4. Test locally with a local HTTP server (`python3 -m http.server 8000`). Opening the files directly (`file://`) will not load the logo mask.
 5. Commit with a clear message.
 6. Open a pull request describing your changes.
 
@@ -24,7 +24,9 @@ git checkout -b feature/your-feature-name
 ## Code Style
 
 - HTML should use semantic structure and valid nesting.
-- CSS should be organized in `assets/css/` and use existing variables where possible.
+- CSS should be organized in `assets/css/` and use the design tokens in `tokens.css` where possible.
+- Never add `overflow` to `html`, `body`, `main` or a `.scene` wrapper — it breaks the sticky scroll scenes on the home page.
+- Keep the nav, menu and footer markup identical across pages.
 - JavaScript should be placed in `assets/js/` and keep page-specific logic separated.
 
 ## File Organization
