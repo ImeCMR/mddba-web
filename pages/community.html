@@ -1,210 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Community | MDDB America</title>
+<meta name="description" content="MDDB America is built by the community, for the community. Ways to share data, develop tools, partner and get involved.">
+<link rel="canonical" href="https://mddba.com/pages/community">
+<meta name="theme-color" content="#0a1628">
+<script>document.documentElement.classList.add('js');</script>
 
-<!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
+<!-- Open Graph / X -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MDDB America">
+<meta property="og:url" content="https://mddba.com/pages/community">
+<meta property="og:title" content="Community | MDDB America">
+<meta property="og:description" content="MDDB America is built by the community, for the community. Ways to share data, develop tools, partner and get involved.">
+<meta property="og:image" content="https://mddba.com/assets/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@mddbamerica">
+<meta name="twitter:title" content="Community | MDDB America">
+<meta name="twitter:description" content="MDDB America is built by the community, for the community. Ways to share data, develop tools, partner and get involved.">
+<meta name="twitter:image" content="https://mddba.com/assets/images/og-image.jpg">
 
-<link rel="stylesheet" href="../assets/css/variables.css" />
-<link rel="stylesheet" href="../assets/css/main.css" />
-<link rel="stylesheet" href="../assets/css/pages.css" />
-<link rel="stylesheet" href="../assets/css/responsive.css" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-<style>
-.material-symbols-outlined {
-font-variation-settings:
-'FILL' 0,
-'wght' 400,
-'GRAD' 0,
-'opsz' 48;
-font-size: 48px;
-user-select: none;
-}
-/* SCROLL ANIMATIONS */
-.scroll-reveal {
-opacity: 0;
-transform: translateY(30px);
-transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.scroll-reveal.revealed {
-opacity: 1;
-transform: translateY(0);
-}
-.stagger-1 { transition-delay: 0.1s; }
-.stagger-2 { transition-delay: 0.2s; }
-.stagger-3 { transition-delay: 0.3s; }
-.stagger-4 { transition-delay: 0.4s; }
-.stagger-5 { transition-delay: 0.5s; }
-.stagger-6 { transition-delay: 0.6s; }
-.page-hero { background: linear-gradient(135deg, #0a3d6b 0%, #1a8cff 100%); color: #fff; padding: 8rem 4rem 4rem; text-align: center; }
-.page-hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
-.page-hero p { font-size: 1.1rem; opacity: 0.9; max-width: 560px; margin: 0 auto; line-height: 1.7; }
-.page-content-wrapper { padding: 5rem 4rem; flex: 1; width: 100%; }
-.page-content { max-width: 1100px; margin: 0 auto; width: 100%; }
-.section-label { font-size: 0.8rem; font-weight: 700; color: #1a8cff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.6rem; }
-.section-title { font-size: 2rem; font-weight: 800; color: #0a3d6b; margin-bottom: 1rem; line-height: 1.2; }
-.section-subtitle { font-size: 1rem; color: #555; line-height: 1.7; margin-bottom: 3rem; max-width: 660px; }
-.ways-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 4rem; }
-.way-card { background: #fff; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-align: center; transition: transform 0.2s; border-top: 4px solid #1a8cff; }
-.way-card:hover { transform: translateY(-4px); }
-.way-card .icon { width: 64px; height: 64px; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e8f2ff 0%, #d4e8ff 100%); border-radius: 16px; }
-.way-card .icon .material-symbols-outlined { font-size: 36px; color: #1a8cff; }
-.way-card h3 { font-size: 1.1rem; font-weight: 700; color: #0a3d6b; margin-bottom: 0.6rem; }
-.way-card p { font-size: 0.88rem; color: #666; line-height: 1.6; }
-.contact-banner { background: linear-gradient(135deg, #0a3d6b, #1a8cff); color: #fff; border-radius: 16px; padding: 3rem; text-align: center; }
-.contact-banner h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; }
-.contact-banner p { opacity: 0.9; max-width: 480px; margin: 0 auto 1.5rem; line-height: 1.7; }
-.btn-white { background: #fff; color: #0a3d6b; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 1rem; display: inline-block; transition: background 0.2s, transform 0.2s; }
-.btn-white:hover { background: #e8f2ff; transform: translateY(-2px); }
-footer { background: #0a1628; color: #fff; padding: 3rem 4rem; margin-top: auto; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1100px; margin: 0 auto 2rem; }
-a.footer-logo { display: inline-block; margin-bottom: 0.8rem; text-decoration: none; }
-a.footer-logo img { height: 36px; width: auto; object-fit: contain; }
-.footer-brand p { font-size: 0.88rem; line-height: 1.6; color: #fff; opacity: 0.85; margin-top: 0.5rem; }
-footer h4 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; }
-footer ul { list-style: none; }
-footer ul li { margin-bottom: 0.5rem; }
-footer ul li a { color: #fff; opacity: 0.85; text-decoration: none; font-size: 0.88rem; transition: opacity 0.2s; }
-footer ul li a:hover { opacity: 1; }
-.footer-social { display: flex; gap: 0.8rem; margin-top: 1rem; }
-.footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255,255,255,0.08); border-radius: 8px; color: #fff; transition: background 0.2s, color 0.2s; text-decoration: none; }
-.footer-social a:hover { background: #1a8cff; color: #fff; }
-.footer-bottom { border-top: 1px solid #1e2d42; padding-top: 1.5rem; text-align: center; font-size: 0.82rem; color: #fff; opacity: 0.85; max-width: 1100px; margin: 0 auto; }
-</style>
+<!-- Icons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Styles -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/pages.css">
 </head>
+
 <body>
-<nav>
-<a href="../index.html" class="nav-logo"><img src="../assets/images/logos/site-logo.png" alt="MDDB America" /></a>
-<ul>
-<li><a href="../index.html">Home</a></li>
-<li><a href="index.html#about">About</a></li>
-<li><a href="index.html#goals">Goals</a></li>
-<li><a href="partners.html">Partners</a></li>
-<li><a href="news.html">News</a></li>
-<li><a href="events.html">Events</a></li>
-<li><a href="publications.html">Publications</a></li>
-<li><a href="community.html" class="active">Community</a></li>
-</ul>
-<div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-</nav>
-<div class="mobile-menu" id="mobile-menu">
-<a href="../index.html">Home</a>
-<a href="index.html#about">About</a>
-<a href="index.html#goals">Goals</a>
-<a href="partners.html">Partners</a>
-<a href="news.html">News</a>
-<a href="events.html">Events</a>
-<a href="publications.html">Publications</a>
-<a href="community.html">Community</a>
-</div>
-<div class="page-hero">
-<h1>Community</h1>
-<p>MDDB America is built by the community, for the community. Join us in advancing open molecular dynamics data science.</p>
-</div>
-<div class="page-content-wrapper">
-<div class="page-content">
-<div class="scroll-reveal">
-<div class="section-label">Get Involved</div>
-<h2 class="section-title">Ways to Contribute</h2>
-<p class="section-subtitle">Whether you are a researcher, developer, or institution, there are many ways to contribute to and benefit from the MDDB America initiative.</p>
-</div>
-<div class="ways-grid">
-<div class="way-card scroll-reveal stagger-1">
-<div class="icon">
-<span class="material-symbols-outlined">folder_open</span>
-</div>
-<h3>Share Your Data</h3>
-<p>Contribute your molecular dynamics simulation datasets to the repository and make your research more impactful and reproducible.</p>
-</div>
-<div class="way-card scroll-reveal stagger-2">
-<div class="icon">
-<span class="material-symbols-outlined">terminal</span>
-</div>
-<h3>Develop Tools</h3>
-<p>Help build and improve the tools, APIs, and infrastructure that power the MDDB America platform.</p>
-</div>
-<div class="way-card scroll-reveal stagger-3">
-<div class="icon">
-<span class="material-symbols-outlined">groups</span>
-</div>
-<h3>Spread the Word</h3>
-<p>Help grow our community by sharing MDDB America with colleagues, at conferences, and in your publications.</p>
-</div>
-<div class="way-card scroll-reveal stagger-4">
-<div class="icon">
-<span class="material-symbols-outlined">handshake</span>
-</div>
-<h3>Become a Partner</h3>
-<p>Institutional partnerships help sustain and grow the platform. Reach out to explore partnership opportunities.</p>
-</div>
-<div class="way-card scroll-reveal stagger-5">
-<div class="icon">
-<span class="material-symbols-outlined">format_quote</span>
-</div>
-<h3>Cite Our Work</h3>
-<p>If you use MDDB America data in your research, please cite us to help demonstrate the value of open data in science.</p>
-</div>
-<div class="way-card scroll-reveal stagger-6">
-<div class="icon">
-<span class="material-symbols-outlined">mail</span>
-</div>
-<h3>Join the Mailing List</h3>
-<p>Stay informed about new datasets, platform updates, events, and opportunities to get involved.</p>
-</div>
-</div>
-<div class="contact-banner scroll-reveal">
-<h2>Ready to Get Involved?</h2>
-<p>Reach out to the MDDB America team and we'll find the best way for you or your institution to contribute.</p>
-<!-- Email assembled by JS below — not visible in raw HTML -->
-<a href="#" class="btn-white" id="contact-banner-email">Contact Us →</a>
-</div>
-</div>
-</div>
-<footer>
-<div class="footer-grid">
-<div class="footer-brand">
-<a href="../index.html" class="footer-logo"><img src="../assets/images/logos/site-logo.png" alt="MDDB America" /></a>
-<p>A unified, FAIR-compliant repository for molecular dynamics biosimulation data across the Americas.</p>
-</div>
-<div><h4>Explore</h4><ul><li><a href="index.html#about">About</a></li><li><a href="index.html#goals">Goals & Vision</a></li><li><a href="partners.html">Partners</a></li><li><a href="publications.html">Publications</a></li></ul></div>
-<div><h4>Engage</h4><ul><li><a href="news.html">News</a></li><li><a href="events.html">Events</a></li><li><a href="community.html">Community</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
-<div>
-<h4>Contact</h4>
-<ul>
-<!-- Email assembled by JS below — not visible in raw HTML -->
-<li><a href="#" id="footer-email">Email Us</a></li>
-<li><a href="#">mddba.com</a></li>
-</ul>
-<div class="footer-social">
-<a href="https://x.com/mddbamerica" target="_blank" rel="noopener" aria-label="X (Twitter)">
-<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-</a>
-<a href="https://www.linkedin.com/company/mddba/" target="_blank" rel="noopener" aria-label="LinkedIn">
-<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-</a>
-</div>
-</div>
-</div>
-<div class="footer-bottom">© 2026 MDDB America | All Rights Reserved</div>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13.5 6.5 19 12l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-arrow-ne" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M5 9h14M5 15h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/></g></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+  <symbol id="i-telegram" viewBox="0 0 24 24"><path fill="currentColor" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></symbol>
+</svg>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="../index.html" aria-label="MDDB America — home"><span class="logo__mark" aria-hidden="true"></span></a>
+    <button class="menu-btn" type="button" data-menu-open aria-haspopup="dialog" aria-expanded="false" aria-controls="menu">
+      <span>Menu</span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-menu"/></svg></span>
+    </button>
+  </div>
+</header>
+
+<dialog class="menu" id="menu" data-theme="dark" aria-label="Site menu">
+  <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:-14%;--y:-45%;--s:75vw;--o:.6"></span><span class="orb orb--deep" style="--x:55%;--y:35%;--s:70vw;--o:.9"></span><span class="orb orb--sky" style="--x:80%;--y:-25%;--s:32vw;--o:.4"></span></div>
+  <div class="wrap menu__top">
+    <a class="logo" href="../index.html" aria-label="MDDB America — home"><span class="logo__mark" aria-hidden="true"></span></a>
+    <button class="menu-btn" type="button" data-menu-close>
+      <span>Close</span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-close"/></svg></span>
+    </button>
+  </div>
+  <div class="wrap menu__body">
+    <form class="search" role="search" data-search>
+      <label class="label" for="menu-search">Search the site</label>
+      <div class="search__field">
+        <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-search"/></svg>
+        <input class="search__input" id="menu-search" type="search" name="q" placeholder="Nodes, FAIR data, events…" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-keyshortcuts="/" aria-controls="menu-search-results" aria-describedby="menu-search-status">
+        <kbd class="search__kbd" aria-hidden="true">/</kbd>
+        <button class="search__clear" type="button" aria-label="Clear search" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-close"/></svg></button>
+      </div>
+      <div class="search__hints"><span class="label-s">Try</span><button type="button" data-q="Florida Node">Florida Node</button><button type="button" data-q="FAIR principles">FAIR principles</button><button type="button" data-q="Nature Methods">Nature Methods</button><button type="button" data-q="Events">Events</button></div>
+      <p class="search__status label-s" id="menu-search-status" role="status"></p>
+      <ol class="search__results" id="menu-search-results" aria-label="Search results"></ol>
+    </form>
+    <nav class="menu__nav" aria-label="Main">
+      <ol class="menu__list">
+        <li style="--i:0"><a class="menu__link" href="../index.html"><span class="menu__index">01</span><span class="menu__text">Home</span></a></li>
+        <li style="--i:1"><a class="menu__link" href="../index.html#about"><span class="menu__index">02</span><span class="menu__text">About</span></a></li>
+        <li style="--i:2"><a class="menu__link" href="../index.html#nodes"><span class="menu__index">03</span><span class="menu__text">Nodes</span></a></li>
+        <li style="--i:3"><a class="menu__link" href="partners.html"><span class="menu__index">04</span><span class="menu__text">Partners</span></a></li>
+        <li style="--i:4"><a class="menu__link" href="news.html"><span class="menu__index">05</span><span class="menu__text">News</span></a></li>
+        <li style="--i:5"><a class="menu__link" href="events.html"><span class="menu__index">06</span><span class="menu__text">Events</span></a></li>
+        <li style="--i:6"><a class="menu__link" href="publications.html"><span class="menu__index">07</span><span class="menu__text">Publications</span></a></li>
+        <li style="--i:7"><a class="menu__link" href="community.html" aria-current="page"><span class="menu__index">08</span><span class="menu__text">Community</span></a></li>
+      </ol>
+    </nav>
+    <div class="menu__aside">
+      <p class="label">Interested in contributing?</p>
+      <a class="text-btn text-btn--xl" href="#" data-email><span>Get in <strong>touch!</strong></span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
+    </div>
+  </div>
+  <div class="wrap menu__meta">
+    <p class="label-s">&copy; <span data-year>2026</span> MDDB America. All rights reserved.</p>
+    <div class="social"><a href="https://x.com/mddbamerica" target="_blank" rel="noopener" aria-label="MDDB America on X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-x"/></svg></a><a href="https://www.linkedin.com/company/mddba/" target="_blank" rel="noopener" aria-label="MDDB America on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-linkedin"/></svg></a></div>
+  </div>
+</dialog>
+
+<main id="main">
+  <section class="page-hero" data-theme="dark">
+    <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:-10%;--y:-60%;--s:60vw;--o:.55"></span><span class="orb orb--deep" style="--x:55%;--y:-10%;--s:55vw;--o:.9"></span><span class="orb orb--sky" style="--x:78%;--y:40%;--s:26vw;--o:.3"></span></div>
+    <div class="wrap relative">
+      <p class="label">Community</p>
+      <h1 class="display-xl page-hero__title">Our <span class="grad">Community</span></h1>
+      <p class="text-xl page-hero__sub">MDDB America is built by the community, for the community. Join us in advancing open molecular dynamics data science.</p>
+    </div>
+  </section>
+
+  <section class="section" data-theme="light">
+    <div class="wrap">
+      <div class="block-head reveal">
+        <p class="label">Get Involved</p>
+        <h2 class="heading-l">Ways to Contribute</h2>
+        <p class="text-l muted">Whether you are a researcher, developer, or institution, there are many ways to contribute to and benefit from the MDDB America initiative.</p>
+      </div>
+      <ol class="ways">
+        <li class="way reveal" style="--d:0.00s">
+          <span class="way__num label">01</span>
+          <h3 class="heading-xs">Share Your Data</h3>
+          <p>Contribute your molecular dynamics simulation datasets to the repository and make your research more impactful and reproducible.</p>
+        </li>
+        <li class="way reveal" style="--d:0.08s">
+          <span class="way__num label">02</span>
+          <h3 class="heading-xs">Develop Tools</h3>
+          <p>Help build and improve the tools, APIs, and infrastructure that power the MDDB America platform.</p>
+        </li>
+        <li class="way reveal" style="--d:0.16s">
+          <span class="way__num label">03</span>
+          <h3 class="heading-xs">Spread the Word</h3>
+          <p>Help grow our community by sharing MDDB America with colleagues, at conferences, and in your publications.</p>
+        </li>
+        <li class="way reveal" style="--d:0.00s">
+          <span class="way__num label">04</span>
+          <h3 class="heading-xs">Become a Partner</h3>
+          <p>Institutional partnerships help sustain and grow the platform. Reach out to explore partnership opportunities.</p>
+        </li>
+        <li class="way reveal" style="--d:0.08s">
+          <span class="way__num label">05</span>
+          <h3 class="heading-xs">Cite Our Work</h3>
+          <p>If you use MDDB America data in your research, please cite us to help demonstrate the value of open data in science.</p>
+        </li>
+        <li class="way reveal" style="--d:0.16s">
+          <span class="way__num label">06</span>
+          <h3 class="heading-xs">Join the Mailing List</h3>
+          <p>Stay informed about new datasets, platform updates, events, and opportunities to get involved.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="cta" data-theme="dark">
+    <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:50%;--y:-30%;--s:65vw;--o:.45"></span><span class="orb orb--deep" style="--x:-25%;--y:30%;--s:60vw;--o:.9"></span></div>
+    <div class="fes" aria-hidden="true" data-landscape><img src="../assets/images/energy-landscape.svg" alt="" width="1200" height="800" loading="lazy" decoding="async"></div>
+    <div class="wrap cta__inner">
+      <p class="label reveal">Contact</p>
+      <h2 class="heading-l cta__title reveal">Ready to Get <span class="grad">Involved?</span></h2>
+      <p class="text-l cta__text reveal">Reach out to the MDDB America team and we'll find the best way for you or your institution to contribute.</p>
+      <div class="btn-row reveal">
+        <a class="text-btn" href="#" data-email><span>Contact <strong>Us</strong></span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" data-theme="dark">
+  <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:-20%;--y:25%;--s:60vw;--o:.4"></span><span class="orb orb--deep" style="--x:62%;--y:-35%;--s:50vw;--o:.8"></span></div>
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="logo" href="../index.html" aria-label="MDDB America — home"><span class="logo__mark" aria-hidden="true"></span></a>
+        <p class="footer__tagline text-l">A unified, FAIR-compliant repository for molecular dynamics biosimulation data across the Americas.</p>
+      </div>
+      <nav class="footer__col" aria-label="Explore">
+        <h2 class="footer__heading">Explore</h2>
+        <ul class="footer__links">
+          <li><a class="u-link" href="../index.html#about">About</a></li>
+          <li><a class="u-link" href="../index.html#goals">Goals &amp; Vision</a></li>
+          <li><a class="u-link" href="../index.html#nodes">MDDB Nodes</a></li>
+          <li><a class="u-link" href="partners.html">Partners</a></li>
+          <li><a class="u-link" href="publications.html">Publications</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-label="Engage">
+        <h2 class="footer__heading">Engage</h2>
+        <ul class="footer__links">
+          <li><a class="u-link" href="news.html">News</a></li>
+          <li><a class="u-link" href="events.html">Events</a></li>
+          <li><a class="u-link" href="community.html">Community</a></li>
+          <li><a class="u-link" href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__col">
+        <h2 class="footer__heading">Contact</h2>
+        <ul class="footer__links">
+          <li><a class="u-link" href="#" data-email>Email us</a></li>
+          <li><a class="u-link" href="https://mddba.com">mddba.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="social"><a href="https://x.com/mddbamerica" target="_blank" rel="noopener" aria-label="MDDB America on X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-x"/></svg></a><a href="https://www.linkedin.com/company/mddba/" target="_blank" rel="noopener" aria-label="MDDB America on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-linkedin"/></svg></a></div>
+      <!-- Funder: add the logo to assets/images/funder/, fill in the text and uncomment.
+      <div class="funder">
+        <img src="../assets/images/funder/eu-logo.png" alt="" height="48">
+        <p>Funded by: …</p>
+      </div> -->
+      <p class="label-s">&copy; <span data-year>2026</span> MDDB America | All Rights Reserved</p>
+    </div>
+  </div>
 </footer>
-<script src="../assets/js/common.js"></script>
-<script>
-  const u = 'info';
-  const d = 'mddba' + '.com';
-  const email = u + '@' + d;
 
-  const contactBannerEmail = document.getElementById('contact-banner-email');
-  if (contactBannerEmail) contactBannerEmail.href = 'mailto:' + email;
+<script src="../assets/js/site.js" defer></script>
+<script src="../assets/js/landscape.js" defer></script>
 
-  const footerEmail = document.getElementById('footer-email');
-  if (footerEmail) footerEmail.href = 'mailto:' + email;
-</script>
 </body>
 </html>
