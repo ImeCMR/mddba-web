@@ -46,7 +46,7 @@ mddb-web_v2/
 │   │   └── data.js             Counter values and node/institution coordinates for the globe
 │   ├── data/fair-protein.json  The FAIR viewer's molecule (adenylate kinase, open + closed)
 │   ├── images/                 Optimised images (EXIF/GPS stripped), logo mask, OG image, energy-landscape.svg
-│   └── videos/                 hero.webm / hero.mp4 (≈2.6 MB) + poster
+│   └── videos/                 hero.mp4 / hero.webm (≈2.6 MB) + poster
 ├── tools/build-landscape.js    Regenerates energy-landscape.svg from landscape.js (node, no dependencies)
 ├── tools/build-fair-protein.js Regenerates assets/data/fair-protein.json from the PDB (node 18+, no dependencies)
 ├── sitemap.xml, robots.txt, site.webmanifest, vercel.json
@@ -88,6 +88,7 @@ The footer has a commented-out `.funder` block. Add the logo to `assets/images/f
 - **Never put `overflow` on `html`, `body`, `main` or a `.scene` wrapper.** It breaks `position: sticky`. Glows sit in `.orb-layer`, which clips itself.
 - **Nav colour** flips between light and dark automatically from the `data-theme="dark|light"` attribute on each section.
 - **Reduced motion**: no pinning, scrubbing or video (the poster is shown instead), and counters jump straight to their values.
+- **Hero video**: the MP4 (H.264) is listed first because iPhones play it reliably, while their WebM support is patchy. If the browser refuses autoplay (iPhone Low Power Mode, in-app browsers such as LinkedIn or WhatsApp), the video starts on the visitor's first tap; it also resumes when the tab is shown again.
 - **Email links**: any element with `data-email` gets `mailto:info@mddba.com` at runtime.
 - **Site search** (menu): there is no index file to maintain. The first time someone uses the search, `site.js` fetches the pages linked from the menu, plus the pages those link to (so new news articles are found automatically once they are linked from `news.html`), and indexes their `<main>` content. Home is split into its sections (`#about`, `#goals`, `#nodes`, `#contact`). News cards, buttons and decorative elements are skipped. The search needs `http(s)://`; over `file://` it only lists the menu pages.
 - **FAIR viewer** (home page): `assets/js/fair3d.js` draws one MD dataset with particles, in the hero video's style but in deep blues straight on the light section (no panel; the canvas fades out at its edges). The molecule is E. coli adenylate kinase in its open (PDB 4AKE) and closed (PDB 1AKE) forms, from `assets/data/fair-protein.json`. It is shown as its molecular surface: a smooth Gaussian surface meshed by the build tool, with baked ambient occlusion, coloured by domain (NMP indigo, CORE blue, LID cyan). The surface closes and opens with the protein. As you scroll, the same particles move through four states:
@@ -97,7 +98,7 @@ The footer has a commented-out `.funder` block. Add the logo to `assets/images/f
   - **R:** the site's own free-energy landscape is raised into 3D contour lines, with the site's walker running on it; the small protein above opens or closes with the walker's basin.
 
   The HUD text (ID, metadata, API path, formats, axis labels) is plain HTML in `index.html`; it is illustrative, so edit it there. Phones get the same viewer with fewer particles. In the stacked layout (reduced motion), each principle gets its own small panel showing a still frame. Without WebGL, the same picture is drawn with the 2D canvas, with the surface as lit dots. To use another protein, edit the PDB IDs in `tools/build-fair-protein.js` and run it.
-- **Cache-busting:** the home page loads its CSS and JS with a version tag (`…?v=20261011.4`). After changing any of them, raise that value in `index.html` so browsers fetch the new files. When previewing with `python3 -m http.server`, a hard refresh (Ctrl+Shift+R / Cmd+Shift+R) also works.
+- **Cache-busting:** the home page loads its CSS and JS with a version tag (`…?v=20261011.5`). After changing any of them, raise that value in `index.html` so browsers fetch the new files. When previewing with `python3 -m http.server`, a hard refresh (Ctrl+Shift+R / Cmd+Shift+R) also works.
 - **Energy landscape** ("Get involved" bands on Home, Partners and Community): the contour lines are the static `assets/images/energy-landscape.svg`; `landscape.js` animates a particle on the same surface (paused off-screen; a still trajectory with reduced motion). On phones the map sits below the buttons, framed on the basins the particle explores. To change the shape, edit the wells in `assets/js/landscape.js` and run `node tools/build-landscape.js`.
 
 ## Deployment
