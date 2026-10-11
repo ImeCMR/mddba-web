@@ -262,6 +262,59 @@
 .js-scenes .node__inner { min-height: 0; overflow: hidden; }
 .js-scenes .node.is-active .node__body { grid-template-rows: 1fr; opacity: 1; visibility: visible; }
 
+/* ── Pinned scenes on phones / portrait screens ───────────────────────────
+   The same scroll story in one column: the 3D on top, the active step below
+   it, and the step bars as a row of short segments. */
+@media (max-width: 767px), (max-aspect-ratio: 4/5) {
+  .js-scenes .scene__sticky { padding-top: var(--nav-h); padding-bottom: 12px; }
+  .js-scenes .scene__bars { grid-auto-flow: column; grid-auto-columns: 40px; justify-content: start; gap: 8px; }
+  .js-scenes .scene__bars button { padding: 10px 0; margin: -10px 0; }
+  .js-scenes .scene__bar { width: 100%; height: 3px; }
+  .js-scenes .scene__bar i { transform: scaleX(var(--p, 0)); transform-origin: left; }
+
+  .js-scenes .scene--fair .scene__grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .js-scenes .scene--fair .scene__media { order: -1; }
+  .js-scenes .fair-viewer { height: clamp(250px, 50svh, 540px); }
+  .js-scenes .scene--fair .scene__copy { grid-template-columns: minmax(0, 1fr); gap: 18px; align-items: start; }
+  .js-scenes .fair-step { transform: translateY(16px); }
+  .js-scenes .fair-step__letter { font-size: 3rem; margin-bottom: 4px; }
+  .js-scenes .fair-step__title { font-size: var(--fs-h-xs); letter-spacing: -0.03em; }
+  .js-scenes .fair-step p { font-size: 1rem; margin-top: 8px; }
+  /* compact HUD */
+  .js-scenes .fair-viewer__chrome { font-size: 0.625rem; gap: 8px; }
+  .js-scenes .fair-hud__card { max-width: 190px; padding: 9px 11px; border-radius: 11px; font-size: 0.6875rem; line-height: 1.4; }
+  .js-scenes .fair-hud__eyebrow { font-size: 0.5625rem; margin-bottom: 3px; }
+  .js-scenes .fair-hud__id { font-size: 0.9375rem; }
+  .js-scenes .fair-hud__meta { margin-top: 4px; font-size: 0.5938rem; }
+  .js-scenes .fair-hud__code { font-size: 0.625rem; }
+  .js-scenes .fair-hud__bar { margin-top: 8px; }
+  .js-scenes .fair-hud--find .fair-hud__card { max-width: 224px; right: 0; top: auto; bottom: 5%; }
+  .js-scenes .fair-hud--access .fair-hud__card { max-width: none; right: 0; bottom: 4%; }
+  .js-scenes .fair-chip { padding: 4px 8px; font-size: 0.625rem; }
+  .js-scenes .fair-hud__note { font-size: 0.5625rem; bottom: 1%; }
+  .js-scenes .fair-hud--reuse .fair-hud__note { top: auto; right: auto; bottom: 1%; left: 50%; transform: translateX(-50%); }
+  .js-scenes .fair-hud__axis { font-size: 0.5938rem; }
+
+  .js-scenes .nodes .scene__grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .js-scenes .nodes .scene__copy { display: contents; }
+  .js-scenes .nodes__title { margin-top: 10px; }
+  .js-scenes .nodes .globe-wrap { order: 3; margin: 16px auto 26px; max-width: min(100%, 38svh); }
+  .js-scenes .node-list { position: relative; display: grid; margin-top: 0; padding-top: 22px; }
+  .js-scenes .node { grid-area: 1 / 1; position: static; padding: 0; }
+  .js-scenes .node .scene__bar { top: 0; bottom: auto; height: 3px; width: calc((100% - 16px) / 3); }
+  .js-scenes .node:nth-child(2) .scene__bar { left: calc((100% - 16px) / 3 + 8px); }
+  .js-scenes .node:nth-child(3) .scene__bar { left: calc((100% - 16px) / 3 * 2 + 16px); }
+  .js-scenes .node > :not(.scene__bar) {
+    opacity: 0; visibility: hidden; transform: translateY(16px);
+    transition: opacity .5s ease, transform .7s var(--ease-out), visibility .5s;
+  }
+  .js-scenes .node.is-active > :not(.scene__bar) { opacity: 1; visibility: visible; transform: none; }
+  .js-scenes .node:not(.is-active) .node__name button { opacity: 1; }
+  .js-scenes .nodes .node__body { grid-template-rows: 1fr; }
+  .js-scenes .node__inner p { margin-top: 8px; }
+  .js-scenes .node__inner .text-btn { margin-top: 12px; }
+}
+
 /* ── News + CTA ───────────────────────────────────────────────────────── */
 .news-home { position: relative; }
 

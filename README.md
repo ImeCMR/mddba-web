@@ -84,7 +84,7 @@ The footer has a commented-out `.funder` block. Add the logo to `assets/images/f
 
 ## Behaviour notes
 
-- **Scroll scenes** (FAIR, Nodes) use `position: sticky` inside tall wrappers; ScrollTrigger only reports progress. They switch on with `html.js-scenes`, which is added only on screens ≥768 px wide that are not tall portrait and have no reduced-motion preference. Everywhere else, and without JavaScript, the content is a normal stacked layout.
+- **Scroll scenes** (FAIR, Nodes) use `position: sticky` inside tall wrappers; ScrollTrigger only reports progress. They switch on with `html.js-scenes`, which is added on every screen size unless the visitor prefers reduced motion. Wide screens get the side-by-side layout; phones and portrait tablets (`max-width: 767px` or `max-aspect-ratio: 4/5`) get the same scenes in one column, with the 3D on top and the active step below. With reduced motion, and without JavaScript, the content is a normal stacked layout.
 - **Never put `overflow` on `html`, `body`, `main` or a `.scene` wrapper.** It breaks `position: sticky`. Glows sit in `.orb-layer`, which clips itself.
 - **Nav colour** flips between light and dark automatically from the `data-theme="dark|light"` attribute on each section.
 - **Reduced motion**: no pinning, scrubbing or video (the poster is shown instead), and counters jump straight to their values.
@@ -96,9 +96,9 @@ The footer has a commented-out `.funder` block. Add the logo to `assets/images/f
   - **I:** the surface turns see-through and the cartoon ribbon forms inside it, while file formats stream in.
   - **R:** the site's own free-energy landscape is raised into 3D contour lines, with the site's walker running on it; the small protein above opens or closes with the walker's basin.
 
-  The HUD text (ID, metadata, API path, formats, axis labels) is plain HTML in `index.html`; it is illustrative, so edit it there. In the stacked layout (phones, reduced motion), each principle gets its own small panel, which is a still frame with reduced motion. Without WebGL, the same picture is drawn with the 2D canvas, with the surface as lit dots. To use another protein, edit the PDB IDs in `tools/build-fair-protein.js` and run it.
-- **Cache-busting:** the home page loads its CSS and JS with a version tag (`…?v=20261011.3`). After changing any of them, raise that value in `index.html` so browsers fetch the new files. When previewing with `python3 -m http.server`, a hard refresh (Ctrl+Shift+R / Cmd+Shift+R) also works.
-- **Energy landscape** ("Get involved" bands on Home, Partners and Community): the contour lines are the static `assets/images/energy-landscape.svg`; `landscape.js` animates a particle on the same surface (paused off-screen; a still trajectory with reduced motion). To change the shape, edit the wells in `assets/js/landscape.js` and run `node tools/build-landscape.js`.
+  The HUD text (ID, metadata, API path, formats, axis labels) is plain HTML in `index.html`; it is illustrative, so edit it there. Phones get the same viewer with fewer particles. In the stacked layout (reduced motion), each principle gets its own small panel showing a still frame. Without WebGL, the same picture is drawn with the 2D canvas, with the surface as lit dots. To use another protein, edit the PDB IDs in `tools/build-fair-protein.js` and run it.
+- **Cache-busting:** the home page loads its CSS and JS with a version tag (`…?v=20261011.4`). After changing any of them, raise that value in `index.html` so browsers fetch the new files. When previewing with `python3 -m http.server`, a hard refresh (Ctrl+Shift+R / Cmd+Shift+R) also works.
+- **Energy landscape** ("Get involved" bands on Home, Partners and Community): the contour lines are the static `assets/images/energy-landscape.svg`; `landscape.js` animates a particle on the same surface (paused off-screen; a still trajectory with reduced motion). On phones the map sits below the buttons, framed on the basins the particle explores. To change the shape, edit the wells in `assets/js/landscape.js` and run `node tools/build-landscape.js`.
 
 ## Deployment
 
