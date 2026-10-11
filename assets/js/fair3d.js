@@ -19,12 +19,14 @@
 // Plain WebGL 1; if WebGL is unavailable the same picture
 // is drawn with the 2D canvas. Positions are computed on the CPU every frame.
 // Starts by itself and follows the "scene:progress" events home.js sends for
-// the pinned scene. In the stacked layout (phones, reduced motion) each
-// principle gets a small panel showing its own state instead.
+// the pinned scene (on phones too, with fewer particles). In the stacked
+// layout (reduced motion) each principle gets a small panel showing its own
+// state instead.
 (() => {
   const TAU = Math.PI * 2;
   const DIST = 4.5;        // camera distance
   const FIT = 1.3;         // world radius that fits the panel's shorter side
+  const FIT_SMALL = 1.5;   // the same on phone-sized panels, leaving room for the HUD cards
   const SPECIAL = 48;      // glowing dot + walker trail
   const PERIOD = 7;        // seconds for one open -> closed -> open cycle
   //            F     A     I     R
@@ -262,7 +264,7 @@
   const pointPx = (w, h, dpr) => 3 * dpr * clamp(Math.min(w, h) / 600, 0.6, 1.3);
   const blurPx = (w, h, dpr) => 2.4 * dpr * clamp(Math.min(w, h) / 600, 0.6, 1.3);
   const fitScale = (w, h) => {
-    const k = (0.94 * DIST) / FIT;
+    const k = (0.94 * DIST) / (Math.min(w, h) < 480 ? FIT_SMALL : FIT);
     return w >= h ? [(k * h) / w, k] : [k, (k * w) / h];
   };
 
@@ -1006,11 +1008,12 @@
       const title = s.querySelector('.fair-step__title');
       return `${letter ? letter.textContent.trim() : ''} · ${title ? title.textContent.trim() : ''}`;
     });
+    const phone = window.matchMedia('(max-width: 767px)').matches;
     const main = viewer({
       canvas: figure.querySelector('canvas'),
       src,
-      counts: { protein: 5600, library: 3000, dust: 420 },
-      dprMax: 2,
+      counts: phone ? { protein: 3200, library: 1800, dust: 220 } : { protein: 5600, library: 3000, dust: 420 },
+      dprMax: phone ? 1.75 : 2,
       tilt: true,
       onFail: fail,
       hud: {
@@ -1027,7 +1030,7 @@
         axes: Array.from(figure.querySelectorAll('.fair-hud__axis')),
       },
     });
-    // stacked layout: a small panel on each principle, showing its own state
+    // stacked layout (reduced motion): a small panel on each principle, showing its own state
     scene.querySelectorAll('.fair-step').forEach((stepEl, k) => {
       const mini = document.createElement('div');
       mini.className = 'fair-mini';

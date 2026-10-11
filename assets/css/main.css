@@ -449,7 +449,16 @@ ol, ul { margin: 0; padding: 0; }
 .fes__trail { fill: none; stroke: #cfe8ff; stroke-width: 1.6px; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
 .fes__head { fill: #fff; }
 @media (max-width: 991px) { .fes { right: -20vw; opacity: .7; } }
-@media (max-width: 767px) { .fes { width: 170vw; min-width: 0; right: -78vw; top: auto; bottom: -22vw; transform: none; opacity: .42; } }
+/* Phones: the part of the map the walker explores (x ~ 290-1090) spans the
+   screen under the buttons, fading out towards the copy above */
+@media (max-width: 767px) {
+  .cta { padding-bottom: calc(clamp(96px, 12vw, 168px) + 40vw); }
+  .fes {
+    width: 150vw; min-width: 0; left: -36vw; right: auto; top: auto; bottom: -8vw; transform: none; opacity: .75;
+    -webkit-mask: linear-gradient(180deg, transparent 6%, #000 40%);
+    mask: linear-gradient(180deg, transparent 6%, #000 40%);
+  }
+}
 .cta__title { margin-top: 20px; max-width: 18ch; }
 .cta__text { margin-top: 28px; max-width: 620px; color: var(--fg-muted); }
 .cta .btn-row { margin-top: 48px; }

@@ -102,7 +102,7 @@
       if (globe) globe.setProgress(e.detail.progress);
       else pending = e.detail.progress;
     });
-    // Stacked layout (mobile / reduced motion): hovering or focusing a node
+    // Stacked layout (reduced motion): hovering or focusing a node
     // turns the globe towards it.
     nodesScene.querySelectorAll('.node').forEach((node, i) => {
       const focusNode = () => {
@@ -131,15 +131,15 @@
     });
   });
 
-  /* ── Scroll scenes (desktop, motion allowed) ── */
+  /* ── Scroll scenes (any screen, motion allowed; home.css lays them out
+     side by side on wide screens and stacked on phones / portrait) ── */
   if (!window.gsap || !window.ScrollTrigger) return;
   const { gsap, ScrollTrigger } = window;
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.config({ ignoreMobileResize: true });
 
   const mm = gsap.matchMedia();
-  // Pinned scenes need a landscape-ish viewport; tall portrait tablets get the stacked layout.
-  mm.add('(min-width: 768px) and (min-aspect-ratio: 4/5) and (prefers-reduced-motion: no-preference)', () => {
+  mm.add('(prefers-reduced-motion: no-preference)', () => {
     html.classList.add('js-scenes');
 
     document.querySelectorAll('.scene').forEach((scene) => {
