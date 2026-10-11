@@ -11,11 +11,12 @@
   const video = document.querySelector('.hero__video');
   const about = document.getElementById('about');
   let covered = false;
+  let blocked = false; // autoplay refused (iOS Low Power Mode, in-app browsers)
   const playVideo = () => {
     if (!video || reduceMQ.matches || covered) return;
     video.preload = 'auto';
     const p = video.play();
-    if (p && p.catch) p.catch(() => {});
+    if (p && p.catch) p.catch((e) => { if (e && e.name === 'NotAllowedError') blocked = true; });
   };
   const pauseVideo = () => { if (video && !video.paused) video.pause(); };
   if (video && about) {
@@ -34,6 +35,26 @@
     check();
     playVideo();
     reduceMQ.addEventListener('change', () => (reduceMQ.matches ? pauseVideo() : playVideo()));
+
+    // When autoplay is refused, a tap anywhere counts as a user gesture: start
+    // the video then (pausing again at once if the hero is already covered,
+    // which still lets it play later without another tap).
+    const GESTURES = ['touchend', 'click', 'keydown'];
+    const unlock = () => {
+      if (!blocked || reduceMQ.matches) return;
+      blocked = false;
+      video.preload = 'auto';
+      const p = video.play();
+      if (!p || !p.then) return;
+      p.then(() => {
+        GESTURES.forEach((type) => document.removeEventListener(type, unlock));
+        if (covered) pauseVideo();
+      }).catch((e) => { if (e && e.name === 'NotAllowedError') blocked = true; });
+    };
+    GESTURES.forEach((type) => document.addEventListener(type, unlock, { passive: true }));
+    // Phones pause the video in background tabs; resume when the page is shown again
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) playVideo(); });
+    window.addEventListener('pageshow', playVideo);
   }
 
   /* ── Counters (values from data.js; HTML holds the no-JS fallback) ── */
