@@ -60,8 +60,13 @@
   /* ── Counters (values from data.js; HTML holds the no-JS fallback) ── */
   const stats = document.querySelector('.stats');
   if (stats) {
+    // every node on the globe: the main nodes, plus the sites that are not at a
+    // main node's own location (UF hosts the Florida node; IRB Barcelona & BSC
+    // host the Barcelona one)
+    const mains = data.nodes || [];
+    const atMain = (p) => mains.some((n) => Math.abs(n.lon - p.lon) < 0.1 && Math.abs(n.lat - p.lat) < 0.1);
     const values = {
-      nodes: (data.nodes || []).length,
+      nodes: mains.length + (data.sites || []).filter((p) => !atMain(p)).length,
       partners: (data.partners || []).length,
       publications: (data.publications || []).length,
       events: (data.events || []).length

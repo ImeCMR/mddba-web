@@ -1,4 +1,4 @@
-// globe.js — orthographic globe for the "Explore MDDB Nodes" section.
+// globe.js — orthographic globe for the "Explore MDDB Main Nodes" section.
 // Needs d3-array + d3-geo + topojson-client (loaded from the CDN in index.html).
 //
 //   const globe = MDDBGlobe(canvas, { nodes, sites, landUrl });
@@ -19,10 +19,13 @@ window.MDDBGlobe = function MDDBGlobe(canvas, opts) {
   const path = d3.geoPath(projection, ctx);
   const graticule = d3.geoGraticule10();
   const sphere = { type: 'Sphere' };
-  const arcs = nodes.slice(1).map((n) => ({
-    type: 'LineString',
-    coordinates: [[nodes[0].lon, nodes[0].lat], [n.lon, n.lat]]
-  }));
+  // dotted network lines: the first main node to the other main nodes, and
+  // each site to the main node of its region (none for a site at its main
+  // node's own location)
+  const arcs = nodes.slice(1).map((n) => [nodes[0], n])
+    .concat(sites.map((p) => [nodes.find((n) => n.region && n.region === p.region), p]))
+    .filter(([a, b]) => a && d3.geoDistance([a.lon, a.lat], [b.lon, b.lat]) > 0.01) // ~60 km
+    .map(([a, b]) => ({ type: 'LineString', coordinates: [[a.lon, a.lat], [b.lon, b.lat]] }));
 
   let land = null;
   let size = 0;
@@ -102,13 +105,13 @@ window.MDDBGlobe = function MDDBGlobe(canvas, opts) {
     ctx.beginPath(); path(sphere);
     ctx.strokeStyle = 'rgba(124,196,255,0.32)'; ctx.lineWidth = 1; ctx.stroke();
 
-    // network arcs (main node → other nodes)
+    // network arcs
     ctx.setLineDash([3, 5]);
     ctx.beginPath(); arcs.forEach((a) => path(a));
     ctx.strokeStyle = 'rgba(124,196,255,0.6)'; ctx.lineWidth = 1.2; ctx.stroke();
     ctx.setLineDash([]);
 
-    // partner institutions
+    // nodes inside each main node
     sites.forEach((p) => {
       const v = facing(p.lon, p.lat);
       if (!v) return;
@@ -145,7 +148,8 @@ window.MDDBGlobe = function MDDBGlobe(canvas, opts) {
         const h = 28;
         let lx = x + 16;
         if (lx + w > s - 4) lx = x - 16 - w;
-        const ly = clamp(y - h - 10, 4, s - h - 4);
+        if (lx < 4) lx = clamp(x - w / 2, 4, s - w - 4); // no room at either side: centre it under the marker
+        const ly = clamp(y + 12, 4, s - h - 4); // below, clear of the lines (the European nodes lie north of Barcelona)
         roundRect(lx, ly, w, h, 14);
         ctx.fillStyle = 'rgba(10,22,40,0.82)'; ctx.fill();
         ctx.strokeStyle = 'rgba(124,196,255,0.45)'; ctx.lineWidth = 1; ctx.stroke();
