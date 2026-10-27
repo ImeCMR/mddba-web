@@ -33,12 +33,13 @@ window.siteData = {
   nodes: [
     { name: 'MDDB Europe',  region: 'Europe',  place: 'Barcelona, Spain',     lon: 2.1734,   lat: 41.3851, url: 'https://mdposit.mddbr.eu' },
     { name: 'MDDB America', region: 'America', place: 'Gainesville, Florida', lon: -82.3248, lat: 29.6516, url: 'https://devmddb.rc.ufl.edu/#/browse' },
-    // Placed at the centre of Japan until the hosting city is confirmed.
-    { name: 'MDDB Japan',   region: 'Japan',   place: 'Japan',                lon: 138.25,   lat: 36.2,    url: 'https://japan.mddba.org' }
+    // Placed at the centre of Japan until the hosting city is confirmed. No
+    // site yet: the list shows "Coming soon" instead of a link.
+    { name: 'MDDB Japan',   region: 'Japan',   place: 'Japan',                lon: 138.25,   lat: 36.2,    url: null }
   ],
 
-  // Nodes inside each main node (from the v1 map). The globe links each one to
-  // the main node with the same region. Pairs that sit a few km apart are
+  // Nodes inside each main node (from the v1 map). The globe joins each one to
+  // the main node with the same region by a dotted line. Pairs that sit a few km apart are
   // merged so their markers don't overlap.
   sites: [
     { name: 'University of Florida',                                 region: 'America', lon: -82.3248, lat: 29.6516 },

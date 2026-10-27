@@ -234,6 +234,7 @@
 .node__name button:hover { color: var(--blue-300); }
 .node__inner p { margin-top: 12px; max-width: 460px; color: var(--fg-muted); }
 .node__inner .text-btn { margin-top: 18px; }
+.node__soon { display: inline-block; margin-top: 18px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; color: var(--fg-muted); }
 
 .globe-wrap {
   position: relative;
@@ -313,7 +314,7 @@
   .js-scenes .node:not(.is-active) .node__name button { opacity: 1; }
   .js-scenes .nodes .node__body { grid-template-rows: 1fr; }
   .js-scenes .node__inner p { margin-top: 8px; }
-  .js-scenes .node__inner .text-btn { margin-top: 12px; }
+  .js-scenes .node__inner .text-btn, .js-scenes .node__soon { margin-top: 12px; }
 }
 
 /* ── News + CTA ───────────────────────────────────────────────────────── */
