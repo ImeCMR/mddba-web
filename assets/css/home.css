@@ -223,7 +223,8 @@
 .nodes__title { order: 2; }
 .nodes .globe-wrap { order: 3; margin-top: 40px; margin-bottom: 24px; }
 .node-list { order: 4; }
-.nodes__title { margin-top: 20px; max-width: 14ch; }
+.nodes__title { margin-top: 20px; }
+.nodes__title .grad { white-space: nowrap; } /* breaks as "Explore / MDDB Main Nodes" */
 .node-list { list-style: none; margin-top: 40px; }
 .node { position: relative; padding: 22px 0 22px 0; border-top: 1px solid var(--line); }
 .node:last-child { border-bottom: 1px solid var(--line); }

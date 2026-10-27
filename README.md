@@ -7,7 +7,7 @@ v2 keeps the original colour theme (navy `#0a1628`, primary blue `#1a8cff`, ligh
 - large light-weight display type (Geist), eyebrow labels and gradient-highlighted statements
 - a dark hero with the molecule video; the light About section slides over it as you scroll
 - a full-screen "Menu" overlay on every screen size, with a site search (press `/` or Ctrl/⌘ K anywhere to jump to it)
-- two pinned scroll scenes on the home page: the FAIR principles (one MD dataset, a particle protein, is followed through Findable, Accessible, Interoperable and Reusable) and the MDDB nodes (an interactive globe rotates to each node)
+- two pinned scroll scenes on the home page: the FAIR principles (one MD dataset, a particle protein, is followed through Findable, Accessible, Interoperable and Reusable) and the MDDB main nodes (Europe, America and Japan, each grouping several nodes; an interactive globe rotates to each one)
 - a top-down free-energy landscape (contour map) behind the "Get involved" bands, with a particle running Langevin dynamics across its basins
 - round "text buttons", soft blue glows and a navy/light rhythm between sections
 
@@ -77,7 +77,7 @@ Copy the `<li class="row pub-row">` block in `pages/publications.html`, then add
 Copy the University of Florida `<li>` in `pages/partners.html` (logo in `assets/images/partners/`), optionally add the logo to the "Partnering with…" strip on the home page, then add the name to `partners` in `assets/js/data.js`.
 
 ### Nodes and the globe
-The node list is in `index.html` (`.node-list`). The globe reads `nodes` and `sites` (other institutions) from `assets/js/data.js`; keep the order of `nodes` the same as the list.
+The main-node list (MDDB Europe, America, Japan) is in `index.html` (`.node-list`); the "MDDB Main Nodes" counter counts `nodes` in `data.js`. The globe reads `nodes` and `sites` (the nodes inside each main node) from `assets/js/data.js`; keep the order of `nodes` the same as the list. Each site is linked on the globe to the main node with the same `region` (for example, every `Europe` site to Barcelona), so a new node only needs a `sites` entry with its region.
 
 ### Funder logo
 The footer has a commented-out `.funder` block. Add the logo to `assets/images/funder/`, fill in the text and uncomment it on every page.
@@ -98,7 +98,7 @@ The footer has a commented-out `.funder` block. Add the logo to `assets/images/f
   - **R:** the site's own free-energy landscape is raised into 3D contour lines, with the site's walker running on it; the small protein above opens or closes with the walker's basin.
 
   The HUD text (ID, metadata, API path, formats, axis labels) is plain HTML in `index.html`; it is illustrative, so edit it there. Phones get the same viewer with fewer particles. In the stacked layout (reduced motion), each principle gets its own small panel showing a still frame. Without WebGL, the same picture is drawn with the 2D canvas, with the surface as lit dots. To use another protein, edit the PDB IDs in `tools/build-fair-protein.js` and run it.
-- **Cache-busting:** the home page loads its CSS and JS with a version tag (`…?v=20261011.5`). After changing any of them, raise that value in `index.html` so browsers fetch the new files. When previewing with `python3 -m http.server`, a hard refresh (Ctrl+Shift+R / Cmd+Shift+R) also works.
+- **Cache-busting:** the home page loads its CSS and JS with a version tag (`…?v=20261011.7`). After changing any of them, raise that value in `index.html` so browsers fetch the new files. When previewing with `python3 -m http.server`, a hard refresh (Ctrl+Shift+R / Cmd+Shift+R) also works.
 - **Energy landscape** ("Get involved" bands on Home, Partners and Community): the contour lines are the static `assets/images/energy-landscape.svg`; `landscape.js` animates a particle on the same surface (paused off-screen; a still trajectory with reduced motion). On phones the map sits below the buttons, framed on the basins the particle explores. To change the shape, edit the wells in `assets/js/landscape.js` and run `node tools/build-landscape.js`.
 
 ## Deployment
