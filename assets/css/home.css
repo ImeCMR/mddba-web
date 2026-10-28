@@ -66,11 +66,7 @@
 .about .label { margin-bottom: 28px; }
 .about__statement { max-width: 1080px; }
 .about__statement + .about__statement { margin-top: 36px; color: var(--fg-muted); }
-.about__row {
-  margin-top: 56px;
-  display: flex; justify-content: space-between; align-items: flex-end; gap: 32px 64px; flex-wrap: wrap;
-}
-.about__row p { max-width: 580px; color: var(--fg-muted); }
+.about__row { margin-top: 44px; }
 
 .stats {
   margin-top: clamp(72px, 9vw, 120px);
