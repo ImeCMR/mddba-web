@@ -61,12 +61,12 @@
 .about {
   position: relative; z-index: 1;
   border-radius: var(--radius-section) var(--radius-section) 0 0;
-  padding-block: var(--section-y);
+  padding-top: var(--section-y);
+  padding-bottom: clamp(56px, 7vw, 96px); /* the FAIR intro follows closely */
 }
 .about .label { margin-bottom: 28px; }
 .about__statement { max-width: 1080px; }
 .about__statement + .about__statement { margin-top: 36px; color: var(--fg-muted); }
-.about__row { margin-top: 44px; }
 
 .stats {
   margin-top: clamp(72px, 9vw, 120px);
@@ -84,12 +84,8 @@
 }
 .stat__label { display: block; margin-top: 14px; color: var(--fg-subtle); }
 
-.partners-strip {
-  margin-top: clamp(64px, 8vw, 96px);
-  display: flex; align-items: center; gap: 20px 48px; flex-wrap: wrap;
-}
-.partners-strip .label { flex: 0 1 260px; }
-.partners-strip__logos { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
+.partners-strip { margin-top: clamp(64px, 8vw, 96px); }
+.partners-strip__logos { margin-top: 20px; display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
 .partners-strip img { height: 40px; width: auto; filter: grayscale(1); opacity: .55; transition: filter .3s, opacity .3s; }
 .partners-strip a:hover img, .partners-strip a:focus-visible img { filter: none; opacity: 1; }
 
@@ -117,7 +113,7 @@
 
 /* ── FAIR scene ───────────────────────────────────────────────────────── */
 .fair { position: relative; padding-bottom: var(--section-y); }
-.fair__intro { padding-top: var(--section-y); }
+.fair__intro { padding-top: clamp(8px, 1.5vw, 24px); } /* the About section's bottom padding already separates them */
 .fair__intro .label { margin-bottom: 24px; }
 .fair__intro h2 { max-width: 15ch; }
 .fair__intro p { margin-top: 24px; max-width: 520px; }
