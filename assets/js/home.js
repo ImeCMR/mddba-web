@@ -164,9 +164,29 @@
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.config({ ignoreMobileResize: true });
 
+  // A pinned scene centres its content in the screen, which leaves empty bands
+  // above and below it. Close up the gaps around the FAIR scene: pull it up
+  // under its intro, and pull the nodes section up over its empty bottom band.
+  const fairScene = document.querySelector('.scene--fair');
+  const nodesSection = document.getElementById('nodes');
+  const tighten = () => {
+    if (!fairScene) return;
+    const box = fairScene.querySelector('.scene__sticky').getBoundingClientRect();
+    const content = fairScene.querySelector('.scene__grid').getBoundingClientRect();
+    const gap = window.innerWidth < 768 ? 32 : 40; // intro text to the FAIR viewer
+    fairScene.style.marginTop = `${Math.min(0, gap - (content.top - box.top))}px`;
+    if (nodesSection) nodesSection.style.marginTop = `${-Math.max(0, box.bottom - content.bottom - 16)}px`;
+  };
+  const untighten = () => {
+    if (fairScene) fairScene.style.marginTop = '';
+    if (nodesSection) nodesSection.style.marginTop = '';
+  };
+
   const mm = gsap.matchMedia();
   mm.add('(prefers-reduced-motion: no-preference)', () => {
     html.classList.add('js-scenes');
+    tighten();
+    ScrollTrigger.addEventListener('refreshInit', tighten);
 
     document.querySelectorAll('.scene').forEach((scene) => {
       const steps = Array.from(scene.querySelectorAll('.step'));
@@ -206,6 +226,8 @@
     }
 
     return () => {
+      ScrollTrigger.removeEventListener('refreshInit', tighten);
+      untighten();
       html.classList.remove('js-scenes');
       document.querySelectorAll('.scene').forEach((scene) => {
         delete scene.dataset.step;
