@@ -60,14 +60,18 @@
   /* ── Counters (values from data.js; HTML holds the no-JS fallback) ── */
   const stats = document.querySelector('.stats');
   if (stats) {
-    // every node on the globe: the main nodes, plus the sites that are not at a
-    // main node's own location (UF hosts the Florida node; IRB Barcelona & BSC
-    // host the Barcelona one)
-    const mains = data.nodes || [];
-    const atMain = (p) => mains.some((n) => Math.abs(n.lon - p.lon) < 0.1 && Math.abs(n.lat - p.lat) < 0.1);
+    // nodes per region: the sites of each main node, or the main node alone
+    // while it has none listed (Japan). Each node is one partner institution,
+    // so both counters use these numbers.
+    const sites = data.sites || [];
+    const byRegion = {};
+    (data.nodes || []).forEach((n) => {
+      byRegion[n.region] = Math.max(1, sites.filter((p) => p.region === n.region).length);
+    });
+    const total = Object.values(byRegion).reduce((sum, v) => sum + v, 0);
     const values = {
-      nodes: mains.length + (data.sites || []).filter((p) => !atMain(p)).length,
-      partners: (data.partners || []).length,
+      nodes: total,
+      partners: total,
       publications: (data.publications || []).length,
       events: (data.events || []).length
     };
@@ -81,7 +85,13 @@
         label.textContent = v === 1 ? label.dataset.one : label.dataset.other;
       }
     });
-    const run = () => nums.forEach((el) => {
+    const regionNums = Array.from(stats.querySelectorAll('[data-region]'));
+    regionNums.forEach((el) => {
+      const v = byRegion[el.dataset.region];
+      if (v) el.dataset.target = v;
+    });
+    const counters = nums.concat(regionNums);
+    const run = () => counters.forEach((el) => {
       const target = Number(el.dataset.target || el.textContent) || 0;
       if (reduceMQ.matches || target === 0) { el.textContent = target; return; }
       const start = performance.now();
@@ -96,7 +106,7 @@
     if (reduceMQ.matches) {
       run();
     } else {
-      nums.forEach((el) => { el.textContent = '0'; });
+      counters.forEach((el) => { el.textContent = '0'; });
       const io = new IntersectionObserver((entries) => {
         if (entries.some((e) => e.isIntersecting)) { io.disconnect(); run(); }
       }, { threshold: 0.4 });
