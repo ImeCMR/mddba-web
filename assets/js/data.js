@@ -2,9 +2,6 @@
 // Update this file when partners, publications, events or nodes change
 // (the matching HTML pages are edited separately — see README.md).
 window.siteData = {
-  partners: [
-    'University of Florida'
-  ],
   publications: [
     'FAIR Principles in Biomolecular Simulations'
   ],
@@ -38,15 +35,17 @@ window.siteData = {
     { name: 'MDDB Japan',   region: 'Japan',   place: 'Japan',                lon: 138.25,   lat: 36.2,    url: null }
   ],
 
-  // Nodes inside each main node (from the v1 map). The globe joins each one to
-  // the main node with the same region by a dotted line. Pairs that sit a few km apart are
-  // merged so their markers don't overlap.
+  // Nodes inside each main node, one per institution (from the v1 map). The
+  // globe joins each one to the main node with the same region by a dotted line,
+  // and the home page counters count them per region.
   sites: [
     { name: 'University of Florida',                                 region: 'America', lon: -82.3248, lat: 29.6516 },
     { name: 'Oxford University',                                     region: 'Europe',  lon: -1.2544,  lat: 51.7548 },
-    { name: 'IRB Barcelona (MMB) & Barcelona Supercomputing Center', region: 'Europe',  lon: 2.1435,   lat: 41.3872 },
+    { name: 'IRB Barcelona (MMB)',                                   region: 'Europe',  lon: 2.1734,   lat: 41.3851 },
+    { name: 'Barcelona Supercomputing Center',                       region: 'Europe',  lon: 2.1135,   lat: 41.3893 },
     { name: 'Cineca',                                                region: 'Europe',  lon: 11.3426,  lat: 44.4949 },
-    { name: 'Inria & RPBS',                                          region: 'Europe',  lon: 2.2858,   lat: 48.8448 },
+    { name: 'Inria',                                                 region: 'Europe',  lon: 2.2195,   lat: 48.8330 },
+    { name: 'RPBS',                                                  region: 'Europe',  lon: 2.3522,   lat: 48.8566 },
     { name: 'JSC',                                                   region: 'Europe',  lon: 6.3603,   lat: 50.9175 }
   ]
 };
