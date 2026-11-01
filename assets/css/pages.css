@@ -98,8 +98,8 @@
 .prose li { position: relative; padding-left: 28px; }
 .prose li + li { margin-top: .5em; }
 .prose li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 10px; height: 2px; background: var(--blue-500); }
-.prose a { color: var(--blue-600); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
-.prose a:hover { color: var(--navy-900); }
+.prose a, .way a { color: var(--blue-600); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+.prose a:hover, .way a:hover { color: var(--navy-900); }
 
 .share { margin-top: clamp(48px, 6vw, 72px); padding-top: 28px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; }
 .share .social { flex-wrap: wrap; }
