@@ -1,0 +1,13 @@
+{
+  "siteName": "MDDB America",
+  "siteUrl": "https://mddba.com",
+  "email": "info@mddba.com",
+  "xUrl": "https://x.com/mddbamerica",
+  "xHandle": "@mddbamerica",
+  "linkedinUrl": "https://www.linkedin.com/company/mddba/",
+  "shareImage": "/assets/images/og-image.jpg",
+  "footerTagline": "A unified, FAIR-compliant repository for molecular dynamics biosimulation data across the Americas.",
+  "menuPrompt": "Interested in contributing?",
+  "searchHints": ["Florida Node", "FAIR principles", "Nature Methods", "Events"],
+  "assetVersion": "20261011.11"
+}

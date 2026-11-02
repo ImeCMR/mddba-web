@@ -1,0 +1,228 @@
+---
+# Home page. Text: src/_data/home.json, nodes.json, partners.json; news cards: src/news/
+permalink: index.html
+dataKey: home
+linkMode: home
+nav: home
+---
+{% extends "layouts/base.njk" %}
+{% block main %}
+{%- set L = 'home' %}
+<main id="main">
+<div class="hero-stack">
+  <section class="hero" data-theme="dark" aria-labelledby="hero-title">
+    <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:-16%;--y:-42%;--s:62vw;--o:.5"></span><span class="orb orb--deep" style="--x:30%;--y:55%;--s:70vw;--o:.9"></span></div>
+    <div class="hero__media" aria-hidden="true">
+      <video class="hero__video" muted loop playsinline disablepictureinpicture preload="none" poster="assets/videos/hero-poster.jpg">
+        <source src="assets/videos/hero.mp4" type="video/mp4">
+        <source src="assets/videos/hero.webm" type="video/webm">
+      </video>
+    </div>
+    <div class="wrap hero__content">
+      <h1 class="display-xl hero__title" id="hero-title">{{ home.hero.title | grad | safe }}</h1>
+      <p class="text-xl hero__sub">{{ home.hero.text }}</p>
+      <div class="btn-row hero__cta">
+        <a class="text-btn" href="#nodes"><span>Explore <strong>MDDB Nodes</strong></span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
+        <a class="link-underline" href="pages/community.html">Support Initiative</a>
+      </div>
+    </div>
+    <div class="hero__scroll" aria-hidden="true"><span class="label-s">Scroll</span><i></i></div>
+  </section>
+
+  <section class="about" id="about" data-theme="light" aria-labelledby="about-title">
+    <div class="wrap">
+      <h2 class="label reveal" id="about-title">{{ home.about.label | label | safe }}</h2>
+      <p class="heading-m about__statement reveal">{{ home.about.statement | hl | safe }}</p>
+{%- set c = derived.counts %}
+{%- set regionLines %}<dl class="stat__regions">{% for r in derived.regions %}<div><dt>{{ r.region }}</dt><dd data-region="{{ r.region }}">{{ r.count }}</dd></div>{% endfor %}</dl>{% endset %}
+
+      <ul class="stats" aria-label="MDDB America in numbers">
+        <li class="stat stat--split reveal"><span class="stat__num" data-stat="nodes">{{ c.nodes }}</span><span class="stat__label label-s" data-one="MDDB Node" data-other="MDDB Nodes">{{ 'MDDB Node' if c.nodes == 1 else 'MDDB Nodes' }}</span>{{ regionLines | safe }}</li>
+        <li class="stat stat--split reveal" style="--d:.08s"><span class="stat__num" data-stat="partners">{{ c.partners }}</span><span class="stat__label label-s" data-one="Partner Institution" data-other="Partner Institutions">{{ 'Partner Institution' if c.partners == 1 else 'Partner Institutions' }}</span>{{ regionLines | safe }}</li>
+        <li class="stat reveal" style="--d:.16s"><span class="stat__num" data-stat="publications">{{ c.publications }}</span><span class="stat__label label-s" data-one="Publication" data-other="Publications">{{ 'Publication' if c.publications == 1 else 'Publications' }}</span></li>
+        <li class="stat reveal" style="--d:.24s"><span class="stat__num" data-stat="events">{{ c.events }}</span><span class="stat__label label-s" data-one="Event &amp; Webinar" data-other="Events &amp; Webinars">{{ 'Event & Webinar' if c.events == 1 else 'Events & Webinars' }}</span></li>
+      </ul>
+
+      <div class="partners-strip reveal">
+        <p class="label">{{ home.about.partnersLabel | label | safe }}</p>
+        <div class="partners-strip__logos">
+          {%- for p in partners.items %}{% if p.onHome and p.logo %}{% set img = p.logo | imgsize %}
+          <a href="pages/partners.html"><img src="{{ p.logo | link(L) }}" alt="{{ p.name }}"{% if img %} width="{{ img.width }}" height="{{ img.height }}"{% endif %} loading="lazy" decoding="async"></a>
+          {%- endif %}{% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="fair" id="goals" data-theme="light" aria-labelledby="fair-title">
+  <div class="wrap fair__intro">
+    <p class="label reveal">{{ home.fair.label | label | safe }}</p>
+    <h2 class="heading-l reveal" id="fair-title">{{ home.fair.title | grad | safe }}</h2>
+    <p class="text-l muted reveal">{{ home.fair.text }}</p>
+  </div>
+  <div class="scene scene--fair" style="--steps:4">
+    <div class="scene__sticky">
+      <div class="wrap scene__grid">
+        <div class="scene__copy">
+          <div class="scene__bars">
+            <button type="button" data-step-go="0" aria-label="Findable"><span class="scene__bar"><i></i></span></button>
+            <button type="button" data-step-go="1" aria-label="Accessible"><span class="scene__bar"><i></i></span></button>
+            <button type="button" data-step-go="2" aria-label="Interoperable"><span class="scene__bar"><i></i></span></button>
+            <button type="button" data-step-go="3" aria-label="Reusable"><span class="scene__bar"><i></i></span></button>
+          </div>
+          <ol class="fair-steps">
+            <li class="step fair-step">
+              <span class="fair-step__letter grad" aria-hidden="true">F</span>
+              <h3 class="fair-step__title">Findable</h3>
+              <p>Persistent identifiers and rich metadata enable full discoverability of all simulation datasets.</p>
+            </li>
+            <li class="step fair-step">
+              <span class="fair-step__letter grad" aria-hidden="true">A</span>
+              <h3 class="fair-step__title">Accessible</h3>
+              <p>Data retrievable via standardized, open, universally implementable protocols and APIs.</p>
+            </li>
+            <li class="step fair-step">
+              <span class="fair-step__letter grad" aria-hidden="true">I</span>
+              <h3 class="fair-step__title">Interoperable</h3>
+              <p>Formal shared vocabularies supporting integration with the broader life sciences data ecosystem.</p>
+            </li>
+            <li class="step fair-step">
+              <span class="fair-step__letter grad" aria-hidden="true">R</span>
+              <h3 class="fair-step__title">Reusable</h3>
+              <p>Rich provenance and clear licensing enabling long-term reuse and reproducibility.</p>
+            </li>
+          </ol>
+        </div>
+        <!-- FAIR viewer: one MD dataset (adenylate kinase) through the four principles,
+             drawn by assets/js/fair3d.js. The HUD text is illustrative: edit it here. -->
+        <figure class="scene__media fair-viewer" aria-hidden="true" data-src="{{ '/assets/data/fair-protein.json' | link(L) }}?v={{ settings.assetVersion }}">
+          <canvas></canvas>
+          <p class="fair-viewer__chrome"><span class="fair-viewer__dot"></span>MDDB Viewer<span class="fair-viewer__step" data-fair="step">F · Findable</span></p>
+          <div class="fair-hud fair-hud--find" data-mini="MDDB-A0001 · Adenylate kinase">
+            <svg class="fair-viewer__lines"><line x1="0" y1="0" x2="0" y2="0"/></svg>
+            <div class="fair-hud__card">
+              <p class="fair-hud__eyebrow">Persistent ID</p>
+              <p class="fair-hud__id">MDDB-A0001</p>
+              <p class="fair-hud__text">Adenylate kinase · open ⇄ closed</p>
+              <p class="fair-hud__meta">1 µs · 300 K · CHARMM36m · GROMACS</p>
+            </div>
+          </div>
+          <div class="fair-hud fair-hud--access" data-mini="GET /api/projects/A0001/trajectory">
+            <div class="fair-hud__card">
+              <p class="fair-hud__eyebrow">Open REST API</p>
+              <p class="fair-hud__code"><b>GET</b> /api/projects/A0001/trajectory</p>
+              <span class="fair-hud__bar"><i data-fair="bar"></i></span>
+              <p class="fair-hud__meta"><span data-fair="frame">frame 0000 / 1000</span> · <span data-fair="time">t = 0.000 µs</span></p>
+            </div>
+          </div>
+          <div class="fair-hud fair-hud--interop" data-mini="PDB · mmCIF · XTC · DCD · NetCDF · TRR">
+            <span class="fair-chip" style="left: 8%; top: 18%">PDB</span>
+            <span class="fair-chip" style="right: 9%; top: 13%">mmCIF</span>
+            <span class="fair-chip" style="right: 5%; top: 47%">XTC</span>
+            <span class="fair-chip" style="right: 11%; bottom: 19%">DCD</span>
+            <span class="fair-chip" style="left: 7%; bottom: 23%">NetCDF</span>
+            <span class="fair-chip" style="left: 4%; top: 48%">TRR</span>
+            <p class="fair-hud__note">Shared vocabularies · one standard schema</p>
+          </div>
+          <div class="fair-hud fair-hud--reuse" data-mini="Reanalysis · free-energy landscape">
+            <p class="fair-hud__note">Reanalysis · free-energy landscape</p>
+            <span class="fair-hud__axis">CV1 · LID–CORE distance</span>
+            <span class="fair-hud__axis">CV2 · NMP–CORE angle</span>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nodes" id="nodes" data-theme="dark" aria-labelledby="nodes-title">
+  <div class="scene scene--nodes" style="--steps:{{ nodes.mainNodes | length }}">
+    <div class="scene__sticky">
+      <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:42%;--y:-10%;--s:60vw;--o:.35"></span><span class="orb orb--deep" style="--x:-25%;--y:30%;--s:60vw;--o:.9"></span></div>
+      <div class="wrap scene__grid">
+        <div class="scene__copy">
+          <p class="label">{{ nodes.label | label | safe }}</p>
+          <h2 class="heading-m nodes__title" id="nodes-title">{{ nodes.title | grad | safe }}</h2>
+          <ol class="node-list">
+          {%- for n in nodes.mainNodes %}
+              <li class="step node">
+                <span class="scene__bar" aria-hidden="true"><i></i></span>
+                <span class="node__place label-s">{{ n.place }}</span>
+                <h3 class="heading-xs node__name"><button type="button" data-step-go="{{ loop.index0 }}">{{ n.name }}</button></h3>
+                <div class="node__body"><div class="node__inner">
+                  <p>{{ n.text }}</p>
+                  {% if n.url %}{% set href = n.url %}{% set label = n.linkText or ('Explore **' + n.name + '**') %}{% set small = true %}{% include "partials/text-btn.njk" %}{% else %}<span class="node__soon label-s">Coming soon</span>{% endif %}
+                </div></div>
+              </li>
+          {%- endfor %}
+          </ol>
+        </div>
+        <div class="scene__media globe-wrap">
+          <canvas class="globe" data-land="https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/land-110m.json" role="img" aria-label="{{ nodes.globeLabel }}"></canvas>
+          <div class="globe-legend label-s" aria-hidden="true"><span><i class="is-node"></i>MDDB main node</span><span><i></i>MDDB node</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section news-home" data-theme="light" aria-labelledby="news-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <p class="label">{{ home.news.label | label | safe }}</p>
+        <h2 class="heading-l" id="news-title">{{ home.news.title | grad | safe }}</h2>
+      </div>
+      <a class="text-btn" href="pages/news.html"><span>See all <strong>News</strong></span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
+    </div>
+    <div class="card-grid">
+    {%- for post in collections.posts | head(3) %}{% set i = loop.index0 %}
+{% include "partials/news-card.njk" %}
+    {%- endfor %}
+    </div>
+  </div>
+</section>
+
+  <section class="cta" data-theme="dark" id="contact">
+    <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:50%;--y:-30%;--s:65vw;--o:.45"></span><span class="orb orb--deep" style="--x:-25%;--y:30%;--s:60vw;--o:.9"></span></div>
+    <div class="fes" aria-hidden="true" data-landscape><img src="assets/images/energy-landscape.svg" alt="" width="1200" height="800" loading="lazy" decoding="async"></div>
+    <div class="wrap cta__inner">
+      <p class="label reveal">{{ home.cta.label | label | safe }}</p>
+      <h2 class="heading-l cta__title reveal">{{ home.cta.title | grad | safe }}</h2>
+      <p class="text-l cta__text reveal">{{ home.cta.text }}</p>
+      <div class="btn-row reveal">
+        <a class="text-btn" href="pages/community.html"><span>Support <strong>Initiative</strong></span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
+        <a class="text-btn" href="#" data-email><span>Get in <strong>Touch</strong></span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+{%- set f = home.funding %}{% set img = f.logo | imgsize %}
+
+  <section class="funding" data-theme="light" aria-labelledby="funding-title">
+    <div class="wrap funding__inner">
+      <div class="funding__copy reveal">
+        <p class="label">{{ f.label | label | safe }}</p>
+        <h2 class="heading-xs funding__name" id="funding-title">{{ f.name }}</h2>
+      </div>
+      <a class="funding__logo reveal" href="{{ f.url }}" target="_blank" rel="noopener">
+        <img src="{{ f.logo | link(L) }}" alt="{{ f.logoAlt }}"{% if img %} width="{{ img.width }}" height="{{ img.height }}"{% endif %} loading="lazy" decoding="async">
+      </a>
+    </div>
+  </section>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js" integrity="sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js" integrity="sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-array@3.2.4/dist/d3-array.min.js" integrity="sha384-VpKMdU+TlpggHFip46tJ/xkFUs8NFBwLqUMo3+3uiu411lU6eUQYsHVU+JFpA5ja" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-geo@3.1.1/dist/d3-geo.min.js" integrity="sha384-VNiKRUXp0MmglFfqDwkfuk+Y78C3WTJShdKSaFwOacLR3UmamxHIJLBTD3BadIXD" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="assets/js/data.js?v={{ settings.assetVersion }}.{{ derived.dataVersion }}" defer></script>
+<script src="assets/js/globe.js?v={{ settings.assetVersion }}" defer></script>
+<script src="assets/js/site.js?v={{ settings.assetVersion }}" defer></script>
+<script src="assets/js/landscape.js?v={{ settings.assetVersion }}" defer></script>
+<script src="assets/js/fair3d.js?v={{ settings.assetVersion }}" defer></script>
+<script src="assets/js/home.js?v={{ settings.assetVersion }}" defer></script>
+{% endblock %}

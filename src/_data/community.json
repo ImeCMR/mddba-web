@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "title": "Community",
+    "description": "MDDB America is built by the community, for the community. Ways to share data, develop tools, partner and get involved."
+  },
+  "hero": {
+    "label": "Community",
+    "title": "Our **Community**",
+    "text": "MDDB America is built by the community, for the community. Join us in advancing open molecular dynamics data science."
+  },
+  "label": "Get Involved",
+  "title": "Ways to Contribute",
+  "text": "Whether you are a researcher, developer, or institution, there are many ways to contribute to and benefit from the MDDB America initiative.",
+  "ways": [
+    {
+      "title": "Share Your Data",
+      "text": "Contribute your molecular dynamics simulation datasets to the repository and make your research more impactful and reproducible.",
+      "hidden": false
+    },
+    {
+      "title": "Develop Tools",
+      "text": "Help build and improve the tools, APIs, and infrastructure that power the MDDB America platform.",
+      "hidden": false
+    },
+    {
+      "title": "Spread the Word",
+      "text": "Help grow our community by sharing MDDB America with colleagues, at conferences, and in your publications.",
+      "hidden": false
+    },
+    {
+      "title": "Become a Partner",
+      "text": "Institutional partnerships help sustain and grow the platform. Reach out to explore partnership opportunities.",
+      "hidden": false
+    },
+    {
+      "title": "Cite Our Work",
+      "text": "Amaro, R. E. *et al.* The need to implement FAIR principles in biomolecular simulations. *Nature Methods* **22**, 641–645 (2025).\\\n[doi:10.1038/s41592-025-02635-0](https://doi.org/10.1038/s41592-025-02635-0)",
+      "hidden": false
+    },
+    {
+      "title": "Join the Mailing List",
+      "text": "Stay informed about new datasets, platform updates, events, and opportunities to get involved.",
+      "hidden": true
+    }
+  ],
+  "cta": {
+    "label": "Contact",
+    "title": "Ready to Get **Involved?**",
+    "text": "Reach out to the MDDB America team and we'll find the best way for you or your institution to contribute."
+  }
+}

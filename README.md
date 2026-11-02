@@ -11,26 +11,42 @@ v2 keeps the original colour theme (navy `#0a1628`, primary blue `#1a8cff`, ligh
 - a top-down free-energy landscape (contour map) behind the "Get involved" bands, with a particle running Langevin dynamics across its basins
 - round "text buttons", soft blue glows and a navy/light rhythm between sections
 
-It is still a plain static site — **no build step**. Edit the HTML/CSS/JS directly.
+The pages are built with [Eleventy](https://www.11ty.dev) from templates (`src/`) and content files (`src/_data/*.json`, `src/news/*.md`). The content is edited in a WordPress-style editor at **`/admin`** ([Decap CMS](https://decapcms.org)): saving there commits to GitHub and Vercel rebuilds the site in about a minute. The output is plain static HTML/CSS/JS, the same as before the editor was added.
+
+- **Editors:** see [docs/editing-guide.md](docs/editing-guide.md).
+- **Set-up (GitHub login, Vercel):** see [docs/deployment.md](docs/deployment.md).
 
 ## Run locally
 
 ```bash
 cd mddb-web_v2
-python3 -m http.server 8000
-# open http://localhost:8000
+npm install
+npm start          # builds into _site/ and serves http://localhost:8080 (rebuilds on save)
 ```
 
-Use a local server rather than opening the files directly: the logo is drawn with a CSS mask, which browsers do not load from `file://`.
+To try the editor on your own computer without logging in, also run `npm run cms` in a second terminal and open http://localhost:8080/admin/. It edits the files in your working copy (nothing is committed).
+
+`npm run build` builds once into `_site/` (what Vercel publishes). Don't edit `_site/`: it is rebuilt each time.
 
 ## Project structure
 
 ```
 mddb-web_v2/
-├── index.html                  Home page
-├── pages/                      Partners, News, Events, Publications, Community + news articles
-├── 404.html                    Not-found page (root-absolute paths; served at any depth)
-├── maintenance.html            Standalone maintenance page
+├── src/                        Everything Eleventy builds into _site/
+│   ├── _data/                  The content (edited in the editor): settings, home, nodes, events,
+│   │                           publications, partners, community, news (News page text) + derived.js
+│   │                           (counters, data.js), eleventyComputed.js (page titles), build.js
+│   ├── news/*.md               News posts (front matter + Markdown); news.11tydata.js sets their layout and URL
+│   ├── _includes/layouts/      base.njk (head, nav, menu + search, footer: shared by every page), article.njk
+│   ├── _includes/partials/     news-card, event-row, page-hero, text-btn, social
+│   ├── index.njk               Home page (the FAIR viewer and its HUD text are here)
+│   ├── pages/*.njk             Partners, News, Events, Publications, Community
+│   ├── 404.njk                 Not-found page (root-absolute paths; served at any depth)
+│   ├── data-js.njk, sitemap.njk  → assets/js/data.js and sitemap.xml
+│   └── admin/                  The editor: config.yml (what can be edited), index.njk, preview.js
+├── api/auth.js, api/callback.js  GitHub login for the editor (Vercel functions)
+├── eleventy.config.js          Build settings, filters (**highlight**, dates, links…), copied files
+├── maintenance.html            Standalone maintenance page (copied as is)
 ├── assets/
 │   ├── css/
 │   │   ├── tokens.css          Colours, type scale, spacing — start here to restyle
@@ -42,45 +58,40 @@ mddb-web_v2/
 │   │   ├── home.js             Home only: hero video, counters, scroll scenes, globe wiring
 │   │   ├── fair3d.js           FAIR viewer: the particle protein and its four states (WebGL, 2D-canvas fallback, no library)
 │   │   ├── globe.js            Canvas globe (d3-geo) for the nodes section
-│   │   ├── landscape.js        Energy-landscape surface + the animated walker (pages with a "Get involved" band)
-│   │   └── data.js             Counter values and node/institution coordinates for the globe
+│   │   └── landscape.js        Energy-landscape surface + the animated walker (pages with a "Get involved" band)
 │   ├── data/fair-protein.json  The FAIR viewer's molecule (adenylate kinase, open + closed)
 │   ├── images/                 Optimised images (EXIF/GPS stripped), logo mask, OG image, energy-landscape.svg
 │   └── videos/                 hero.mp4 / hero.webm (≈2.6 MB) + poster
 ├── tools/build-landscape.js    Regenerates energy-landscape.svg from landscape.js (node, no dependencies)
 ├── tools/build-fair-protein.js Regenerates assets/data/fair-protein.json from the PDB (node 18+, no dependencies)
-├── sitemap.xml, robots.txt, site.webmanifest, vercel.json
-└── docs/deployment.md
+├── tools/compare-build.js      Compares _site/ with another copy of the site, page by page
+├── tools/check-cms-config.js   Checks the editor's config.yml lists every field of the content files
+├── robots.txt, site.webmanifest, favicons, vercel.json, package.json
+└── docs/                       editing-guide.md (for editors), deployment.md
 ```
 
 External libraries (pinned versions with SRI hashes, loaded on the home page only): GSAP 3.15 + ScrollTrigger (cdnjs), d3-array, d3-geo, topojson-client and the world-atlas land outlines (jsDelivr). The Geist and Geist Mono fonts come from Google Fonts.
 
 ## Updating content
 
-Every page carries the same nav, menu dialog and footer markup. If you change a menu or footer link, change it on **every** HTML file (search for `class="menu__list"` / `class="footer__grid"`).
+Use the editor at `/admin` for content: news posts, events, publications, partners, nodes, page text and site settings ([docs/editing-guide.md](docs/editing-guide.md)). It writes the files below, which you can also edit by hand:
 
-### Add a news article
-1. Copy an existing `pages/news-*.html` file and rename it, e.g. `pages/news-my-story.html`.
-2. Update `<title>`, the `description`, `canonical`, `og:*`/`twitter:*` tags and `article:published_time` in the `<head>`.
-3. Update the header (chips, `<h1>`, `<time>`), the featured image, the `.prose` body, and the share links (they must contain the new page URL).
-4. Put the image in `assets/images/news/`. Keep it ≤1600 px wide and strip location metadata from phone photos.
-5. Add a card for it to `pages/news.html` (set `data-tags` to the lowercase tags; add a filter button if it's a new tag), to the home page "Recent from MDDB America" grid (keep the latest three), and to the "More News" section of the other articles.
-6. Add the URL to `sitemap.xml`.
+| What | File | Shown on |
+|---|---|---|
+| News posts | `src/news/<name>.md` (URL: `/pages/news-<name>`) | its own page; cards on Home (newest 3), News (all) and "More News" (2 newest others); sitemap |
+| Events | `src/_data/events.json` | Events page ("Upcoming" from the build date on, "Past" before it); home counter (events not hidden) |
+| Publications | `src/_data/publications.json` | Publications page; home counter |
+| Partners | `src/_data/partners.json` | Partners page; logos with `onHome` in the home "Partnering with…" strip |
+| Nodes | `src/_data/nodes.json` | home node list and globe (`assets/js/data.js`); "MDDB Nodes" and "Partner Institutions" counters |
+| Page text | `src/_data/home.json`, `news.json`, `community.json` (and the page text in the files above) | those pages |
+| Settings | `src/_data/settings.json` | contact email, social links, footer text, search suggestions, sharing picture, asset version |
 
-### Add an event
-In `pages/events.html` copy the `<li class="row">` block. For an upcoming event, put it in the "Upcoming" block and remove the `.empty-state` box. Then add the event to `events` in `assets/js/data.js` so the home page counter updates.
-
-### Add a publication
-Copy the `<li class="row pub-row">` block in `pages/publications.html`, then add the title to `publications` in `assets/js/data.js`.
-
-### Add a partner
-Copy the University of Florida `<li>` in `pages/partners.html` (logo in `assets/images/partners/`), optionally add the logo to the "Partnering with…" strip on the home page, then add the institution to `sites` in `assets/js/data.js` so the home page counters update.
-
-### Nodes and the globe
-The main-node list (MDDB Europe, America, Japan) is in `index.html` (`.node-list`); MDDB Japan shows "Coming soon" until it has a site. The globe reads `nodes` and `sites` (the nodes inside each main node) from `assets/js/data.js`; keep the order of `nodes` the same as the list. Each site is joined by a dotted line to the main node with the same `region` (for example, every `Europe` site to Barcelona), so a new node only needs a `sites` entry with its region. The "MDDB Nodes" and "Partner Institutions" counters, with their regional lines, count the `sites` of each region; a main node with none listed, like Japan, counts as 1 (9 now: Europe 7, America 1, Japan 1). The region names in `index.html` (`data-region`) must match those in `data.js`.
-
-### Funder logo
-The footer has a commented-out `.funder` block. Add the logo to `assets/images/funder/`, fill in the text and uncomment it on every page.
+- **Highlighted words:** in titles and statements, `**words**` are shown in the blue gradient; in button texts they are bold. In a label, `" | "` shows a separator.
+- **Nodes and counters:** each node in `sites` is joined on the globe by a dotted line to the main node with the same `region`. The counters count the `sites` of each region; a main node with none listed, like Japan, counts as 1 (9 now: Europe 7, America 1, Japan 1). Each node counts as one partner institution.
+- **Upcoming events** move to "Past" at the next build after their date (any save in the editor rebuilds the site).
+- **Layout and design** (templates, CSS, JS) are not in the editor: edit `src/` and `assets/`. The nav, menu and footer are in `src/_includes/layouts/base.njk`, once for every page.
+- **New editable fields:** add the key to the JSON file, use it in the template, and add the field to `src/admin/config.yml` (the editor deletes keys it doesn't know when it saves). `node tools/check-cms-config.js` checks this.
+- **Funder logo:** the footer in `base.njk` has a commented-out `.funder` block. Add the logo to `assets/images/funder/`, fill in the text and uncomment it.
 
 ## Behaviour notes
 
@@ -89,7 +100,7 @@ The footer has a commented-out `.funder` block. Add the logo to `assets/images/f
 - **Nav colour** flips between light and dark automatically from the `data-theme="dark|light"` attribute on each section.
 - **Reduced motion**: no pinning, scrubbing or video (the poster is shown instead), and counters jump straight to their values.
 - **Hero video**: the MP4 (H.264) is listed first because iPhones play it reliably, while their WebM support is patchy. If the browser refuses autoplay (iPhone Low Power Mode, in-app browsers such as LinkedIn or WhatsApp), the video starts on the visitor's first tap; it also resumes when the tab is shown again.
-- **Email links**: any element with `data-email` gets `mailto:info@mddba.com` at runtime.
+- **Email links**: any element with `data-email` gets a `mailto:` link at runtime. The address is assembled in `site.js` (to keep it away from scrapers); the build writes the one from Settings into it.
 - **Site search** (menu): there is no index file to maintain. The first time someone uses the search, `site.js` fetches the pages linked from the menu, plus the pages those link to (so new news articles are found automatically once they are linked from `news.html`), and indexes their `<main>` content. Home is split into its sections (`#about`, `#goals`, `#nodes`, `#contact`). News cards, buttons and decorative elements are skipped. The search needs `http(s)://`; over `file://` it only lists the menu pages.
 - **FAIR viewer** (home page): `assets/js/fair3d.js` draws one MD dataset with particles, in the hero video's style but in deep blues straight on the light section (no panel; the canvas fades out at its edges). The molecule is E. coli adenylate kinase in its open (PDB 4AKE) and closed (PDB 1AKE) forms, from `assets/data/fair-protein.json`. It is shown as its molecular surface: a smooth Gaussian surface meshed by the build tool, with baked ambient occlusion, coloured by domain (NMP indigo, CORE blue, LID cyan). The surface closes and opens with the protein. As you scroll, the same particles move through four states:
   - **F:** the protein assembles out of a drift of other datasets and is tagged with its ID card.
@@ -97,8 +108,9 @@ The footer has a commented-out `.funder` block. Add the logo to `assets/images/f
   - **I:** the surface turns see-through and the cartoon ribbon forms inside it, while file formats stream in.
   - **R:** the site's own free-energy landscape is raised into 3D contour lines, with the site's walker running on it; the small protein above opens or closes with the walker's basin.
 
-  The HUD text (ID, metadata, API path, formats, axis labels) is plain HTML in `index.html`; it is illustrative, so edit it there. Phones get the same viewer with fewer particles. In the stacked layout (reduced motion), each principle gets its own small panel showing a still frame. Without WebGL, the same picture is drawn with the 2D canvas, with the surface as lit dots. To use another protein, edit the PDB IDs in `tools/build-fair-protein.js` and run it.
-- **Cache-busting:** the home page loads its CSS and JS with a version tag (`…?v=20261011.11`). After changing any of them, raise that value in `index.html` so browsers fetch the new files. When previewing with `python3 -m http.server`, a hard refresh (Ctrl+Shift+R / Cmd+Shift+R) also works.
+  The HUD text (ID, metadata, API path, formats, axis labels) is plain HTML in `src/index.njk`; it is illustrative, so edit it there. Phones get the same viewer with fewer particles. In the stacked layout (reduced motion), each principle gets its own small panel showing a still frame. Without WebGL, the same picture is drawn with the 2D canvas, with the surface as lit dots. To use another protein, edit the PDB IDs in `tools/build-fair-protein.js` and run it.
+- **Cache-busting:** the home page loads its CSS and JS with a version tag (`…?v=20261011.11`). After changing any of them, raise `assetVersion` in `src/_data/settings.json` so browsers fetch the new files. `data.js` gets its own tag from its content, so content edits need nothing.
+- **Checking a change:** `node tools/compare-build.js <folder>` compares `_site/` with another copy of the site page by page (elements, attributes and text), and lists what differs.
 - **Energy landscape** ("Get involved" bands on Home, Partners and Community): the contour lines are the static `assets/images/energy-landscape.svg`; `landscape.js` animates a particle on the same surface (paused off-screen; a still trajectory with reduced motion). On phones the map sits below the buttons, framed on the basins the particle explores. To change the shape, edit the wells in `assets/js/landscape.js` and run `node tools/build-landscape.js`.
 
 ## Deployment

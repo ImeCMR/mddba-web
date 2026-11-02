@@ -1,0 +1,9 @@
+          <li class="row reveal">
+            <div class="row__date"><span class="row__day">{{ e.date | day }}</span><span class="row__month label">{{ e.date | monthYear }}</span></div>
+            <div class="row__main">
+              <div class="chips"><span class="chip">{{ e.type }}</span></div>
+              <h3 class="heading-xs">{{ e.title }}</h3>
+              <p>{{ e.text }}</p>
+            </div>
+            {% if e.link %}{% set href = e.link | link(L) %}{% set label = e.buttonText or 'View **details**' %}{% set small = true %}{% include "partials/text-btn.njk" %}{% endif %}
+          </li>

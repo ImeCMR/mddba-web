@@ -1,0 +1,316 @@
+# Decap CMS: the website editor at /admin.
+# Each collection below is an item in the editor's sidebar. Saving commits the
+# change to GitHub; Vercel then rebuilds and publishes the site (about a minute).
+# Every key of the JSON files must be listed here: the editor only writes the
+# fields it knows about.
+
+backend:
+  name: github
+  repo: ImeCMR/mddba-web
+  branch: v2 # the branch Vercel publishes; change to main when v2 is merged
+  # base_url (where /api/auth runs) is set to this site's own address in admin/index.html
+  auth_endpoint: api/auth
+  commit_messages:
+    create: 'Editor: add {{collection}} "{{slug}}"'
+    update: 'Editor: update {{collection}} "{{slug}}"'
+    delete: 'Editor: delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Editor: upload "{{path}}"'
+    deleteMedia: 'Editor: delete "{{path}}"'
+
+# On your own computer: `npm run cms` and `npm start`, then open
+# http://localhost:8080/admin/ to edit the local files without logging in.
+local_backend: true
+
+site_url: https://mddba.com
+display_url: https://mddba.com
+locale: en
+media_folder: assets/images/uploads
+public_folder: /assets/images/uploads
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  # ── News ──────────────────────────────────────────────────────────────────
+  - name: news
+    label: News posts
+    label_singular: News post
+    description: >-
+      Each post gets its own page and a card on Home (newest three), on the News page and under "More News".
+      The page address is made from the title when the post is first saved and then stays the same.
+    folder: src/news
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: frontmatter
+    sortable_fields: [date, title]
+    summary: '{{date}} · {{title}}'
+    preview_path: 'pages/news-{{slug}}'
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, default: '{{now}}', format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, picker_utc: true, hint: 'Posts are listed newest first.' }
+      - { label: Topics, name: topics, widget: select, multiple: true, min: 1, options: [Milestone, Conference, Publication], hint: 'Used for the chips and the filter buttons on the News page.' }
+      - { label: Picture, name: image, widget: image, media_folder: /assets/images/news, public_folder: /assets/images/news, hint: 'A wide photo (16:9 works best), at least 1600 pixels wide.' }
+      - { label: Picture description, name: imageAlt, widget: string, required: false, hint: 'Describes the picture for people using screen readers. If empty, the title is used.' }
+      - { label: Card text, name: excerpt, widget: text, hint: 'One or two sentences shown on the news cards.' }
+      - { label: Opening paragraph, name: lede, widget: text, required: false, hint: 'Shown larger, at the top of the post.' }
+      - label: Post text
+        name: body
+        widget: markdown
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+        editor_components: []
+        hint: Links to other websites open in a new tab.
+      - { label: Button text, name: buttonText, widget: string, required: false, hint: 'Optional button under the text, e.g. Read the **Paper** (the words in ** are bold).' }
+      - { label: Button link, name: buttonUrl, widget: string, required: false, hint: 'Full web address, e.g. https://doi.org/…' }
+      - { label: Search engine description, name: description, widget: text, required: false, hint: 'Shown by Google and when the post is shared. If empty, the card text is used.' }
+      - { label: Hide from the site, name: draft, widget: boolean, default: false, required: false, hint: 'Keeps the post saved but not published.' }
+
+  # ── Events ────────────────────────────────────────────────────────────────
+  - name: events
+    label: Events
+    description: Events dated today or later are listed under "Upcoming", earlier ones under "Past". The home page counts the events that are not hidden.
+    editor: { preview: false }
+    files:
+      - name: events
+        label: Events page
+        file: src/_data/events.json
+        fields:
+          - label: Events
+            name: items
+            widget: list
+            label_singular: event
+            summary: '{{fields.date}} · {{fields.title}}'
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Date, name: date, widget: datetime, default: '{{now}}', format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, picker_utc: true }
+              - { label: Type, name: type, widget: select, options: [Conference, Workshop, Webinar, Meeting, Talk] }
+              - { label: Text, name: text, widget: text }
+              - { label: Button text, name: buttonText, widget: string, required: false, hint: 'e.g. View **Recap** or **Register** (the words in ** are bold).' }
+              - { label: Button link, name: link, widget: string, required: false, hint: 'A news post (/pages/news-….html) or a full web address. Leave empty for no button.' }
+              - { label: Hide from the site, name: hidden, widget: boolean, default: false, required: false }
+          - &meta
+            label: Search engines & sharing
+            name: meta
+            widget: object
+            collapsed: true
+            hint: The title of the browser tab and the text Google and social networks show for this page.
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: description, widget: text }
+          - &hero
+            label: Page header
+            name: hero
+            widget: object
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - { label: Title, name: title, widget: string, hint: 'Put ** around words to colour them blue, e.g. Our **Partners**' }
+              - { label: Text, name: text, widget: text }
+          - { label: '"Upcoming" label', name: upcomingLabel, widget: string }
+          - { label: '"Upcoming" title', name: upcomingTitle, widget: string }
+          - { label: No upcoming events (title), name: emptyTitle, widget: string }
+          - { label: No upcoming events (text), name: emptyText, widget: text }
+          - { label: '"Past" label', name: pastLabel, widget: string }
+          - { label: '"Past" title', name: pastTitle, widget: string }
+
+  # ── Publications ─────────────────────────────────────────────────────────
+  - name: publications
+    label: Publications
+    description: The home page counts the publications listed here.
+    editor: { preview: false }
+    files:
+      - name: publications
+        label: Publications page
+        file: src/_data/publications.json
+        fields:
+          - label: Publications
+            name: items
+            widget: list
+            label_singular: publication
+            summary: '{{fields.date}} · {{fields.title}}'
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Type, name: type, widget: string, default: Journal Article }
+              - { label: Journal, name: journal, widget: string, required: false }
+              - { label: Date, name: date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, picker_utc: true, required: false }
+              - { label: Text, name: text, widget: text }
+              - { label: Link, name: link, widget: string, required: false, hint: 'e.g. https://doi.org/…' }
+          - *meta
+          - *hero
+          - { label: Small label, name: label, widget: string }
+          - { label: Title, name: title, widget: string }
+
+  # ── Partners ─────────────────────────────────────────────────────────────
+  - name: partners
+    label: Partners
+    editor: { preview: false }
+    files:
+      - name: partners
+        label: Partners page
+        file: src/_data/partners.json
+        fields:
+          - label: Partners
+            name: items
+            widget: list
+            label_singular: partner
+            summary: '{{fields.name}}'
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Type, name: type, widget: string, required: false, hint: 'e.g. University' }
+              - { label: Logo, name: logo, widget: image, required: false, media_folder: /assets/images/partners, public_folder: /assets/images/partners }
+              - { label: Text, name: text, widget: text }
+              - { label: Show the logo on the home page, name: onHome, widget: boolean, default: true, required: false }
+          - *meta
+          - *hero
+          - { label: Small label, name: label, widget: string }
+          - { label: Title, name: title, widget: string, hint: 'Put ** around words to colour them blue.' }
+          - { label: '"Your institution?" card title', name: joinTitle, widget: string }
+          - { label: '"Your institution?" card text', name: joinText, widget: text }
+          - &cta
+            label: Blue "get in touch" band
+            name: cta
+            widget: object
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - { label: Title, name: title, widget: text, hint: 'Put ** around words to colour them blue. A new line starts a new line on the page.' }
+              - { label: Text, name: text, widget: text }
+
+  # ── Nodes ────────────────────────────────────────────────────────────────
+  - name: nodes
+    label: Nodes & globe
+    description: >-
+      The main nodes (the list next to the globe, in this order) and the nodes inside each one (dots on the globe,
+      joined by a dotted line to the main node of their region). The home page counters count the nodes of each region.
+    editor: { preview: false }
+    files:
+      - name: nodes
+        label: Nodes
+        file: src/_data/nodes.json
+        fields:
+          - label: Main nodes
+            name: mainNodes
+            widget: list
+            label_singular: main node
+            summary: '{{fields.name}} · {{fields.place}}'
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Region, name: region, widget: string, hint: 'e.g. Europe. Nodes with the same region are joined to this main node.' }
+              - { label: Place, name: place, widget: string, hint: 'Shown above the name and on the globe, e.g. Barcelona, Spain' }
+              - { label: Longitude, name: lon, widget: number, value_type: float, hint: 'East is positive, west negative (Barcelona 2.17, Florida −82.32).' }
+              - { label: Latitude, name: lat, widget: number, value_type: float, hint: 'North is positive (Barcelona 41.39).' }
+              - { label: Text, name: text, widget: text }
+              - { label: Link, name: url, widget: string, required: false, hint: 'Leave empty to show "Coming soon".' }
+              - { label: Link text, name: linkText, widget: string, required: false, hint: 'e.g. Explore **MDDB Europe** (the words in ** are bold).' }
+          - label: Nodes inside the main nodes
+            name: sites
+            widget: list
+            label_singular: node
+            summary: '{{fields.name}} ({{fields.region}})'
+            fields:
+              - { label: Institution, name: name, widget: string }
+              - { label: Region, name: region, widget: string, hint: 'Must match the region of a main node, e.g. Europe' }
+              - { label: Longitude, name: lon, widget: number, value_type: float }
+              - { label: Latitude, name: lat, widget: number, value_type: float }
+          - { label: Small label, name: label, widget: string, hint: '" | " shows a separator.' }
+          - { label: Title, name: title, widget: string, hint: 'Put ** around words to colour them blue.' }
+          - { label: Globe description, name: globeLabel, widget: text, hint: 'Read out by screen readers in place of the globe.' }
+
+  # ── Page text ────────────────────────────────────────────────────────────
+  - name: pages
+    label: Page text
+    editor: { preview: false }
+    files:
+      - name: home
+        label: Home page
+        file: src/_data/home.json
+        fields:
+          - *meta
+          - label: Top of the page
+            name: hero
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: text, hint: 'Put ** around words to colour them blue. A new line starts a new line on the page.' }
+              - { label: Text, name: text, widget: text }
+          - label: About
+            name: about
+            widget: object
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - { label: Statement, name: statement, widget: text, hint: 'Put ** around words to colour them blue.' }
+              - { label: Label above the partner logos, name: partnersLabel, widget: string }
+          - label: FAIR section (introduction)
+            name: fair
+            widget: object
+            fields:
+              - { label: Small label, name: label, widget: string, hint: '" | " shows a separator.' }
+              - { label: Title, name: title, widget: string, hint: 'Put ** around words to colour them blue.' }
+              - { label: Text, name: text, widget: string }
+          - label: News section
+            name: news
+            widget: object
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - { label: Title, name: title, widget: string, hint: 'Put ** around words to colour them blue.' }
+          - *cta
+          - label: Funded by
+            name: funding
+            widget: object
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - { label: Funder, name: name, widget: string }
+              - { label: Logo, name: logo, widget: image, media_folder: /assets/images/funder, public_folder: /assets/images/funder }
+              - { label: Logo description, name: logoAlt, widget: string }
+              - { label: Link, name: url, widget: string }
+      - name: news-page
+        label: News page
+        file: src/_data/news.json
+        fields:
+          - *meta
+          - *hero
+          - { label: Small label, name: label, widget: string }
+          - { label: Title, name: title, widget: string }
+          - { label: Topics, name: topics, widget: hidden }
+      - name: community
+        label: Community page
+        file: src/_data/community.json
+        fields:
+          - *meta
+          - *hero
+          - { label: Small label, name: label, widget: string }
+          - { label: Title, name: title, widget: string }
+          - { label: Text, name: text, widget: text }
+          - label: Ways to contribute
+            name: ways
+            widget: list
+            label_singular: box
+            summary: '{{fields.title}}'
+            hint: The boxes are numbered automatically, in this order.
+            fields:
+              - { label: Title, name: title, widget: string }
+              - label: Text
+                name: text
+                widget: markdown
+                buttons: [bold, italic, link]
+                editor_components: []
+              - { label: Hide from the site, name: hidden, widget: boolean, default: false, required: false }
+          - *cta
+
+  # ── Settings ─────────────────────────────────────────────────────────────
+  - name: settings
+    label: Site settings
+    editor: { preview: false }
+    files:
+      - name: settings
+        label: Settings
+        file: src/_data/settings.json
+        fields:
+          - { label: Contact email, name: email, widget: string, hint: 'Every "Get in touch", "Contact us" and "Email us" button writes to this address.' }
+          - { label: X (Twitter) page, name: xUrl, widget: string }
+          - { label: X (Twitter) handle, name: xHandle, widget: string, hint: 'e.g. @mddbamerica' }
+          - { label: LinkedIn page, name: linkedinUrl, widget: string }
+          - { label: Footer text, name: footerTagline, widget: text }
+          - { label: Menu prompt, name: menuPrompt, widget: string, hint: 'Shown above "Get in touch!" in the menu.' }
+          - { label: Search suggestions, name: searchHints, widget: list, hint: 'The "Try" buttons under the search box in the menu.' }
+          - { label: Sharing picture, name: shareImage, widget: image, media_folder: /assets/images, public_folder: /assets/images, hint: 'Shown when a page (other than a news post) is shared on social networks.' }
+          - { label: Site address, name: siteUrl, widget: string, hint: 'Used for links shared on social networks and search engines. Change only if the domain changes.' }
+          - { label: Site name, name: siteName, widget: hidden }
+          - { label: Asset version, name: assetVersion, widget: hidden }

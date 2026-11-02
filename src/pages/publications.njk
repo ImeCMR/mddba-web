@@ -1,0 +1,38 @@
+---
+# Publications page. Text and publications: src/_data/publications.json
+permalink: pages/publications.html
+dataKey: publications
+linkMode: pages
+nav: publications
+---
+{% extends "layouts/base.njk" %}
+{% block main %}
+{%- set L = 'pages' %}{% set hero = publications.hero %}
+<main id="main">
+{% include "partials/page-hero.njk" %}
+
+  <section class="section" data-theme="light">
+    <div class="wrap">
+      <div class="block-head reveal">
+        <p class="label">{{ publications.label }}</p>
+        <h2 class="heading-l">{{ publications.title }}</h2>
+      </div>
+      <ol class="row-list">
+        {%- for p in publications.items %}
+        <li class="row pub-row reveal">
+          <div class="pub-row__meta">
+            <span class="chip">{{ p.type }}</span>
+            <span class="label-s">{{ p.journal }}{% if p.journal and p.date %} · {% endif %}{% if p.date %}{{ p.date | dateLong }}{% endif %}</span>
+          </div>
+          <div class="row__main">
+            <h3 class="heading-xs">{{ p.title }}</h3>
+            <p>{{ p.text }}</p>
+          </div>
+          {% if p.link %}{% set href = p.link | link(L) %}{% set label = 'Read **Paper**' %}{% set small = true %}{% include "partials/text-btn.njk" %}{% endif %}
+        </li>
+        {%- endfor %}
+      </ol>
+    </div>
+  </section>
+</main>
+{% endblock %}

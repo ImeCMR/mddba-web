@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "title": "Events",
+    "description": "Workshops, conferences, and webinars advancing molecular dynamics data science with MDDB America."
+  },
+  "hero": {
+    "label": "Events",
+    "title": "Events & **Webinars**",
+    "text": "Join us for workshops, conferences, and webinars advancing molecular dynamics data science."
+  },
+  "upcomingLabel": "Upcoming",
+  "upcomingTitle": "Upcoming Events",
+  "emptyTitle": "No upcoming events announced yet",
+  "emptyText": "New workshops, conferences and webinars will be listed here. Follow MDDB America on X or LinkedIn to hear about them first.",
+  "pastLabel": "Past",
+  "pastTitle": "Past Events",
+  "items": [
+    {
+      "title": "MDDB America at ACS Spring 2026",
+      "date": "2026-03-23",
+      "type": "Conference",
+      "text": "MDDB America showcased at the ACS Spring 2026 meeting, presenting advances in molecular dynamics data management.",
+      "buttonText": "View **Recap**",
+      "link": "/pages/news-acs-spring-2026.html",
+      "hidden": false
+    },
+    {
+      "title": "MDDB America at UF AI Days 2025",
+      "date": "2025-10-28",
+      "type": "Conference",
+      "text": "Our inaugural conference brought together leading researchers from across the Americas.",
+      "buttonText": "View **Recap**",
+      "link": "/pages/news-uf-ai-days-2026.html",
+      "hidden": false
+    },
+    {
+      "title": "Multi-scale Simulations of Protein Folding: The Importance of Data",
+      "date": "2026-12-10",
+      "type": "Workshop",
+      "text": "Organised by the MDDB America Consortium. Open to all researchers in the field.",
+      "buttonText": "**Register**",
+      "link": "",
+      "hidden": true
+    }
+  ]
+}

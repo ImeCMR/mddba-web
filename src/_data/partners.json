@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "title": "Partners",
+    "description": "Collaborating with leading research institutions across America to advance molecular dynamics data science."
+  },
+  "hero": {
+    "label": "Partners",
+    "title": "Our **Partners**",
+    "text": "Collaborating with leading research institutions across America to advance molecular dynamics data science."
+  },
+  "label": "Current Partners",
+  "title": "Institutions Supporting **MDDB America**",
+  "items": [
+    {
+      "name": "University of Florida",
+      "type": "University",
+      "logo": "/assets/images/partners/ufl-logo.png",
+      "text": "A founding partner contributing computational resources and expertise in molecular dynamics simulations.",
+      "onHome": true
+    }
+  ],
+  "joinTitle": "Your institution?",
+  "joinText": "Universities, research institutes, and government agencies are welcome to join the MDDB America initiative.",
+  "cta": {
+    "label": "Join the Network",
+    "title": "Become a **Partner**",
+    "text": "Is your institution interested in joining the MDDB America initiative? We welcome collaborations from universities, research institutes, and government agencies."
+  }
+}

@@ -1,0 +1,35 @@
+---
+# News page. Text: src/_data/news.json; cards: src/news/
+permalink: pages/news.html
+dataKey: news
+linkMode: pages
+nav: news
+---
+{% extends "layouts/base.njk" %}
+{% block main %}
+{%- set L = 'pages' %}{% set hero = news.hero %}
+<main id="main">
+{% include "partials/page-hero.njk" %}
+
+  <section class="section" data-theme="light">
+    <div class="wrap">
+      <div class="block-head reveal">
+        <p class="label">{{ news.label }}</p>
+        <h2 class="heading-l">{{ news.title }}</h2>
+      </div>
+      <div class="filters" role="group" aria-label="Filter news by topic" data-filter-group data-filter-target="#news-list" data-filter-status="#news-status">
+        <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All</button>
+        {%- for t in news.topics %}
+        <button class="filter-btn" type="button" data-filter="{{ t | lower }}" aria-pressed="false">{{ t }}</button>
+        {%- endfor %}
+      </div>
+      <div class="card-grid" id="news-list">
+      {%- for post in collections.posts %}{% set i = loop.index0 %}
+{% include "partials/news-card.njk" %}
+      {%- endfor %}
+      </div>
+      <p class="filter-status label-s" id="news-status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+{% endblock %}

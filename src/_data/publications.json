@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "title": "Publications",
+    "description": "Peer-reviewed research and articles produced by or in collaboration with the MDDB America initiative."
+  },
+  "hero": {
+    "label": "Publications",
+    "title": "Our **Publications**",
+    "text": "Peer-reviewed research and articles produced by or in collaboration with the MDDB America initiative."
+  },
+  "label": "Research",
+  "title": "All Publications",
+  "items": [
+    {
+      "title": "FAIR Principles in Biomolecular Simulations",
+      "type": "Journal Article",
+      "journal": "Nature Methods",
+      "date": "2026-01-15",
+      "text": "A landmark article outlining how FAIR data principles can be applied to molecular dynamics simulation data to improve reproducibility and reuse across the research community.",
+      "link": "https://doi.org/10.1038/s41592-025-02635-0"
+    }
+  ]
+}
