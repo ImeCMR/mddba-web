@@ -16,7 +16,7 @@ eleventyExcludeFromCollections: true
 </head>
 <body>
 <script src="https://unpkg.com/decap-cms@3.17.3/dist/decap-cms.js"></script>
-<script src="preview.js"></script>
+<script src="/admin/preview.js"></script>
 <script>
   var config = {{ cmsConfig | jsonScript | safe }};
   config.load_config_file = false;

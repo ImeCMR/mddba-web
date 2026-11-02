@@ -7,7 +7,7 @@
 backend:
   name: github
   repo: ImeCMR/mddba-web
-  branch: main # the branch Vercel publishes; change to main when v2 is merged
+  branch: main # the branch Vercel publishes for the live site
   # base_url (where /api/auth runs) is set to this site's own address in admin/index.html
   auth_endpoint: api/auth
   commit_messages:

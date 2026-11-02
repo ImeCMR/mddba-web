@@ -39,11 +39,12 @@ The editor at `/admin` logs in with GitHub. Every save is a commit to the reposi
 
    Add them for the environment where you open the editor (Production, or Preview too). Then redeploy.
 4. **Give editors access.** In GitHub → `ImeCMR/mddba-web` → Settings → Collaborators, add each editor with **Write** access.
-5. **Check the branch.** `src/admin/config.yml` → `backend.branch` must be the branch Vercel publishes for the site. It is `v2` now; change it to `main` when v2 is merged.
+5. **Check the branch.** `src/admin/config.yml` → `backend.branch` must be the branch Vercel publishes for the live site (`main`).
 
 Open `https://<site>/admin/`, click **Login with GitHub** and approve the app once.
 
 Notes:
+- **`mddba.com` and `www.mddba.com`.** `mddba.com` redirects to `www.mddba.com`, so the editor runs at `https://www.mddba.com/admin` and asks GitHub to return to `https://www.mddba.com/api/callback`. GitHub accepts a sub-domain of the registered callback URL, so `https://mddba.com/api/callback` works too. If GitHub says *"The redirect_uri is not associated with this application"*, set the callback URL to the `www` address.
 - **One callback URL per OAuth App.** A GitHub OAuth App has a single callback URL, so the editor logs in only on that address. Until mddba.com serves v2, register the v2 address from Vercel (e.g. `https://<project>-git-v2-<team>.vercel.app/api/callback`) and open the editor there. Switch the callback URL to mddba.com at launch.
 - **Deployment Protection.** If Vercel's Deployment Protection is on for Preview deployments, the editor and `/api/*` on a preview URL ask for a Vercel login first. Turn it off for that URL, or use the editor on the production domain.
 - **Running it locally.** Locally (`npm start` + `npm run cms`), the editor skips GitHub and edits the files in your working copy.
@@ -66,6 +67,8 @@ Any static host can serve `_site/` after `npm run build`, but two things are Ver
 - Clean URLs come from `vercel.json`.
 
 GitHub Pages, for example, would need a GitHub Action to run the build and a separate login service for the editor.
+
+**GitHub Pages is not used.** The site is served by Vercel. If Pages is switched on for this repository (Settings → Pages), its "pages build and deployment" check fails on the templates with *"Liquid syntax error: Unknown tag 'extends'"*. Turn Pages off there; it doesn't affect the live site.
 
 ## Checklist before going live
 
