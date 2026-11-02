@@ -1,0 +1,47 @@
+---
+# Community page. Text and "ways to contribute" boxes: src/_data/community.json
+permalink: pages/community.html
+dataKey: community
+linkMode: pages
+nav: community
+landscape: true
+---
+{% extends "layouts/base.njk" %}
+{% block main %}
+{%- set L = 'pages' %}{% set hero = community.hero %}
+<main id="main">
+{% include "partials/page-hero.njk" %}
+
+  <section class="section" data-theme="light">
+    <div class="wrap">
+      <div class="block-head reveal">
+        <p class="label">{{ community.label }}</p>
+        <h2 class="heading-l">{{ community.title }}</h2>
+        <p class="text-l muted">{{ community.text }}</p>
+      </div>
+      <ol class="ways">
+        {%- for w in community.ways | visible %}
+        <li class="way reveal" style="--d:{{ ['0.00', '0.08', '0.16'][loop.index0 % 3] }}s">
+          <span class="way__num label">{{ '0' if loop.index < 10 }}{{ loop.index }}</span>
+          <h3 class="heading-xs">{{ w.title }}</h3>
+          <p>{{ w.text | mdInline | safe }}</p>
+        </li>
+        {%- endfor %}
+      </ol>
+    </div>
+  </section>
+
+  <section class="cta" data-theme="dark">
+    <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:50%;--y:-30%;--s:65vw;--o:.45"></span><span class="orb orb--deep" style="--x:-25%;--y:30%;--s:60vw;--o:.9"></span></div>
+    <div class="fes" aria-hidden="true" data-landscape><img src="../assets/images/energy-landscape.svg" alt="" width="1200" height="800" loading="lazy" decoding="async"></div>
+    <div class="wrap cta__inner">
+      <p class="label reveal">{{ community.cta.label | label | safe }}</p>
+      <h2 class="heading-l cta__title reveal">{{ community.cta.title | grad | safe }}</h2>
+      <p class="text-l cta__text reveal">{{ community.cta.text }}</p>
+      <div class="btn-row reveal">
+        <a class="text-btn" href="#" data-email><span>Contact <strong>Us</strong></span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

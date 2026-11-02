@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "title": "MDDB America | Molecular Dynamics Data Bank",
+    "description": "MDDB America is a unified, FAIR-compliant repository for molecular dynamics biosimulation data across the Americas - empowering researchers in biochemistry, pharmacology, and personalized medicine."
+  },
+  "hero": {
+    "title": "The Future of\n**Molecular Dynamics**\nData Science.",
+    "text": "A unified, FAIR-compliant repository for biosimulation data - empowering researchers across biochemistry, pharmacology, and personalized medicine."
+  },
+  "about": {
+    "label": "About MDDB America",
+    "statement": "MDDB-America offers a **FAIR way of storing MD data** produced with US resources. It is interoperable with European and Japanese efforts under the MDDB umbrella - allowing **meta-analysis at the world wide level**.",
+    "partnersLabel": "MDDBa Partnering with America's leading research institutions"
+  },
+  "fair": {
+    "label": "Our Vision | FAIR Data",
+    "title": "A Single Database for **Molecular Dynamics Simulations**",
+    "text": "Building on FAIR data principles for all MD simulation data."
+  },
+  "news": {
+    "label": "Latest Updates",
+    "title": "Recent from **MDDB America**"
+  },
+  "cta": {
+    "label": "Get Involved",
+    "title": "For the Community,\n**By the Community**",
+    "text": "We recognise the need for a collaborative effort to create, establish, and sustain a database that allows findability, accessibility, interoperability, and reusability of molecular dynamics simulation data."
+  },
+  "funding": {
+    "label": "Funded by",
+    "name": "2025 Research Equipment Seed Fund",
+    "logo": "/assets/images/funder/uf-research-stacked.png",
+    "logoAlt": "UF Research, University of Florida",
+    "url": "https://research.ufl.edu/"
+  }
+}

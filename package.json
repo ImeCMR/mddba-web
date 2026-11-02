@@ -1,0 +1,24 @@
+{
+  "name": "mddba-web",
+  "version": "2.0.0",
+  "private": true,
+  "description": "MDDB America website (mddba.com): Eleventy templates with content edited in Decap CMS (/admin).",
+  "license": "SEE LICENSE IN LICENSE",
+  "scripts": {
+    "build": "node tools/check-cms-config.js && eleventy",
+    "start": "eleventy --serve --port=8080",
+    "cms": "npx --yes decap-server@3.11.6",
+    "compare": "node tools/compare-build.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "3.1.7",
+    "markdown-it": "14.3.3",
+    "js-yaml": "4.3.2"
+  },
+  "devDependencies": {
+    "parse5": "8.1.0"
+  }
+}

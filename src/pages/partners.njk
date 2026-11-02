@@ -1,0 +1,58 @@
+---
+# Partners page. Text and partners: src/_data/partners.json
+permalink: pages/partners.html
+dataKey: partners
+linkMode: pages
+nav: partners
+landscape: true
+---
+{% extends "layouts/base.njk" %}
+{% block main %}
+{%- set L = 'pages' %}{% set hero = partners.hero %}
+<main id="main">
+{% include "partials/page-hero.njk" %}
+
+  <section class="section" data-theme="light">
+    <div class="wrap">
+      <div class="block-head reveal">
+        <p class="label">{{ partners.label }}</p>
+        <h2 class="heading-l">{{ partners.title | grad | safe }}</h2>
+      </div>
+      <ul class="partner-grid">
+        {%- for p in partners.items %}{% set img = p.logo | imgsize %}
+        <li class="reveal"{% if loop.index0 % 3 %} style="--d:.{{ '08' if loop.index0 % 3 == 1 else '16' }}s"{% endif %}>
+          <article class="partner-card">
+            {% if p.logo %}<div class="partner-card__logo"><img src="{{ p.logo | link(L) }}" alt="{{ p.name }}"{% if img %} width="{{ img.width }}" height="{{ img.height }}"{% endif %} loading="lazy" decoding="async"></div>{% endif %}
+            {% if p.type %}<div class="chips"><span class="chip">{{ p.type }}</span></div>{% endif %}
+            <h3 class="heading-xxs">{{ p.name }}</h3>
+            <p>{{ p.text }}</p>
+          </article>
+        </li>
+        {%- endfor %}
+        {%- set n = partners.items | length %}
+        <li class="reveal"{% if n % 3 %} style="--d:.{{ '08' if n % 3 == 1 else '16' }}s"{% endif %}>
+          <a class="partner-card partner-card--join" href="#" data-email>
+            <div class="partner-card__logo"><span class="partner-card__plus" aria-hidden="true">+</span></div>
+            <h3 class="heading-xxs">{{ partners.joinTitle }}</h3>
+            <p>{{ partners.joinText }}</p>
+            <span class="read-more">Become a partner <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta" data-theme="dark">
+    <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:50%;--y:-30%;--s:65vw;--o:.45"></span><span class="orb orb--deep" style="--x:-25%;--y:30%;--s:60vw;--o:.9"></span></div>
+    <div class="fes" aria-hidden="true" data-landscape><img src="../assets/images/energy-landscape.svg" alt="" width="1200" height="800" loading="lazy" decoding="async"></div>
+    <div class="wrap cta__inner">
+      <p class="label reveal">{{ partners.cta.label | label | safe }}</p>
+      <h2 class="heading-l cta__title reveal">{{ partners.cta.title | grad | safe }}</h2>
+      <p class="text-l cta__text reveal">{{ partners.cta.text }}</p>
+      <div class="btn-row reveal">
+        <a class="text-btn" href="#" data-email><span>Get in <strong>Touch</strong></span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

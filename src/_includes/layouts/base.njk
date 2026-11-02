@@ -1,26 +1,34 @@
+{#- Shared page frame: <head>, icon sprite, nav, menu (with search), footer.
+    Each page sets in its front matter:
+      linkMode  home | pages | abs   how links are written (from /, from /pages/, or root-absolute)
+      nav       the menu item to mark as the current page
+    and fills the "main" block (plus "scripts" on the home page). -#}
+{%- set L = linkMode or 'pages' -%}
+{%- set v = ('?v=' + settings.assetVersion) if L == 'home' else '' -%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Partners | MDDB America</title>
-<meta name="description" content="Collaborating with leading research institutions across America to advance molecular dynamics data science.">
-<link rel="canonical" href="https://mddba.com/pages/partners">
+<title>{{ metaTitle }}</title>
+<meta name="description" content="{{ metaDescription }}">
+{% if noindex %}<meta name="robots" content="noindex">{% else %}<link rel="canonical" href="{{ settings.siteUrl }}{{ pageUrl }}">{% endif %}
 <meta name="theme-color" content="#0a1628">
 <script>document.documentElement.classList.add('js');</script>
 
 <!-- Open Graph / X -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="MDDB America">
-<meta property="og:url" content="https://mddba.com/pages/partners">
-<meta property="og:title" content="Partners | MDDB America">
-<meta property="og:description" content="Collaborating with leading research institutions across America to advance molecular dynamics data science.">
-<meta property="og:image" content="https://mddba.com/assets/images/og-image.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@mddbamerica">
-<meta name="twitter:title" content="Partners | MDDB America">
-<meta name="twitter:description" content="Collaborating with leading research institutions across America to advance molecular dynamics data science.">
-<meta name="twitter:image" content="https://mddba.com/assets/images/og-image.jpg">
+<meta property="og:type" content="{{ 'article' if isPost else 'website' }}">
+<meta property="og:site_name" content="{{ settings.siteName }}">
+<meta property="og:url" content="{{ settings.siteUrl }}{{ pageUrl }}">
+<meta property="og:title" content="{{ metaTitle }}">
+<meta property="og:description" content="{{ metaDescription }}">
+<meta property="og:image" content="{{ settings.siteUrl }}{{ shareImage }}">
+{% if isPost %}<meta property="article:published_time" content="{{ page.date | dateIso }}">
+{% endif %}<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="{{ settings.xHandle }}">
+<meta name="twitter:title" content="{{ metaTitle }}">
+<meta name="twitter:description" content="{{ metaDescription }}">
+<meta name="twitter:image" content="{{ settings.siteUrl }}{{ shareImage }}">
 
 <!-- Icons -->
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -32,10 +40,10 @@
 <!-- Styles -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&amp;display=swap">
-<link rel="stylesheet" href="../assets/css/tokens.css">
-<link rel="stylesheet" href="../assets/css/main.css">
-<link rel="stylesheet" href="../assets/css/pages.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700{% if L == 'home' %}&amp;family=Geist+Mono:wght@400;500{% endif %}&amp;display=swap">
+<link rel="stylesheet" href="{{ '/assets/css/tokens.css' | link(L) }}{{ v }}">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | link(L) }}{{ v }}">
+<link rel="stylesheet" href="{{ ('/assets/css/home.css' if L == 'home' else '/assets/css/pages.css') | link(L) }}{{ v }}">
 </head>
 
 <body>
@@ -57,7 +65,7 @@
 
 <header class="nav">
   <div class="wrap nav__inner">
-    <a class="logo" href="../index.html" aria-label="MDDB America — home"><span class="logo__mark" aria-hidden="true"></span></a>
+    <a class="logo" href="{{ '/' | link(L) }}" aria-label="MDDB America — home"><span class="logo__mark" aria-hidden="true"></span></a>
     <button class="menu-btn" type="button" data-menu-open aria-haspopup="dialog" aria-expanded="false" aria-controls="menu">
       <span>Menu</span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-menu"/></svg></span>
     </button>
@@ -67,7 +75,7 @@
 <dialog class="menu" id="menu" data-theme="dark" aria-label="Site menu">
   <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:-14%;--y:-45%;--s:75vw;--o:.6"></span><span class="orb orb--deep" style="--x:55%;--y:35%;--s:70vw;--o:.9"></span><span class="orb orb--sky" style="--x:80%;--y:-25%;--s:32vw;--o:.4"></span></div>
   <div class="wrap menu__top">
-    <a class="logo" href="../index.html" aria-label="MDDB America — home"><span class="logo__mark" aria-hidden="true"></span></a>
+    <a class="logo" href="{{ '/' | link(L) }}" aria-label="MDDB America — home"><span class="logo__mark" aria-hidden="true"></span></a>
     <button class="menu-btn" type="button" data-menu-close>
       <span>Close</span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-close"/></svg></span>
     </button>
@@ -81,109 +89,61 @@
         <kbd class="search__kbd" aria-hidden="true">/</kbd>
         <button class="search__clear" type="button" aria-label="Clear search" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-close"/></svg></button>
       </div>
-      <div class="search__hints"><span class="label-s">Try</span><button type="button" data-q="Florida Node">Florida Node</button><button type="button" data-q="FAIR principles">FAIR principles</button><button type="button" data-q="Nature Methods">Nature Methods</button><button type="button" data-q="Events">Events</button></div>
+      <div class="search__hints"><span class="label-s">Try</span>{% for q in settings.searchHints %}<button type="button" data-q="{{ q }}">{{ q }}</button>{% endfor %}</div>
       <p class="search__status label-s" id="menu-search-status" role="status"></p>
       <ol class="search__results" id="menu-search-results" aria-label="Search results"></ol>
     </form>
     <nav class="menu__nav" aria-label="Main">
       <ol class="menu__list">
-        <li style="--i:0"><a class="menu__link" href="../index.html"><span class="menu__index">01</span><span class="menu__text">Home</span></a></li>
-        <li style="--i:1"><a class="menu__link" href="../index.html#about"><span class="menu__index">02</span><span class="menu__text">About</span></a></li>
-        <li style="--i:2"><a class="menu__link" href="../index.html#nodes"><span class="menu__index">03</span><span class="menu__text">Nodes</span></a></li>
-        <li style="--i:3"><a class="menu__link" href="partners.html" aria-current="page"><span class="menu__index">04</span><span class="menu__text">Partners</span></a></li>
-        <li style="--i:4"><a class="menu__link" href="news.html"><span class="menu__index">05</span><span class="menu__text">News</span></a></li>
-        <li style="--i:5"><a class="menu__link" href="events.html"><span class="menu__index">06</span><span class="menu__text">Events</span></a></li>
-        <li style="--i:6"><a class="menu__link" href="publications.html"><span class="menu__index">07</span><span class="menu__text">Publications</span></a></li>
-        <li style="--i:7"><a class="menu__link" href="community.html"><span class="menu__index">08</span><span class="menu__text">Community</span></a></li>
+        {%- set menu = [
+          ['/', 'Home', 'home'], ['/#about', 'About', ''], ['/#nodes', 'Nodes', ''],
+          ['/pages/partners.html', 'Partners', 'partners'], ['/pages/news.html', 'News', 'news'],
+          ['/pages/events.html', 'Events', 'events'], ['/pages/publications.html', 'Publications', 'publications'],
+          ['/pages/community.html', 'Community', 'community']
+        ] %}
+        {%- for m in menu %}
+        <li style="--i:{{ loop.index0 }}"><a class="menu__link" href="{{ m[0] | link(L) }}"{% if m[2] and m[2] == nav %} aria-current="page"{% endif %}><span class="menu__index">0{{ loop.index }}</span><span class="menu__text">{{ m[1] }}</span></a></li>
+        {%- endfor %}
       </ol>
     </nav>
     <div class="menu__aside">
-      <p class="label">Interested in contributing?</p>
+      <p class="label">{{ settings.menuPrompt }}</p>
       <a class="text-btn text-btn--xl" href="#" data-email><span>Get in <strong>touch!</strong></span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
     </div>
   </div>
   <div class="wrap menu__meta">
     <p class="label-s">&copy; <span data-year>2026</span> MDDB America. All rights reserved.</p>
-    <div class="social"><a href="https://x.com/mddbamerica" target="_blank" rel="noopener" aria-label="MDDB America on X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-x"/></svg></a><a href="https://www.linkedin.com/company/mddba/" target="_blank" rel="noopener" aria-label="MDDB America on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-linkedin"/></svg></a></div>
+    {% include "partials/social.njk" %}
   </div>
 </dialog>
 
-<main id="main">
-  <section class="page-hero" data-theme="dark">
-    <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:-10%;--y:-60%;--s:60vw;--o:.55"></span><span class="orb orb--deep" style="--x:55%;--y:-10%;--s:55vw;--o:.9"></span><span class="orb orb--sky" style="--x:78%;--y:40%;--s:26vw;--o:.3"></span></div>
-    <div class="wrap relative">
-      <p class="label">Partners</p>
-      <h1 class="display-xl page-hero__title">Our <span class="grad">Partners</span></h1>
-      <p class="text-xl page-hero__sub">Collaborating with leading research institutions across America to advance molecular dynamics data science.</p>
-    </div>
-  </section>
-
-  <section class="section" data-theme="light">
-    <div class="wrap">
-      <div class="block-head reveal">
-        <p class="label">Current Partners</p>
-        <h2 class="heading-l">Institutions Supporting <span class="grad">MDDB America</span></h2>
-      </div>
-      <ul class="partner-grid">
-        <li class="reveal">
-          <article class="partner-card">
-            <div class="partner-card__logo"><img src="../assets/images/partners/ufl-logo.png" alt="University of Florida" width="800" height="155" loading="lazy" decoding="async"></div>
-            <div class="chips"><span class="chip">University</span></div>
-            <h3 class="heading-xxs">University of Florida</h3>
-            <p>A founding partner contributing computational resources and expertise in molecular dynamics simulations.</p>
-          </article>
-        </li>
-        <li class="reveal" style="--d:.08s">
-          <a class="partner-card partner-card--join" href="#" data-email>
-            <div class="partner-card__logo"><span class="partner-card__plus" aria-hidden="true">+</span></div>
-            <h3 class="heading-xxs">Your institution?</h3>
-            <p>Universities, research institutes, and government agencies are welcome to join the MDDB America initiative.</p>
-            <span class="read-more">Become a partner <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="cta" data-theme="dark">
-    <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:50%;--y:-30%;--s:65vw;--o:.45"></span><span class="orb orb--deep" style="--x:-25%;--y:30%;--s:60vw;--o:.9"></span></div>
-    <div class="fes" aria-hidden="true" data-landscape><img src="../assets/images/energy-landscape.svg" alt="" width="1200" height="800" loading="lazy" decoding="async"></div>
-    <div class="wrap cta__inner">
-      <p class="label reveal">Join the Network</p>
-      <h2 class="heading-l cta__title reveal">Become a <span class="grad">Partner</span></h2>
-      <p class="text-l cta__text reveal">Is your institution interested in joining the MDDB America initiative? We welcome collaborations from universities, research institutes, and government agencies.</p>
-      <div class="btn-row reveal">
-        <a class="text-btn" href="#" data-email><span>Get in <strong>Touch</strong></span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
-      </div>
-    </div>
-  </section>
-</main>
+{% block main %}{% endblock %}
 
 <footer class="footer" data-theme="dark">
   <div class="orb-layer" aria-hidden="true"><span class="orb orb--blue" style="--x:-20%;--y:25%;--s:60vw;--o:.4"></span><span class="orb orb--deep" style="--x:62%;--y:-35%;--s:50vw;--o:.8"></span></div>
   <div class="wrap">
     <div class="footer__grid">
       <div class="footer__brand">
-        <a class="logo" href="../index.html" aria-label="MDDB America — home"><span class="logo__mark" aria-hidden="true"></span></a>
-        <p class="footer__tagline text-l">A unified, FAIR-compliant repository for molecular dynamics biosimulation data across the Americas.</p>
+        <a class="logo" href="{{ '/' | link(L) }}" aria-label="MDDB America — home"><span class="logo__mark" aria-hidden="true"></span></a>
+        <p class="footer__tagline text-l">{{ settings.footerTagline }}</p>
       </div>
       <nav class="footer__col" aria-label="Explore">
         <h2 class="footer__heading">Explore</h2>
         <ul class="footer__links">
-          <li><a class="u-link" href="../index.html#about">About</a></li>
-          <li><a class="u-link" href="../index.html#goals">Goals &amp; Vision</a></li>
-          <li><a class="u-link" href="../index.html#nodes">MDDB Nodes</a></li>
-          <li><a class="u-link" href="partners.html">Partners</a></li>
-          <li><a class="u-link" href="publications.html">Publications</a></li>
+          <li><a class="u-link" href="{{ '/#about' | link(L) }}">About</a></li>
+          <li><a class="u-link" href="{{ '/#goals' | link(L) }}">Goals &amp; Vision</a></li>
+          <li><a class="u-link" href="{{ '/#nodes' | link(L) }}">MDDB Nodes</a></li>
+          <li><a class="u-link" href="{{ '/pages/partners.html' | link(L) }}">Partners</a></li>
+          <li><a class="u-link" href="{{ '/pages/publications.html' | link(L) }}">Publications</a></li>
         </ul>
       </nav>
       <nav class="footer__col" aria-label="Engage">
         <h2 class="footer__heading">Engage</h2>
         <ul class="footer__links">
-          <li><a class="u-link" href="news.html">News</a></li>
-          <li><a class="u-link" href="events.html">Events</a></li>
-          <li><a class="u-link" href="community.html">Community</a></li>
-          <li><a class="u-link" href="../index.html#contact">Contact</a></li>
+          <li><a class="u-link" href="{{ '/pages/news.html' | link(L) }}">News</a></li>
+          <li><a class="u-link" href="{{ '/pages/events.html' | link(L) }}">Events</a></li>
+          <li><a class="u-link" href="{{ '/pages/community.html' | link(L) }}">Community</a></li>
+          <li><a class="u-link" href="{{ '/#contact' | link(L) }}">Contact</a></li>
         </ul>
       </nav>
       <div class="footer__col">
@@ -195,10 +155,10 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <div class="social"><a href="https://x.com/mddbamerica" target="_blank" rel="noopener" aria-label="MDDB America on X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-x"/></svg></a><a href="https://www.linkedin.com/company/mddba/" target="_blank" rel="noopener" aria-label="MDDB America on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-linkedin"/></svg></a></div>
+      {% include "partials/social.njk" %}
       <!-- Funder: add the logo to assets/images/funder/, fill in the text and uncomment.
       <div class="funder">
-        <img src="../assets/images/funder/eu-logo.png" alt="" height="48">
+        <img src="{{ '/assets/images/funder/eu-logo.png' | link(L) }}" alt="" height="48">
         <p>Funded by: …</p>
       </div> -->
       <p class="label-s">&copy; <span data-year>2026</span> MDDB America | All Rights Reserved</p>
@@ -206,8 +166,10 @@
   </div>
 </footer>
 
-<script src="../assets/js/site.js" defer></script>
-<script src="../assets/js/landscape.js" defer></script>
+{% block scripts %}
+<script src="{{ '/assets/js/site.js' | link(L) }}" defer></script>
+{% if landscape %}<script src="{{ '/assets/js/landscape.js' | link(L) }}" defer></script>
+{% endif %}{% endblock %}
 
 </body>
 </html>

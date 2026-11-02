@@ -1,0 +1,14 @@
+---
+permalink: sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{{ settings.siteUrl }}/</loc></url>
+  {%- for p in ['news', 'events', 'partners', 'publications', 'community'] %}
+  <url><loc>{{ settings.siteUrl }}/pages/{{ p }}</loc></url>
+  {%- endfor %}
+  {%- for post in collections.posts %}
+  <url><loc>{{ settings.siteUrl }}{{ post.url | replace('.html', '') }}</loc></url>
+  {%- endfor %}
+</urlset>

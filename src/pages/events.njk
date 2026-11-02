@@ -1,0 +1,55 @@
+---
+# Events page. Text and events: src/_data/events.json. An event dated today or
+# later is listed under "Upcoming", earlier ones under "Past" (newest first).
+permalink: pages/events.html
+dataKey: events
+linkMode: pages
+nav: events
+---
+{% extends "layouts/base.njk" %}
+{% block main %}
+{%- set L = 'pages' %}{% set hero = events.hero %}
+{%- set upcoming = events.items | visible | upcoming(build.today) %}
+{%- set past = events.items | visible | past(build.today) %}
+<main id="main">
+{% include "partials/page-hero.njk" %}
+
+  <section class="section" data-theme="light">
+    <div class="wrap">
+      <div class="block">
+        <div class="block-head reveal">
+          <p class="label">{{ events.upcomingLabel }}</p>
+          <h2 class="heading-l">{{ events.upcomingTitle }}</h2>
+        </div>
+        {%- if upcoming.length %}
+        <ol class="row-list">
+          {%- for e in upcoming %}
+{% include "partials/event-row.njk" %}
+          {%- endfor %}
+        </ol>
+        {%- else %}
+        <div class="empty-state reveal">
+          <div>
+            <h3 class="heading-xs">{{ events.emptyTitle }}</h3>
+            <p>{{ events.emptyText }}</p>
+          </div>
+          {% include "partials/social.njk" %}
+        </div>
+        {%- endif %}
+      </div>
+
+      <div class="block">
+        <div class="block-head reveal">
+          <p class="label">{{ events.pastLabel }}</p>
+          <h2 class="heading-l">{{ events.pastTitle }}</h2>
+        </div>
+        <ol class="row-list">
+          {%- for e in past %}
+{% include "partials/event-row.njk" %}
+          {%- endfor %}
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

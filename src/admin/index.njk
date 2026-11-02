@@ -1,0 +1,27 @@
+---
+# The website editor (Decap CMS). Its settings are in config.yml, built into
+# this page so they load the same way on any host.
+permalink: admin/index.html
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Website editor | MDDB America</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<script>window.CMS_MANUAL_INIT = true;</script>
+</head>
+<body>
+<script src="https://unpkg.com/decap-cms@3.17.3/dist/decap-cms.js"></script>
+<script src="preview.js"></script>
+<script>
+  var config = {{ cmsConfig | jsonScript | safe }};
+  config.load_config_file = false;
+  config.backend.base_url = window.location.origin; // log in through this site's own /api/auth
+  CMS.init({ config: config });
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{#- A round arrow button. Needs: href (already relative), label (**bold** words), and optional small. Links to other sites open in a new tab. -#}
+{%- if href | external -%}
+<a class="text-btn{% if small %} text-btn--sm{% endif %} text-btn--ext" href="{{ href }}" target="_blank" rel="noopener noreferrer"><span>{{ label | btn | safe }}</span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow-ne"/></svg></span></a>
+{%- else -%}
+<a class="text-btn{% if small %} text-btn--sm{% endif %}" href="{{ href }}"><span>{{ label | btn | safe }}</span><span class="blob" aria-hidden="true"><svg class="blob__icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
+{%- endif -%}

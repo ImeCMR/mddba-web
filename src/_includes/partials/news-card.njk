@@ -1,0 +1,13 @@
+{#- One news card. Needs: post, i (position, for the stagger), L (link mode). -#}
+{%- set img = post.data.image | imgsize %}
+      <article class="news-card reveal" data-tags="{{ post.data.topics | join(' ') | lower }}"{% if i % 3 %} style="--d:.{{ '08' if i % 3 == 1 else '16' }}s"{% endif %}>
+        <a class="news-card__link" href="{{ post.url | link(L) }}">
+          <div class="news-card__media"><img src="{{ post.data.image | link(L) }}" alt=""{% if img %} width="{{ img.width }}" height="{{ img.height }}"{% endif %} loading="lazy" decoding="async"></div>
+          <div class="news-card__body">
+            <div class="news-card__meta"><time class="label-s" datetime="{{ post.date | dateIso }}">{{ post.date | dateLong }}</time>{% for t in post.data.topics %}<span class="chip">{{ t }}</span>{% endfor %}</div>
+            <h3 class="heading-xxs news-card__title">{{ post.data.title }}</h3>
+            <p class="news-card__excerpt">{{ post.data.excerpt }}</p>
+            <span class="read-more">Read more <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          </div>
+        </a>
+      </article>
